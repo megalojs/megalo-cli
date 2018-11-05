@@ -1,7 +1,7 @@
 {
-  "name": "@kaola/ksvue",
-  "version": "0.0.2",
-  "description": "kaola vue ssr project template",
+  "name": "magalo-cli",
+  "version": "0.0.1",
+  "description": "megalo project template",
   "bin": "cli.js",
   "repository": {
     "url": "",

@@ -24,20 +24,6 @@ module.exports = {
     cookieSecurityKeys: {
       message: 'cookie security keys',
       default: `${Date.now()}_${Math.floor(Math.random()*8999)+1000}`
-    },
-    serverPort: {
-      message: '你的工程需想跑在什么端口上？',
-      default: '3000'
-    },
-    serverApplication: {
-      message: '后端 Web 服务的应用名是什么？',
-      default: 'ksvue-server-web'
-    },
-    needStore: {
-      message: '是否使用 Vuex?(Y/N)',
-      default: 'Yes',
-      validate: val => (/^(yes|no|y|n|true|false)$/i.test(val) ? true : false),
-      filter: val => /^(yes|y|true)$/i.test(val)? true : false
     }
   },
   move: {
@@ -45,9 +31,7 @@ module.exports = {
     README: 'README.md',
     package: 'package.json'
   },
-  skipInterpolation: [
-    '**/router-template.tpl'
-  ],
+  skipInterpolation: [],
   showTip: true,
   gitInit: false,
   installDependencies: false
