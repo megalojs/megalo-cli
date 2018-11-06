@@ -1,11 +1,16 @@
 {
-  "name": "magalo-cli",
-  "version": "0.0.1",
+  "name": "megalo-cli",
+  "version": "0.0.3",
   "description": "megalo project template",
+  "keywords": [
+    "vue",
+    "megalo",
+    "megalo-cli"
+  ],
   "bin": "cli.js",
   "repository": {
-    "url": "",
-    "type": "git"
+    "type": "git",
+    "url": "git+https://github.com/kaola-fed/megalo-cli.git"
   },
   "author": "zwwill <zwwill7@163.com> (github.com/zwwill)",
   "license": "MIT",
@@ -15,7 +20,6 @@
     "template"
   ],
   "scripts": {
-    "test": "ava"
   },
   "dependencies": {
     "is-email": "^1.0.0",
