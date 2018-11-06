@@ -4,15 +4,16 @@
   "description": "<%- description %>",
   "main": "index.js",
   "scripts": {
-    "dev:wechat": "webpack --config ./build/webpack.config.wechat.js -w",
-    "dev:alipay": "webpack --config ./build/webpack.config.alipay.js -w"
+    "dev:alipay": "webpack --config ./build/webpack.config.alipay.js -w",
+    "dev:swan": "webpack --config ./build/webpack.config.swan.js -w",
+    "dev:wechat": "webpack --config ./build/webpack.config.wechat.js -w"
   },
   "keywords": [],
   "author": "<%- author %> <<%- email %>>",
   "license": "ISC",
   "devDependencies": {
-    "@megalo/target": "*",
-    "@megalo/template-compiler": "*",
+    "@megalo/target": "^0.2.0-0",
+    "@megalo/template-compiler": "^0.2.0-0",
     "babel-core": "6",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",

@@ -1,6 +1,6 @@
 {
   "name": "@megalo/cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "megalo project template",
   "keywords": [
     "vue",

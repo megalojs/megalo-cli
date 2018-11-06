@@ -5,8 +5,15 @@ const VueLoaderPlugin = require( 'vue-loader/lib/plugin' )
 const pages = require('./entry')
 const _ = require( './util' );
 
+const CSS_EXT = {
+  wechat: 'wxss',
+  alipay: 'acss',
+  swan: 'css',
+};
+
 function createBaseConfig( platform = 'wechat' ) {
-  const cssExt = platform === 'alipay' ? 'acss' : 'wxss'
+  const cssExt = CSS_EXT[platform]
+  
   return {
     mode: 'development',
 
