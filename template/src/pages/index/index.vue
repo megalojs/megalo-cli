@@ -1,56 +1,48 @@
 <template>
   <div class="app">
-    <ul class="list">
-      <li class="list__item" v-for="(item, index) in list" :key="index">
-        <a :url="item.link">{{ item.text }}</a>
-      </li>
-    </ul>
-    globalData:{{globalData}}
+      <img class="img" src="https://user-images.githubusercontent.com/20720117/48007061-c516b380-e151-11e8-8dd0-cd1b0aaaef5f.png" @touchstart="changeStat">
+      <hello-world :color="color"></hello-world>
+      <h1 class="txt" v-show="t%2==1">click logo::{{t}}</h1>
   </div>
 </template>
 
 <script>
+import HelloWorld from '@/components/HelloWorld.vue'
 export default {
   mpType: 'page',
+  components: {
+      HelloWorld
+  },
   data() {
     return {
-      globalData:{},
-      list: [
-        {
-          link: '/pages/todomvc/index',
-          text: 'TodoMVC',
-        },
-        {
-          link: '/pages/v-html/index',
-          text: 'v-html',
-        },
-        {
-          link: '/pages/v-model/index',
-          text: 'v-model',
-        },
-        {
-          link: '/pages/vuex/index',
-          text: 'vuex',
-        }
-      ]
+      t: 1,
+      color: '#007d37'
     }
   },
   created() {
-    var appInstance = getApp()
-    this.globalData = appInstance.globalData;
+  },
+  methods:{
+    changeStat: function(){
+      this.t++
+      this.color = '#'+Math.floor(Math.random()*0xffffff).toString(16)
+    }
   }
 }
 </script>
 
-<style lang="less" scoped>
-.list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: stretch;
-  &__item {
-    padding: 10px;
-    color: blue;
+<style lang="scss" scoped>
+.app{
+  padding-top: 100px;
+  .img{
+    display: block;
+    height: 120px;
+    width: 120px;
+    margin: 20px auto;
+  }
+  .txt{
+      color: #567567;
+      font-size: 13px;
+      text-align: center;
   }
 }
 </style>

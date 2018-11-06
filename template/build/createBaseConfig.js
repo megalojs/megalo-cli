@@ -2,6 +2,7 @@ const createMegaloTarget = require( '@megalo/target' )
 const compiler = require( '@megalo/template-compiler' )
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' )
 const VueLoaderPlugin = require( 'vue-loader/lib/plugin' )
+const pages = require('./entry')
 const _ = require( './util' );
 
 function createBaseConfig( platform = 'wechat' ) {
@@ -20,11 +21,7 @@ function createBaseConfig( platform = 'wechat' ) {
 
     entry: {
       'app': _.resolve( 'src/index.js' ),
-      'pages/index/index': _.resolve( 'src/pages/index/index.js' ),
-      'pages/todomvc/index': _.resolve( 'src/pages/todomvc/index.js' ),
-      'pages/v-model/index': _.resolve( 'src/pages/v-model/index.js' ),
-      'pages/v-html/index': _.resolve( 'src/pages/v-html/index.js' ),
-      'pages/vuex/index': _.resolve( 'src/pages/vuex/index.js' ),
+      ...pages
     },
 
     output: {
@@ -90,11 +87,11 @@ function createBaseConfig( platform = 'wechat' ) {
         },
 
         {
-          test: /\.less$/,
+          test: /\.scss$/,
           use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
-            'less-loader',
+            'sass-loader',
           ]
         }
       ]

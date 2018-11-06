@@ -21,7 +21,5 @@
     "is-email": "^1.0.0",
     "sao": "^0.22.1"
   },
-  "devDependencies": {
-    "ava": "^0.21.0"
-  }
+  "devDependencies": {}
 }

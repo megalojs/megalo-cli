@@ -1,0 +1,25 @@
+<template>
+  <div class="hello">
+    <h1 :style="'color:'+color">{{ msg }}</h1>
+  </div>
+</template>
+
+<script>
+export default {
+    name: 'HelloWorld',
+    props: ['color'],
+    data() {
+        return {
+            msg: 'Welcome to Megalo'
+        }
+    }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+    .hello{
+        font-size: 16px;
+        text-align: center;
+    }
+</style>
