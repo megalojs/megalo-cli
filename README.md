@@ -7,11 +7,11 @@
 install
 
 ```
-$ npm install -g megalo-cli
+$ npm install -g @megalo/cli
 ```
 
 build
 
 ```
-$ megalo-cli pro-name
+$ megalo pro-name
 ```
