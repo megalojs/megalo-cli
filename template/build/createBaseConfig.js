@@ -13,7 +13,7 @@ const CSS_EXT = {
 
 function createBaseConfig( platform = 'wechat' ) {
   const cssExt = CSS_EXT[platform]
-  
+
   return {
     mode: 'development',
 
@@ -99,6 +99,15 @@ function createBaseConfig( platform = 'wechat' ) {
             MiniCssExtractPlugin.loader,
             'css-loader',
             'sass-loader',
+          ]
+        },
+
+        {
+          test: /\.less$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'less-loader'
           ]
         }
       ]
