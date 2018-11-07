@@ -4,7 +4,7 @@ import VHtmlPlugin from '@megalo/vhtml-plugin'
 
 Vue.use(VHtmlPlugin)
 
-const app = new Vue( App )
+const app = new Vue(App)
 
 app.$mount()
 
@@ -14,6 +14,12 @@ export default {
     pages: [
       'pages/index/index'
     ],
+    subpackages: [{
+      root: 'packageA',
+      pages: [
+        'pages/test/index',
+      ]
+    }],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
