@@ -1,22 +1,33 @@
 'use strict'
-const glob = require('glob')
-const { resolve } = require('./util')
+const fs = require('fs')
+const path = require( 'path' )
+const json5 = require('json5')
+const exp4parse = /\/\*[^*]*\*+(?:[^\/*][^*]*\*+)*\/|\/\/[^\r\n]*|\s/g
+const exp4filter = /(?:exportdefault[\S\s]*)pages:(\[[^\[\]]*\])/
 
 // 获取指定目录下符合glob的所有文件
-function getEntry(globPath) {
-    var files = glob.sync(globPath);
-    var entries = {},
-        pageName;
+function getEntry(file) {
+    let entries = {},
+        txt = '',
+        pages
 
-    files.forEach((entry) => {
-        pageName = entry.match(/\/(pages\/[^\/.]*\/index)\.js$/)[1];
-        entries[pageName] = entry;
-    })
-    return entries;
+    try {
+        txt = fs.readFileSync(file,'utf8')
+        txt = txt.replace(exp4parse,'')
+        
+        pages = json5.parse(txt.match(exp4filter)[1]) || []
+        pages.forEach(p=>{
+            entries[p] = path.resolve(`src/${p}.js`)
+        })
+    } catch (e) {
+        console.log(e)
+    }
+
+    return entries
 }
 
 module.exports = (()=> {
     let entry = {}
-    entry = getEntry(resolve('src/pages/*/index.js'));
+    entry = getEntry(path.resolve( __dirname, '../src/index.js'))
     return entry
 })()

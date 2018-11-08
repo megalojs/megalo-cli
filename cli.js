@@ -12,5 +12,5 @@ sao({
     targetPath
 }).catch(err => {
     console.error(err.name === 'SAOError' ? err.message : err.stack)
-process.exit(1)
+    process.exit(1)
 })

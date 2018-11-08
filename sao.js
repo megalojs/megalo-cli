@@ -3,7 +3,7 @@ const isEmail = require('is-email');
 module.exports = {
   prompts: {
     projectName: {
-      message: 'project name？（eg. my-megalo-wechat）',
+      message: 'project name? (eg. my-megalo-project)',
       default: ':folderName:'
     },
     description: {
@@ -20,6 +20,11 @@ module.exports = {
       default: ':gitEmail:',
       store: true,
       validate: val => (isEmail(val) ? true : 'Invalid email')
+    },
+    cssPreset: {
+      message: "CSS extension language",
+      type: 'list',
+      choices: ['sass', 'less', 'stylus']
     }
   },
   move: {
