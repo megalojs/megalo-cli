@@ -26,7 +26,7 @@ function getEntry(file) {
     return entries
 }
 
-module.exports = (()=> {
+module.exports = (() => {
     let entry = {}
     entry = getEntry(path.resolve( __dirname, '../src/index.js'))
     return entry
