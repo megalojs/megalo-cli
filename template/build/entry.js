@@ -1,36 +1,33 @@
 'use strict'
-const glob = require('glob')
-const path = require('path')
+const fs = require('fs')
+const path = require( 'path' )
+const json5 = require('json5')
+const exp4parse = /\/\*[^*]*\*+(?:[^\/*][^*]*\*+)*\/|\/\/[^\r\n]*|\s/g
+const exp4filter = /(?:exportdefault[\S\s]*)pages:(\[[^\[\]]*\])/
 
 // 获取指定目录下符合glob的所有文件
-function getEntry(...globPath) {
-    var files = [];
-    globPath.forEach((path) => {
-        var pages = glob.sync(path)
-        pages.forEach((page) => {
-            files.push(page)
+function getEntry(file) {
+    let entries = {},
+        txt = '',
+        pages
+
+    try {
+        txt = fs.readFileSync(file,'utf8')
+        txt = txt.replace(exp4parse,'')
+        
+        pages = json5.parse(txt.match(exp4filter)[1]) || []
+        pages.forEach(p=>{
+            entries[p] = path.resolve(`src/${p}.js`)
         })
-    })
+    } catch (e) {
+        console.log(e)
+    }
 
-    var entries = {},
-        pageName;
-
-    files.forEach((entry) => {
-        pageName = entry.match(/([^\/.]*\/pages\/[^\/.]*\/index)\.js$/)[1];
-        if (pageName.startsWith('src')) {
-            pageName = pageName.replace('src/', '')
-        }
-        entries[pageName] = path.resolve(entry);
-    })
-    return entries;
+    return entries
 }
 
 module.exports = (() => {
     let entry = {}
-    let paths = [
-        path.resolve(__dirname, '../src/pages/*/index.js'),
-        path.resolve(__dirname, '../src/*/pages/*/index.js')
-    ]
-    entry = getEntry(...paths);
+    entry = getEntry(path.resolve( __dirname, '../src/index.js'))
     return entry
 })()
