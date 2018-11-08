@@ -92,7 +92,25 @@ function createBaseConfig( platform = 'wechat' ) {
             'css-loader'
           ]
         },
-
+<% if (cssPreset === 'less') { %>
+        {
+          test: /\.less$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'less-loader',
+          ]
+        },
+<% } else if (cssPreset === 'stylus') {%>
+        {
+          test: /\.styl(us)?$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'stylus-loader',
+          ]
+        },
+<% } else {%>
         {
           test: /\.scss$/,
           use: [
@@ -101,15 +119,7 @@ function createBaseConfig( platform = 'wechat' ) {
             'sass-loader',
           ]
         },
-
-        {
-          test: /\.less$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
-            'less-loader'
-          ]
-        }
+<% } %>
       ]
     },
 
@@ -118,7 +128,16 @@ function createBaseConfig( platform = 'wechat' ) {
       new MiniCssExtractPlugin( {
         filename: `./static/css/[name].${cssExt}`,
       } ),
-    ]
+    ],
+    stats:{
+      env: true,
+      colors: true,
+      modules: false,
+      children: false,
+      chunks: false,
+      entrypoints: false,
+      excludeAssets: /^(?!pages|app)/
+    }
   }
 }
 
