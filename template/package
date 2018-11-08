@@ -21,11 +21,12 @@
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
     "html-webpack-plugin": "^3.2.0",
-    "less": "^3.8.1",
-    "less-loader": "^4.1.0",
-    "mini-css-extract-plugin": "^0.4.1",
+    "mini-css-extract-plugin": "^0.4.1",<% if (cssPreset === 'less') { %>
+    "less-loader": "^4.1.0",<% } else if (cssPreset === 'stylus') {%>
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",<% } else {%>
     "node-sass": "^4.10.0",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "^7.1.0",<% } %>
     "vue": "^2.5.17",
     "vue-loader": "15.4.0",
     "vue-style-loader": "^4.1.1",
@@ -37,6 +38,6 @@
   "dependencies": {
     "@megalo/vhtml-plugin": "^0.1.0",
     "megalo": "^0.2.0-0",
-    "octoparse": "^0.1.11"
+    "octoparse": "^0.2.0"
   }
 }
