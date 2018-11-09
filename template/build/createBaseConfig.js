@@ -13,7 +13,7 @@ const CSS_EXT = {
 
 function createBaseConfig( platform = 'wechat' ) {
   const cssExt = CSS_EXT[platform]
-
+  
   return {
     mode: 'development',
 
@@ -136,7 +136,6 @@ function createBaseConfig( platform = 'wechat' ) {
       children: false,
       chunks: false,
       entrypoints: false,
-      excludeAssets: /^(?!pages|app)/
     }
   }
 }
