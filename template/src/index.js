@@ -14,12 +14,6 @@ export default {
     pages: [
       'pages/index/index'
     ],
-    subpackages: [{
-      root: 'packageA',
-      pages: [
-        'pages/test/index',
-      ]
-    }],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',

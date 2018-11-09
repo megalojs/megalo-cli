@@ -1,6 +1,6 @@
 {
   "name": "@megalo/cli",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "megalo project template",
   "keywords": [
     "vue",
@@ -17,12 +17,17 @@
   "files": [
     "sao.js",
     "cli.js",
-    "template"
+    "template",
+    "util"
   ],
   "scripts": {
+    "postinstall": "node util/welcome"
   },
   "dependencies": {
+    "chalk": "^2.4.1",
+    "compare-versions": "^3.4.0",
     "is-email": "^1.0.0",
+    "latest-version": "^4.0.0",
     "sao": "^0.22.1"
   },
   "devDependencies": {}

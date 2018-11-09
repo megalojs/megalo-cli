@@ -3,7 +3,6 @@
       <img class="img" src="https://user-images.githubusercontent.com/20720117/48007061-c516b380-e151-11e8-8dd0-cd1b0aaaef5f.png" @touchstart="changeStat">
       <hello-world :color="color"></hello-world>
       <h1 class="txt" v-show="t%2==1">click logo::{{t}}</h1>
-      <a class="nav" url="/packageA/pages/test/index">分包测试</a>
   </div>
 </template>
 
@@ -45,15 +44,9 @@ export default {
     margin: 20px auto;
   }
   .txt {
-    color: #567567;
-    font-size: 13px;
-    text-align: center;
-  }
-  .nav {
-    color: #008080;
-    font-size: 15px;
-    text-align: center;
-    margin-top: 20px;
+      color: #567567;
+      font-size: 13px;
+      text-align: center;
   }
 }
 </style>
