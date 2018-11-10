@@ -2,7 +2,7 @@ const chalk = require('chalk')
 
 module.exports = ()=> {
     let h_m = `
-Usage: ${chalk.red('megalo')} <app-name> [options]
+Usage: ${chalk.green('megalo')} <app-name> [options]
 
 Options:
     -v, --version           output the version number
