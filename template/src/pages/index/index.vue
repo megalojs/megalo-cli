@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-      <img class="img" src="https://user-images.githubusercontent.com/20720117/48007061-c516b380-e151-11e8-8dd0-cd1b0aaaef5f.png" @touchstart="changeStat">
+      <img class="img" :src="logo" @touchstart="changeStat">
       <hello-world :color="color"></hello-world>
       <h1 class="txt" v-show="t%2==1">click logo::{{t}}</h1>
   </div>
@@ -15,6 +15,7 @@ export default {
   },
   data() {
     return {
+      logo: 'https://user-images.githubusercontent.com/20720117/48262986-80e02780-e45f-11e8-8426-2872916adad9.png',
       t: 1,
       color: '#007d37'
     }

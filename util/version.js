@@ -27,7 +27,7 @@ module.exports = (localVersion='0', latestVersion='0', showVersion=false)=> {
 -----------------------------------------------------
 -   Run megalo -h for detailed usage.
     `
-    console.log(chalk.red(banner))
+    console.log(chalk.green(banner))
     hasNewVersion ? console.log(_nv_m) : showVersion && console.log(_v_m)
     return hasNewVersion
 }
