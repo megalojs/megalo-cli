@@ -27,7 +27,7 @@ function createBaseConfig( platform = 'wechat' ) {
     } ),
 
     entry: {
-      'app': _.resolve( 'src/index.js' ),
+      'app': _.resolve( 'src/app.js' ),
       ...pages
     },
 
