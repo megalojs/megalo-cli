@@ -20,8 +20,43 @@ export default {
       color: '#007d37'
     }
   },
-  created() {
+  beforeCreate() {
+    console.log('Page Vue beforeCreate')
   },
+  created() {
+    console.log('Page Vue created')
+    var appInstance = getApp()
+    console.log(appInstance.globalData) // I am global data
+  },
+  beforeMount() {
+    console.log('Page Vue beforeMount')
+  },
+  mounted() {
+    console.log('Page Vue mounted')
+  },
+  onLoad: function(options) {
+    // Do some initialize when page load.
+    console.log('Page onLoad')
+  },
+  onReady: function() {
+    // Do something when page ready.
+    console.log('Page onReady')
+  },
+  onShow: function() {
+    // Do something when page show.
+    console.log('Page onShow')
+  },
+  onHide: function() {
+    // Do something when page hide.
+    console.log('Page onHide')
+  },
+  onUnload: function() {
+    // Do something when page close.
+    console.log('Page onUnload')
+  },
+  /**
+   * for other event handlers, please check https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html
+   */
   methods:{
     changeStat: function(){
       this.t++

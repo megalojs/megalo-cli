@@ -12,8 +12,8 @@
   "author": "<%- author %> <<%- email %>>",
   "license": "ISC",
   "devDependencies": {
-    "@megalo/target": "^0.2.0-0",
-    "@megalo/template-compiler": "^0.2.0-0",
+    "@megalo/target": "^0.2.1",
+    "@megalo/template-compiler": "^0.2.1",
     "babel-core": "6",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@megalo/vhtml-plugin": "^0.1.0",
-    "megalo": "^0.2.0-0",
+    "megalo": "^0.2.1",
     "octoparse": "^0.2.0"
   }
 }

@@ -42,6 +42,6 @@ function getEntry(file) {
 
 module.exports = (() => {
     let entry = {}
-    entry = getEntry(path.resolve( __dirname, '../src/index.js'))
+    entry = getEntry(path.resolve( __dirname, '../src/app.js'))
     return entry
 })()
