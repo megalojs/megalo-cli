@@ -18,7 +18,7 @@ function getEntry(file) {
         mainObj = walk4Obj(txt,'exportdefault')['config'] || {}
 
         pages = mainObj.pages || []
-        subpackages = mainObj.subpackages || []
+        subpackages = mainObj.subpackages || mainObj.subPackages || []
         
         pages.forEach(p=>{
             entries[p] = path.resolve(`src/${p}.js`)
