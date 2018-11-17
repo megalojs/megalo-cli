@@ -15,3 +15,9 @@ build
 ```
 $ megalo pro-name
 ```
+
+help
+
+```
+$ megalo -h
+```
