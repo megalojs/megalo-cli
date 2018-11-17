@@ -42,6 +42,9 @@ function createBaseConfig( platform = 'wechat' ) {
     },
 
     optimization: {
+      runtimeChunk: {
+        name: 'runtime'
+      },
       splitChunks: {
         cacheGroups: {
           commons: {
@@ -50,9 +53,6 @@ function createBaseConfig( platform = 'wechat' ) {
             chunks: 'all'
           }
         }
-      },
-      runtimeChunk: {
-        name: 'runtime'
       }
     },
 
