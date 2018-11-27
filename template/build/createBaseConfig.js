@@ -1,10 +1,11 @@
 const createMegaloTarget = require( '@megalo/target' )
 const compiler = require( '@megalo/template-compiler' )
-const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' )
 const VueLoaderPlugin = require( 'vue-loader/lib/plugin' )
-const pages = require('./entry')
-const _ = require( './util' );
+const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' )
+const { pagesEntry, getSubPackagesRoot } = require('@megalo/entry')
 
+const _ = require( './util' );
+const appMainFile = _.resolve('src/app.js')
 const CSS_EXT = {
   wechat: 'wxss',
   alipay: 'acss',
@@ -23,12 +24,13 @@ function createBaseConfig( platform = 'wechat' ) {
       htmlParse: {
         templateName: 'octoParse',
         src: _.resolve(`./node_modules/octoparse/lib/platform/${platform}`)
-      }
+      },
+      subPackages: getSubPackagesRoot(appMainFile)
     } ),
 
     entry: {
-      'app': _.resolve( 'src/app.js' ),
-      ...pages
+      'app': appMainFile,
+      ...pagesEntry(appMainFile)
     },
 
     output: {
