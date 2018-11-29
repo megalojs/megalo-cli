@@ -2,7 +2,7 @@ const createMegaloTarget = require( '@megalo/target' )
 const compiler = require( '@megalo/template-compiler' )
 const VueLoaderPlugin = require( 'vue-loader/lib/plugin' )
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' )
-const { pagesEntry, getSubPackagesRoot } = require('@megalo/entry')
+const { pagesEntry } = require('@megalo/entry')
 
 const _ = require( './util' );
 const appMainFile = _.resolve('src/app.js')
@@ -25,7 +25,6 @@ function createBaseConfig( platform = 'wechat' ) {
         templateName: 'octoParse',
         src: _.resolve(`./node_modules/octoparse/lib/platform/${platform}`)
       },
-      subPackages: getSubPackagesRoot(appMainFile)
     } ),
 
     entry: {
@@ -50,7 +49,7 @@ function createBaseConfig( platform = 'wechat' ) {
       splitChunks: {
         cacheGroups: {
           commons: {
-            test: /\/node_modules\//,
+            test: /[\\/]node_modules[\\/]|megalo[\\/]/,
             name: 'vendor',
             chunks: 'all'
           }
@@ -77,10 +76,7 @@ function createBaseConfig( platform = 'wechat' ) {
           use: [
             {
               loader: 'vue-loader',
-              options: {
-                a: 1,
-                cacheIdentifier: 'x'
-              }
+              options: {}
             }
           ]
         },

@@ -1,8 +1,9 @@
 {
   "name": "<%- projectName %>",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "<%- description %>",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "dev:alipay": "webpack --config ./build/webpack.config.alipay.js -w",
     "dev:swan": "webpack --config ./build/webpack.config.swan.js -w",
@@ -12,7 +13,7 @@
   "author": "<%- author %> <<%- email %>>",
   "license": "ISC",
   "devDependencies": {
-    "@megalo/target": "^0.4.0",
+    "@megalo/target": "^0.4.2",
     "@megalo/template-compiler": "^0.4.0",
     "babel-core": "6",
     "babel-loader": "^7.1.5",
@@ -35,11 +36,11 @@
     "vue-template-compiler": "^2.5.17",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
+    "webpack-dev-server": "^3.1.5",
+    "@megalo/entry": "^0.1.0"
   },
   "dependencies": {
     "@megalo/vhtml-plugin": "^0.1.0",
-    "@megalo/entry": "^0.1.0",
     "megalo": "^0.4.0",
     "octoparse": "^0.2.0"
   }
