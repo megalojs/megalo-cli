@@ -49,7 +49,7 @@ function createBaseConfig( platform = 'wechat' ) {
       splitChunks: {
         cacheGroups: {
           commons: {
-            test: /[\\/]node_modules[\\/]|megalo[\\/]/,
+            test: /[\\/]node_modules[\\/]/,
             name: 'vendor',
             chunks: 'all'
           }
