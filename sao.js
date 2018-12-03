@@ -25,6 +25,11 @@ module.exports = {
       message: "CSS extension language",
       type: 'list',
       choices: ['sass', 'less', 'stylus']
+    },
+    needPx2Rpx: {
+      message: "need px2rpx loader",
+      type: 'list',
+      choices: ['No', 'Yes']
     }
   },
   move: {

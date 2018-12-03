@@ -11,6 +11,19 @@ const CSS_EXT = {
   alipay: 'acss',
   swan: 'css',
 };
+<% if (needPx2Rpx === 'Yes') { %>
+const px2rpxLoader = {
+  loader: '@megalo/px2rpx-loader',
+  options: {
+    rpxUnit: 1 
+  }
+}
+<% } %>
+const cssLoaders = [
+  MiniCssExtractPlugin.loader,
+  'css-loader',<% if (needPx2Rpx === 'Yes') { %>
+  px2rpxLoader<% } %>
+]
 
 function createBaseConfig( platform = 'wechat' ) {
   const cssExt = CSS_EXT[platform]
@@ -88,17 +101,13 @@ function createBaseConfig( platform = 'wechat' ) {
 
         {
           test: /\.css$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader'
-          ]
+          use: cssLoaders
         },
 <% if (cssPreset === 'less') { %>
         {
           test: /\.less$/,
           use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
+            ...cssLoaders,
             'less-loader',
           ]
         },
@@ -106,8 +115,7 @@ function createBaseConfig( platform = 'wechat' ) {
         {
           test: /\.styl(us)?$/,
           use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
+            ...cssLoaders,
             'stylus-loader',
           ]
         },
@@ -115,8 +123,7 @@ function createBaseConfig( platform = 'wechat' ) {
         {
           test: /\.scss$/,
           use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
+            ...cssLoaders,
             'sass-loader',
           ]
         },
