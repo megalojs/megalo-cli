@@ -13,15 +13,9 @@
   "author": "<%- author %> <<%- email %>>",
   "license": "ISC",
   "devDependencies": {
-<<<<<<< HEAD
     "@megalo/target": "^0.4.9",
-    "@megalo/template-compiler": "^0.4.0",<% if (needPx2Rpx === 'Yes') { %>
-    "@megalo/px2rpx-loader": "^0.1.1",<% } %>
-=======
-    "@megalo/target": "^0.4.2",
     "@megalo/template-compiler": "^0.5.2",<% if (needPx2Rpx === 'Yes') { %>
-    "@megalo/px2rpx-loader": "^0.1.0",<% } %>
->>>>>>> 7143f4fcd584bf26e1ddcc23192390de16acefff
+    "@megalo/px2rpx-loader": "^0.1.1",<% } %>
     "babel-core": "6",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-runtime": "^6.23.0",
