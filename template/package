@@ -13,7 +13,8 @@
   "author": "<%- author %> <<%- email %>>",
   "license": "ISC",
   "devDependencies": {
-    "@megalo/target": "^0.4.9",
+    "@megalo/entry": "^0.1.1",
+    "@megalo/target": "^0.4.10",
     "@megalo/template-compiler": "^0.5.2",<% if (needPx2Rpx === 'Yes') { %>
     "@megalo/px2rpx-loader": "^0.1.1",<% } %>
     "babel-core": "6",
@@ -37,8 +38,7 @@
     "vue-template-compiler": "^2.5.17",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5",
-    "@megalo/entry": "^0.1.0"
+    "webpack-dev-server": "^3.1.5"
   },
   "dependencies": {
     "@megalo/vhtml-plugin": "^0.1.0",
