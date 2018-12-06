@@ -7,11 +7,14 @@
 <script>
 export default {
     name: 'HelloWorld',
-    props: ['color'],
-    data() {
-        return {
-            msg: 'Welcome to Megalo'
+    props: {
+        'color': String,
+        'msg': {
+            default: 'Welcome to Megalo'
         }
+    },
+    data() {
+        return { }
     }
 }
 </script>

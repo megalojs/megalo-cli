@@ -1,8 +1,9 @@
-const createMegaloTarget = require( '@megalo/target' )
-const compiler = require( '@megalo/template-compiler' )
-const VueLoaderPlugin = require( 'vue-loader/lib/plugin' )
-const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' )
 const { pagesEntry } = require('@megalo/entry')
+const createMegaloTarget = require('@megalo/target')
+const compiler = require('@megalo/template-compiler')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const _ = require( './util' );
 const appMainFile = _.resolve('src/app.js')
@@ -15,7 +16,7 @@ const CSS_EXT = {
 const px2rpxLoader = {
   loader: '@megalo/px2rpx-loader',
   options: {
-    rpxUnit: 1 
+    rpxUnit: 0.5
   }
 }
 <% } %>
@@ -133,9 +134,12 @@ function createBaseConfig( platform = 'wechat' ) {
 
     plugins: [
       new VueLoaderPlugin(),
-      new MiniCssExtractPlugin( {
+      new MiniCssExtractPlugin({
         filename: `./static/css/[name].${cssExt}`,
-      } ),
+      }),
+      new CopyWebpackPlugin([{
+        from: 'src/static', to: 'static'
+      }])
     ],
     stats:{
       env: true,

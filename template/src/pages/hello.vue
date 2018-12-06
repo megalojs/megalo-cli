@@ -9,7 +9,6 @@
 <script>
 import HelloWorld from '@/components/HelloWorld.vue'
 export default {
-  mpType: 'page',
   components: {
       HelloWorld
   },
@@ -21,38 +20,38 @@ export default {
     }
   },
   beforeCreate() {
-    console.log('Page Vue beforeCreate')
+    console.log('Page [hello] Vue beforeCreate')
   },
   created() {
-    console.log('Page Vue created')
+    console.log('Page [hello] Vue created')
     var appInstance = getApp()
     console.log(appInstance.globalData) // I am global data
   },
   beforeMount() {
-    console.log('Page Vue beforeMount')
+    console.log('Page [hello] Vue beforeMount')
   },
   mounted() {
-    console.log('Page Vue mounted')
+    console.log('Page [hello] Vue mounted')
   },
   onLoad: function(options) {
     // Do some initialize when page load.
-    console.log('Page onLoad')
+    console.log('Page [hello] onLoad')
   },
   onReady: function() {
     // Do something when page ready.
-    console.log('Page onReady')
+    console.log('Page [hello] onReady')
   },
   onShow: function() {
     // Do something when page show.
-    console.log('Page onShow')
+    console.log('Page [hello] onShow')
   },
   onHide: function() {
     // Do something when page hide.
-    console.log('Page onHide')
+    console.log('Page [hello] onHide')
   },
   onUnload: function() {
     // Do something when page close.
-    console.log('Page onUnload')
+    console.log('Page [hello] onUnload')
   },
   /**
    * for other event handlers, please check https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html
@@ -76,7 +75,7 @@ export default {
   .img {
     display: block;
     height: 120px;
-    width: 120px;
+    width: 138px;
     margin: 20px auto;
   }
   .txt {
