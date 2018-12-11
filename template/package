@@ -32,7 +32,6 @@
     "stylus-loader": "^3.0.2",<% } else {%>
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0",<% } %>
-    "vue": "^2.5.17",
     "vue-loader": "15.4.0",
     "vue-style-loader": "^4.1.1",
     "webpack": "^4.16.5",
