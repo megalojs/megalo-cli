@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const { pagesEntry } = require('@megalo/entry')
 const createMegaloTarget = require('@megalo/target')
 const compiler = require('@megalo/template-compiler')
@@ -133,6 +134,9 @@ function createBaseConfig( platform = 'wechat' ) {
     },
 
     plugins: [
+      new webpack.ProvidePlugin({
+        'Megalo': [_.resolve(`./node_modules/@megalo/api/platforms/${platform}`), 'default']
+      }),
       new VueLoaderPlugin(),
       new MiniCssExtractPlugin({
         filename: `./static/css/[name].${cssExt}`,
