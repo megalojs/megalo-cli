@@ -41,6 +41,6 @@
   "dependencies": {
     "@megalo/vhtml-plugin": "^0.1.2",
     "megalo": "^0.7.0",
-    "octoparse": "^0.3.3"
+    "octoparse": "^0.3.2"
   }
 }
