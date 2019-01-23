@@ -14,8 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "@megalo/entry": "^0.1.1",
-    "@megalo/target": "^0.5.5",
-    "@megalo/template-compiler": "^0.7.0",<% if (needPx2Rpx === 'Yes') { %>
+    "@megalo/target": "^0.6.2",
+    "@megalo/template-compiler": "^0.7.3",<% if (needPx2Rpx === 'Yes') { %>
     "@megalo/px2rpx-loader": "^0.1.1",<% } %>
     "babel-core": "6",
     "babel-loader": "^7.1.5",
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@megalo/vhtml-plugin": "^0.1.2",
-    "megalo": "^0.7.0",
+    "megalo": "^0.7.3",
     "octoparse": "^0.3.2"
   }
 }
