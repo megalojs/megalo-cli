@@ -1,4 +1,3 @@
-
 const webpack = require('webpack');
 const { pagesEntry } = require('@megalo/entry')
 const createMegaloTarget = require('@megalo/target')
