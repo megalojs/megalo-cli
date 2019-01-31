@@ -45,5 +45,5 @@ module.exports = {
   skipInterpolation: [],
   showTip: true,
   gitInit: false,
-  installDependencies: false
+  installDependencies: true
 }
