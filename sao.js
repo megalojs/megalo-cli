@@ -30,6 +30,11 @@ module.exports = {
       message: "need px2rpx loader",
       type: 'list',
       choices: ['No', 'Yes']
+    },
+    needMegaloAPI: {
+      message: "need megalo api",
+      type: 'list',
+      choices: ['No', 'Yes']
     }
   },
   move: {
@@ -40,5 +45,5 @@ module.exports = {
   skipInterpolation: [],
   showTip: true,
   gitInit: false,
-  installDependencies: true
+  installDependencies: false
 }
