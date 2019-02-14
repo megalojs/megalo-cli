@@ -1,6 +1,11 @@
 {
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --fix packages/**/*.js"
+  },
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-vue-libs": "^3.0.0"
   }
 }
