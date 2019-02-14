@@ -1,0 +1,36 @@
+{
+  "name": "@megalo/cli",
+  "version": "0.3.6",
+  "description": "megalo project template",
+  "keywords": [
+    "vue",
+    "megalo",
+    "megalo-cli"
+  ],
+  "bin": {
+    "megalo": "./cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaola-fed/megalo-cli.git"
+  },
+  "author": "zwwill <zwwill7@163.com> (github.com/zwwill)",
+  "license": "MIT",
+  "files": [
+    "sao.js",
+    "cli.js",
+    "template",
+    "util"
+  ],
+  "scripts": {
+    "postinstall": "node util/welcome"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "compare-versions": "^3.4.0",
+    "is-email": "^1.0.0",
+    "latest-version": "^4.0.0",
+    "sao": "^0.22.1"
+  },
+  "devDependencies": {}
+}

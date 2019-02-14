@@ -1,23 +1,2 @@
-# template-megalo
-
-> megalo project template
-
-## useage
-
-install
-
-```
-$ npm install -g @megalo/cli
-```
-
-build
-
-```
-$ megalo pro-name
-```
-
-help
-
-```
-$ megalo -h
-```
+# megalo-cli
+Standard Tooling for Megalo Project Development 
