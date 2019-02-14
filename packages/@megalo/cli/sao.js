@@ -1,4 +1,4 @@
-const isEmail = require('is-email');
+const isEmail = require('is-email')
 
 module.exports = {
   prompts: {
@@ -11,28 +11,28 @@ module.exports = {
       default: 'a megalo project'
     },
     author: {
-      message: "author",
+      message: 'author',
       default: ':gitUser:',
       store: true
     },
     email: {
-      message: "email",
+      message: 'email',
       default: ':gitEmail:',
       store: true,
       validate: val => (isEmail(val) ? true : 'Invalid email')
     },
     cssPreset: {
-      message: "CSS extension language",
+      message: 'CSS extension language',
       type: 'list',
       choices: ['sass', 'less', 'stylus']
     },
     needPx2Rpx: {
-      message: "need px2rpx loader",
+      message: 'need px2rpx loader',
       type: 'list',
       choices: ['No', 'Yes']
     },
     needMegaloAPI: {
-      message: "need megalo api",
+      message: 'need megalo api',
       type: 'list',
       choices: ['No', 'Yes']
     }

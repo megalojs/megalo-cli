@@ -1,7 +1,7 @@
 const chalk = require('chalk')
 
-module.exports = ()=> {
-    let h_m = `
+module.exports = () => {
+  const h_m = `
 Usage: ${chalk.green('megalo')} <app-name> [options]
 
 Options:
@@ -11,6 +11,6 @@ Options:
 
 For more https://github.com/kaola-fed/megalo-cli
     `
-    console.log(h_m)
-    return true
+  console.log(h_m)
+  return true
 }
