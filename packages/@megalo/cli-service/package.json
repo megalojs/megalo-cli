@@ -1,0 +1,63 @@
+{
+  "name": "@megalo/cli-service",
+  "description": ":hammer_and_wrench: megalo的开箱即用webpack小程序脚手架配置，内置megalo生态的部分插件，并提供用户自定义配置的入口(megalo for vue-cli3插件出来之前的临时替代方案)",
+  "version": "0.1.2",
+  "main": "./lib/cli-service.js",
+  "bin": {
+    "megalo-cli-service": "lib/cli-service.js"
+  },
+  "scripts": {
+    "lint": "eslint --fix lib/**/*.js"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-vue-libs": "^3.0.0"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "copy-webpack-plugin": "^4.5.2",
+    "css-loader": "^1.0.0",
+    "eslint": "^5.12.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-vue": "^5.1.0",
+    "file-loader": "^2.0.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "lodash": "^4.17.11",
+    "mini-css-extract-plugin": "^0.4.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "px2rpx-loader": "^0.1.10",
+    "rimraf": "^2.6.2",
+    "string.prototype.padstart": "^3.0.0",
+    "terser-webpack-plugin": "^1.2.1",
+    "url-loader": "^1.1.2",
+    "vue-loader": "15.4.0",
+    "vue-style-loader": "^4.1.1",
+    "webpack": "^4.26.0",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.5"
+  },
+  "peerDependencies": {
+    "@megalo/entry": "^0.1.1",
+    "@megalo/env-plugin": "^1.0.1",
+    "@megalo/target": "^0.6.2",
+    "@megalo/template-compiler": "^0.7.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megalojs/megalo-cli-service.git"
+  },
+  "author": "bigMeow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/megalojs/megalo-cli-service/issues"
+  },
+  "homepage": "https://github.com/megalojs/megalo-cli-service#readme",
+  "engines": {
+    "node": ">=9"
+  }
+}
