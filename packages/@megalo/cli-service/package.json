@@ -49,14 +49,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/megalojs/megalo-cli-service.git"
+    "url": "git+https://github.com/megalojs/megalo-cli.git",
+    "directory": "packages/@megalo/cli-service"
   },
-  "author": "bigMeow",
+  "author": "bigMeow <running@vip.163.com> (github.com/bigmeow)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/megalojs/megalo-cli-service/issues"
+    "url": "https://github.com/megalojs/megalo-cli/issues"
   },
-  "homepage": "https://github.com/megalojs/megalo-cli-service#readme",
+  "homepage": "https://github.com/megalojs/megalo-cli/#readme",
   "engines": {
     "node": ">=9"
   }

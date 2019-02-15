@@ -12,8 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaola-fed/megalo-cli.git"
+    "url": "git+https://github.com/megalojs/megalo-cli.git",
+    "directory": "packages/@megalo/cli"
   },
+  "bugs": {
+    "url": "https://github.com/megalojs/megalo-cli/issues"
+  },
+  "homepage": "https://github.com/megalojs/megalo-cli/#readme",
   "author": "zwwill <zwwill7@163.com> (github.com/zwwill)",
   "license": "MIT",
   "files": [

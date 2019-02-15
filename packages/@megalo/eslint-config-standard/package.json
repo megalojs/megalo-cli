@@ -1,0 +1,25 @@
+{
+  "name": "@megalo/eslint-config-standard",
+  "version": "1.0.0",
+  "description": "eslint-config-standard for megalo-cli",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megalojs/megalo-cli.git",
+    "directory": "packages/@megalo/eslint-config-standard"
+  },
+  "bugs": {
+    "url": "https://github.com/megalojs/megalo-cli/issues"
+  },
+  "homepage": "https://github.com/megalojs/megalo-cli/#readme",
+  "keywords": [
+    "megalo",
+    "cli",
+    "standard"
+  ],
+  "author": "bigMeow <running@vip.163.com> (github.com/bigmeow)",
+  "license": "MIT"
+}

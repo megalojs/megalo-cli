@@ -1,0 +1,25 @@
+{
+  "name": "@megalo/eslint-config-airbnb",
+  "version": "1.0.0",
+  "description": "eslint-config-airbnb for megalo-cli",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megalojs/megalo-cli.git",
+    "directory": "packages/@megalo/eslint-config-airbnb"
+  },
+  "bugs": {
+    "url": "https://github.com/megalojs/megalo-cli/issues"
+  },
+  "homepage": "https://github.com/megalojs/megalo-cli/#readme",
+  "keywords": [
+    "megalo",
+    "cli",
+    "airbnb"
+  ],
+  "author": "bigMeow <running@vip.163.com> (github.com/bigmeow)",
+  "license": "MIT"
+}
