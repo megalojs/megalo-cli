@@ -1,26 +1,22 @@
 {
   "name": "@megalo/cli-service",
-  "description": ":hammer_and_wrench: megalo的开箱即用webpack小程序脚手架配置，内置megalo生态的部分插件，并提供用户自定义配置的入口(megalo for vue-cli3插件出来之前的临时替代方案)",
-  "version": "0.1.2",
-  "main": "./lib/cli-service.js",
+  "description": ":hammer_and_wrench: megalo的开箱即用webpack小程序脚手架配置，内置megalo生态的部分插件，并提供用户自定义配置的入口(对标vue-cli-serve)",
+  "version": "1.0.0-alpha.1",
+  "main": "./bin/index.js",
   "bin": {
-    "megalo-cli-service": "lib/cli-service.js"
+    "megalo-cli-service": "./bin/index.js"
   },
   "scripts": {
-    "lint": "eslint --fix lib/**/*.js"
-  },
-  "devDependencies": {
-    "eslint": "^5.12.0",
-    "eslint-plugin-node": "^8.0.0",
-    "eslint-plugin-vue-libs": "^3.0.0"
+    "test": "node ./bin/index.js serve --mode development",
+    "help": "node ./bin/index.js --help"
   },
   "dependencies": {
     "chalk": "^2.4.2",
+    "commander": "^2.19.0",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
     "eslint": "^5.12.0",
     "eslint-loader": "^2.1.1",
-    "eslint-plugin-vue": "^5.1.0",
     "file-loader": "^2.0.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "less": "^3.8.1",
