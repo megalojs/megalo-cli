@@ -7,10 +7,11 @@
     "megalo-cli-service": "./bin/index.js"
   },
   "scripts": {
-    "test": "node ./bin/index.js serve --mode development",
+    "test": "node ./bin/index.js serve --platform swan",
     "help": "node ./bin/index.js --help"
   },
   "dependencies": {
+    "@vue/cli-shared-utils": "^3.4.1",
     "chalk": "^2.4.2",
     "commander": "^2.19.0",
     "copy-webpack-plugin": "^4.5.2",
