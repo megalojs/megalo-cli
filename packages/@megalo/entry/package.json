@@ -3,12 +3,13 @@
   "version": "0.1.1",
   "description": "",
   "main": "lib/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/megalojs/megalo-entry.git"
+    "url": "git+https://github.com/megalojs/megalo-cli.git",
+    "directory": "packages/@megalo/entry"
   },
   "keywords": [
     "megalo"
@@ -19,7 +20,7 @@
   "author": "zwwill <https://github.com/zwwill>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/megalojs/megalo-entry/issues"
+    "url": "https://github.com/megalojs/megalo-cli/issues"
   },
   "homepage": "https://github.com/megalojs/megalo-entry#readme",
   "dependencies": {
