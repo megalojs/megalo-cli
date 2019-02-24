@@ -7,7 +7,7 @@
     "megalo-cli-service": "./bin/index.js"
   },
   "scripts": {
-    "test": "node ./bin/index.js serve --platform swan",
+    "test": "node ./bin/index.js serve --platform swan --debug",
     "help": "node ./bin/index.js --help"
   },
   "dependencies": {
@@ -16,6 +16,8 @@
     "commander": "^2.19.0",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
+    "debug": "^4.1.1",
+    "dotenv": "^6.2.0",
     "eslint": "^5.12.0",
     "eslint-loader": "^2.1.1",
     "file-loader": "^2.0.0",
@@ -23,6 +25,7 @@
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "lodash": "^4.17.11",
+    "lodash.defaultsdeep": "^4.6.0",
     "mini-css-extract-plugin": "^0.4.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "px2rpx-loader": "^0.1.10",

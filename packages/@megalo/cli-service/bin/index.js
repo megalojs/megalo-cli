@@ -23,6 +23,7 @@ program
   .option('--platform <platform>', 'set target platform (default: wechat)', /^(wechat|alipay|swan)$/i, 'wechat')
   .option('--report', 'generate report.html to help analyze bundle content (default: false)', false)
   .option('--fix', 'eslint auto fix on save (default: false)', false)
+  .option('--debug', 'open the debug logger (default: false)', false)
 
 program
   .command('serve')
@@ -41,7 +42,7 @@ program
 program
   .command('build')
   .description('以生产模式启动编译')
-  .action(() => {
+  .action(command => {
     program.mode === undefined && (program.mode = 'production')
     process.env.NODE_ENV = 'production'
 
