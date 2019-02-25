@@ -1,0 +1,24 @@
+{
+  "name": "@megalo/babel-preset-mp",
+  "version": "1.0.0-alpha.1",
+  "description": "包装脚手架babel相关的配置",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megalojs/megalo-cli.git",
+    "directory": "packages/@megalo/babel-preset-mp"
+  },
+  "bugs": {
+    "url": "https://github.com/megalojs/megalo-cli/issues"
+  },
+  "homepage": "https://github.com/megalojs/megalo-cli/#readme",
+  "keywords": [
+    "megalo",
+    "babel"
+  ],
+  "author": "bigMeow <running@vip.163.com> (github.com/bigmeow)",
+  "license": "MIT"
+}
