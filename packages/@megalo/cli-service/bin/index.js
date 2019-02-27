@@ -14,16 +14,43 @@ if (!semver.satisfies(process.version, requiredVersion)) {
 
 // 注册控制台选项及命令
 const program = require('commander')
+const path = require('path')
 const Service = require('../lib/Service')
-const service = new Service(process.cwd())
+const service = new Service(process.env.MEGALO_CLI_CONTEXT || process.cwd())
+
+const run = async (commandName = 'serve', commandOptions = { mode: 'development', platform: 'wechat', config: '', report: false, fix: false, debug: false }) => {
+  try {
+    const projectOptions = await service.run(commandName, commandOptions)
+    let webpackFn
+    // 执行默认的配置文件，或者用户自定义的webpack配置文件
+    if (commandOptions.config) {
+      commandOptions.config = path.resolve(process.env.MEGALO_CLI_CONTEXT, commandOptions.config)
+      try {
+        webpackFn = require(commandOptions.config)
+      } catch (err) {
+        throw new Error(`Cannot find module "${commandOptions.config}", \n Please check the "--confg" option`)
+      }
+    } else {
+      webpackFn = require('@megalo/cli-webpack-config')
+    }
+    if (typeof webpackFn !== 'function') {
+      throw new Error(`Your customer webpack config must export a function`)
+    }
+    webpackFn(commandName, commandOptions, projectOptions)
+  } catch (err) {
+    error(err)
+    process.exit(1)
+  }
+}
 
 program
   .usage('[commands] [options] [pattern]')
   .option('--mode <mode>', 'specify env mode (default: serve => development, build => production)')
-  .option('--platform <platform>', 'set target platform (default: wechat)', /^(wechat|alipay|swan)$/i, 'wechat')
-  .option('--report', 'generate report.html to help analyze bundle content (default: false)', false)
-  .option('--fix', 'eslint auto fix on save (default: false)', false)
-  .option('--debug', 'open the debug logger (default: false)', false)
+  .option('--platform <platform>', 'set target platform ', /^(wechat|alipay|swan)$/i, 'wechat')
+  .option('--config <path>', 'set customer webpack config path ', '')
+  .option('--report', 'generate report.html to help analyze bundle content ', false)
+  .option('--fix', 'eslint auto fix on save ', false)
+  .option('--debug', 'open the debug logger ', false)
 
 program
   .command('serve')
@@ -33,10 +60,7 @@ program
     // 默认NODE_ENV，可在.env文件中覆写
     process.env.NODE_ENV = 'development'
 
-    service.run(command.name(), program.opts()).catch(err => {
-      error(err)
-      process.exit(1)
-    })
+    run(command.name(), program.opts())
   })
 
 program
@@ -46,10 +70,7 @@ program
     program.mode === undefined && (program.mode = 'production')
     process.env.NODE_ENV = 'production'
 
-    service.run(command.name(), program.opts()).catch(err => {
-      error(err)
-      process.exit(1)
-    })
+    run(command.name(), program.opts())
   })
 
 program

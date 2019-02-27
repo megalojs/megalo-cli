@@ -12,6 +12,7 @@ module.exports = class Server {
     this.initialized = false
     this.context = context
     this.projectOptions = {}
+    process.env.MEGALO_CLI_CONTEXT = this.context
   }
 
   init (mode) {
@@ -111,7 +112,7 @@ module.exports = class Server {
     return fileConfig
   }
 
-  async run (commandName = 'serve', commandOptions = { mode: 'development', platform: 'wechat', report: false, fix: false, debug: false }) {
+  async run (commandName, commandOptions) {
     if (commandOptions.debug) {
       process.env.DEBUG = true
     }
@@ -119,6 +120,6 @@ module.exports = class Server {
     // 载入用户自定义的环境变量、用户配置
     this.init(commandOptions.mode)
 
-    ;(commandOptions.platform === 'h5' ? require('h5') : require('./mp'))(commandName, commandOptions, this.projectOptions)
+    return this.projectOptions
   }
 }
