@@ -7,7 +7,7 @@
     "megalo-cli-service": "./bin/index.js"
   },
   "scripts": {
-    "test": "node ./bin/index.js serve --platform swan --debug",
+    "test": "node ./bin/index.js serve --config ../cli-webpack-config",
     "help": "node ./bin/index.js --help"
   },
   "dependencies": {
