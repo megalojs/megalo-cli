@@ -2,7 +2,7 @@
 
 // 检查nodeJs版本
 const semver = require('semver')
-const { error } = require('@vue/cli-shared-utils')
+const { error, info } = require('@vue/cli-shared-utils')
 const requiredVersion = require('../package.json').engines.node
 if (!semver.satisfies(process.version, requiredVersion)) {
   error(
@@ -36,6 +36,10 @@ const run = async (commandName = 'serve', commandOptions = { mode: 'development'
     if (typeof webpackFn !== 'function') {
       throw new Error(`Your customer webpack config must export a function`)
     }
+
+    info(`  当前编译平台：${commandOptions.platform}`)
+    info(`  环境变量NODE_ENV：${process.env.NODE_ENV}`)
+
     webpackFn(commandName, commandOptions, projectOptions)
   } catch (err) {
     error(err)
@@ -57,7 +61,7 @@ program
   .description('以开发模式启动编译。mode默认值：development, platform默认值： wechat')
   .action(command => {
     program.mode === undefined && (program.mode = 'development')
-    // 默认NODE_ENV，可在.env文件中覆写
+    // 设置默认NODE_ENV，可在.env文件中覆写
     process.env.NODE_ENV = 'development'
 
     run(command.name(), program.opts())

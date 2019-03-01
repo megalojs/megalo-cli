@@ -113,9 +113,11 @@ module.exports = class Server {
   }
 
   async run (commandName, commandOptions) {
+    // 设置系统级别的环境变量
     if (commandOptions.debug) {
       process.env.DEBUG = true
     }
+    process.env.PLATFORM = commandOptions.platform
 
     // 载入用户自定义的环境变量、用户配置
     this.init(commandOptions.mode)
