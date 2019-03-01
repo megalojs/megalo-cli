@@ -44,7 +44,7 @@ const run = async (commandName = 'serve', commandOptions = { mode: 'development'
 }
 
 program
-  .usage('[commands] [options] [pattern]')
+  .usage('[Commands] [Options] [pattern]')
   .option('--mode <mode>', 'specify env mode (default: serve => development, build => production)')
   .option('--platform <platform>', 'set target platform ', /^(wechat|alipay|swan)$/i, 'wechat')
   .option('--config <path>', 'set customer webpack config path ', '')
@@ -54,7 +54,7 @@ program
 
 program
   .command('serve')
-  .description('以开发模式启动编译')
+  .description('以开发模式启动编译。mode默认值：development, platform默认值： wechat')
   .action(command => {
     program.mode === undefined && (program.mode = 'development')
     // 默认NODE_ENV，可在.env文件中覆写
@@ -65,7 +65,7 @@ program
 
 program
   .command('build')
-  .description('以生产模式启动编译')
+  .description('以生产模式启动编译。mode默认值：production, platform默认值： wechat')
   .action(command => {
     program.mode === undefined && (program.mode = 'production')
     process.env.NODE_ENV = 'production'
@@ -80,4 +80,19 @@ program
     console.log('TODO')
   })
 
+program.on('--help', () => {
+  console.log('')
+  console.log('Examples:')
+  console.log('  $ megalo-cli-service serve --platform wechat --mode development')
+  console.log('  $ megalo-cli-service build --platform wechat')
+  console.log('  $ megalo-cli-service --help')
+})
+
 program.parse(process.argv)
+
+if (program.args.length && typeof program.args[0] === 'string') {
+  error(`Unknown command \`${program.args[0]}\`\n`)
+  program.help()
+} else if (!program.args.length) {
+  program.help()
+}
