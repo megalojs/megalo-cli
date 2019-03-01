@@ -1,7 +1,7 @@
 {
   "name": "@megalo/cli-webpack-config",
   "description": "megalo工程师webpack配置，配合 @megalo/cli-service 使用",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "main": "./index.js",
   "dependencies": {
     "@vue/cli-shared-utils": "^3.4.1",
