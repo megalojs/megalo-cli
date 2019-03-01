@@ -31,7 +31,7 @@ const run = async (commandName = 'serve', commandOptions = { mode: 'development'
         throw new Error(`Cannot find module "${commandOptions.config}", \n Please check the "--confg" option`)
       }
     } else {
-      webpackFn = require('@megalo/cli-webpack-config')
+      webpackFn = require('../lib/webpack')
     }
     if (typeof webpackFn !== 'function') {
       throw new Error(`Your customer webpack config must export a function`)
