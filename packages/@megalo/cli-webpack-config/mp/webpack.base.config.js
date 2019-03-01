@@ -8,6 +8,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { pagesEntry } = require('@megalo/entry')
 const { getCssExt, checkFileExistsSync, resolve } = require('./util')
+const resolveClientEnv = require('./resolveClientEnv')
 const appMainFile = resolve('src/index.js')
 
 module.exports = function createBaseConfig (commandName, commandOptions, projectOptions) {
@@ -141,6 +142,7 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
 
     plugins: [
       new VueLoaderPlugin(),
+      new webpack.DefinePlugin(resolveClientEnv()),
       new MiniCssExtractPlugin({
         filename: `static/css/[name].${cssExt}`
       }),
