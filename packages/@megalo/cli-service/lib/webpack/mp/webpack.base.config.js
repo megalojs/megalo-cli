@@ -185,7 +185,7 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
     ]))
   }
 
-  if (checkFileExistsSync('eslintrc.js')) {
+  if (checkFileExistsSync('.eslintrc.js')) {
     config.module.rules.push({
       enforce: 'pre',
       test: /\.(vue|(j|t)sx?)$/,
