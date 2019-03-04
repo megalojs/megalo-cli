@@ -14,7 +14,7 @@
   "bugs": {
     "url": "https://github.com/megalojs/megalo-cli/issues"
   },
-  "homepage": "https://github.com/megalojs/megalo-cli/#readme",
+  "homepage": "https://github.com/megalojs/megalo-cli/tree/master/packages/@megalo/eslint-config-standard#readme",
   "keywords": [
     "megalo",
     "cli",
