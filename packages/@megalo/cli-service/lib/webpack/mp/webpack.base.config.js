@@ -6,10 +6,12 @@ const compiler = require('@megalo/template-compiler')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const { resolveModule, loadModule } = require('@vue/cli-shared-utils')
 const { pagesEntry } = require('@megalo/entry')
 const { getCssExt, checkFileExistsSync, resolve } = require('../../utils/util')
 const resolveClientEnv = require('../../utils/resolveClientEnv')
 const appMainFile = resolve('src/index.js')
+const cwd = process.env.MEGALO_CLI_CONTEXT || process.cwd()
 
 module.exports = function createBaseConfig (commandName, commandOptions, projectOptions) {
   const platform = commandOptions.platform
@@ -185,7 +187,7 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
     ]))
   }
 
-  if (checkFileExistsSync('.eslintrc.js')) {
+  if (projectOptions.lintOnSave) {
     config.module.rules.push({
       enforce: 'pre',
       test: /\.(vue|(j|t)sx?)$/,
@@ -194,14 +196,17 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
         {
           loader: 'eslint-loader',
           options: {
+            // TODO 支持typescript
             extensions: [
               '.js',
               '.jsx',
               '.vue'
             ],
             cache: true,
-            emitWarning: true,
-            emitError: true
+            emitWarning: projectOptions.lintOnSave !== 'error',
+            emitError: projectOptions.lintOnSave === 'error',
+            eslintPath: resolveModule('eslint', cwd) || require.resolve('eslint'),
+            formatter: loadModule('eslint/lib/formatters/codeframe', cwd, true) || require('eslint/lib/formatters/codeframe')
           }
         }
       ]
