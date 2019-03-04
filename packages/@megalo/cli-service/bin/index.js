@@ -1,18 +1,9 @@
 #!/usr/bin/env node
 
-// 检查nodeJs版本
-const semver = require('semver')
-const { error, info } = require('@vue/cli-shared-utils')
-const requiredVersion = require('../package.json').engines.node
-if (!semver.satisfies(process.version, requiredVersion)) {
-  error(
-    `You are using Node ${process.version}, but @megalo/cli-service ` +
-    `requires Node ${requiredVersion}.\nPlease upgrade your Node version.`
-  )
-  process.exit(1)
-}
+require('../lib/utils/checkVersion')
 
 // 注册控制台选项及命令
+const { error, info } = require('@vue/cli-shared-utils')
 const program = require('commander')
 const path = require('path')
 const Service = require('../lib/Service')
