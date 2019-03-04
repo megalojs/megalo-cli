@@ -10,6 +10,11 @@
     "dev:alipay": "megalo-cli-service serve --platform alipay",
     "dev:swan": "megalo-cli-service serve --platform swan"
   },
+  "babel": {
+    "presets": [
+      "@megalo/app"
+    ]
+  },
   "license": "MIT",
   "devDependencies": {
     "@megalo/babel-preset-app": "^1.0.0-alpha.1",
