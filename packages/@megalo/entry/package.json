@@ -3,6 +3,9 @@
   "version": "0.1.2",
   "description": "",
   "main": "lib/index.js",
+  "scripts": {
+    "test": "node ./test"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -24,6 +27,8 @@
   },
   "homepage": "https://github.com/megalojs/megalo-entry#readme",
   "dependencies": {
+    "babel-generator": "^6.26.1",
+    "babelon": "^1.0.5",
     "json5": "^2.1.0"
   }
 }

@@ -75,6 +75,6 @@ export default {
   }
 }`;
 
-const { extractConfig } = require('./lib/util')
+const { extractConfig } = require('../lib/util')
 
 console.log(extractConfig(txt))
