@@ -1,5 +1,6 @@
 const debug = require('debug')
 const dotenv = require('dotenv')
+const dotenvExpand = require('dotenv-expand')
 const path = require('path')
 const fs = require('fs')
 const chalk = require('chalk')
@@ -48,6 +49,7 @@ module.exports = class Server {
     const load = path => {
       try {
         const res = dotenv.config({ path, debug: process.env.DEBUG })
+        dotenvExpand(res)
         logger(path, res)
       } catch (err) {
         // only ignore error if file is not found
