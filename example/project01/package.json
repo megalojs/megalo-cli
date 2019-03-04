@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@megalo/cli-service": "^1.0.0-alpha.2",
+    "@megalo/cli-service": "^1.0.0-alpha.4",
     "@megalo/entry": "^0.1.2",
     "@megalo/eslint-config-standard": "^1.0.0-alpha.1",
     "@megalo/target": "0.5.7",
