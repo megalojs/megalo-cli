@@ -12,16 +12,12 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@megalo/babel-preset-app": "^1.0.0-alpha.1",
     "@megalo/cli-service": "^1.0.0-alpha.4",
     "@megalo/entry": "^0.1.2",
     "@megalo/eslint-config-standard": "^1.0.0-alpha.1",
     "@megalo/target": "0.5.7",
     "@megalo/template-compiler": "^0.8.0",
-    "babel-core": "6",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1",
     "less": "^3.8.1",
     "less-loader": "^4.1.0"
   },
