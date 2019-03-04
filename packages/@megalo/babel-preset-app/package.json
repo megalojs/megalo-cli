@@ -1,15 +1,22 @@
 {
-  "name": "@megalo/babel-preset-mp",
+  "name": "@megalo/babel-preset-app",
   "version": "1.0.0-alpha.1",
-  "description": "包装脚手架babel相关的配置",
+  "description": "包装megalo工程中babel相关的配置",
   "main": "index.js",
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-transform-runtime": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/runtime": "^7.3.4",
+    "babel-loader": "^8.0.5"
+  },
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/megalojs/megalo-cli.git",
-    "directory": "packages/@megalo/babel-preset-mp"
+    "directory": "packages/@megalo/babel-preset-app"
   },
   "bugs": {
     "url": "https://github.com/megalojs/megalo-cli/issues"
