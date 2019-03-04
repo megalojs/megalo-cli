@@ -12,9 +12,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@megalo/cli-service": "^1.0.0-alpha.1",
+    "@megalo/cli-service": "^1.0.0-alpha.2",
     "@megalo/entry": "^0.1.2",
-    "@megalo/target": "^0.6.3",
+    "@megalo/eslint-config-standard": "^1.0.0-alpha.1",
+    "@megalo/target": "0.5.7",
     "@megalo/template-compiler": "^0.8.0",
     "babel-core": "6",
     "babel-loader": "^7.1.5",
@@ -25,9 +26,9 @@
     "less-loader": "^4.1.0"
   },
   "dependencies": {
-    "vuex": "^3.0.1",
     "@megalo/vhtml-plugin": "^0.1.2",
     "megalo": "^0.8.0",
-    "octoparse": "^0.3.2"
+    "octoparse": "^0.3.2",
+    "vuex": "^3.0.1"
   }
 }
