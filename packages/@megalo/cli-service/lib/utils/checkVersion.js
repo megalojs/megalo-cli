@@ -10,7 +10,7 @@ if (!semver.satisfies(process.version, requiredVersion)) {
   process.exit(1)
 }
 
-// 检查@megalo相关依赖包(因为依赖导致的bug)
+// 检查@megalo相关依赖包(避免因为依赖导致的bug)
 const targetPackageVersion = require('@megalo/target/package.json').version
 if (semver.satisfies(targetPackageVersion, '> 0.5.7')) {
   warn(
@@ -18,4 +18,11 @@ if (semver.satisfies(targetPackageVersion, '> 0.5.7')) {
     在bug解决之前，建议您在开发阶段使用 0.5.7 的版本，发布编译时使用最新版本
     您可以点击这里随时关注bug修复情况: https://github.com/kaola-fed/megalo-aot/issues\n`
   )
+}
+
+if (require('@megalo/template-compiler/package.json').version !== require('megalo/package.json')) {
+  error(
+    `Version numbers of "@megalo/template-compiler" and "megalo" must be consistent`
+  )
+  process.exit(1)
 }
