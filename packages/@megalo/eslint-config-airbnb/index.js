@@ -13,7 +13,7 @@ module.exports = {
     'import/resolver': {
       webpack: {
         // TODO
-        config: require.resolve(`@megalo/cli-service/lib/webpack.base.conf.js`)
+        config: require.resolve(`@megalo/cli-service/lib/webpack.conf.js`)
       }
     }
   },
