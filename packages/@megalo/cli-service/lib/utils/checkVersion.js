@@ -20,7 +20,7 @@ if (semver.satisfies(targetPackageVersion, '> 0.5.7')) {
   )
 }
 
-if (require('@megalo/template-compiler/package.json').version !== require('megalo/package.json')) {
+if (require('@megalo/template-compiler/package.json').version !== require('megalo/package.json').version) {
   error(
     `Version numbers of "@megalo/template-compiler" and "megalo" must be consistent`
   )

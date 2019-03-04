@@ -2,7 +2,7 @@ const merge = require('webpack-merge')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const createBaseConfig = require('./webpack.base.config')
-const { getCssExt } = require('./util')
+const { getCssExt } = require('../../utils/util')
 
 module.exports = (commandName, commandOptions, projectOptions) => {
   const webpackBaseConfig = createBaseConfig(commandName, commandOptions, projectOptions)
