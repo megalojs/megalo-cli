@@ -156,7 +156,7 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
             if (severity !== 'error') {
               return
             }
-            console.log('(⊙﹏⊙) \n', errors[0].webpackError)
+            console.log('哦哦(⊙﹏⊙)，出错料～ \n')
           },
           clearConsole: true,
           additionalFormatters: [],
