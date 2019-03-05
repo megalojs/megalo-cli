@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-      <img class="img" :src="logo" @touchstart="changeStat">
+      <img class="img" src="../static/imgs/megalo_logo.png" @touchstart="changeStat">
       <hello-world :color="color"></hello-world>
       <h1 class="txt" v-show="t%2==1">click logo::{{t}}</h1>
   </div>
@@ -10,67 +10,62 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 export default {
   components: {
-      HelloWorld
+    HelloWorld
   },
-  data() {
+  data () {
     return {
-      logo: 'https://user-images.githubusercontent.com/20720117/48262986-80e02780-e45f-11e8-8426-2872916adad9.png',
       t: 1,
       color: '#007d37'
     }
   },
-  beforeCreate() {
+  beforeCreate () {
     console.log('Page [hello] Vue beforeCreate')
   },
-  created() {
+  created () {
     console.log('Page [hello] Vue created')
     var appInstance = getApp()
     console.log(appInstance.globalData) // I am global data
   },
-  beforeMount() {
+  beforeMount () {
     console.log('Page [hello] Vue beforeMount')
   },
-  mounted() {
+  mounted () {
     console.log('Page [hello] Vue mounted')
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
     // Do some initialize when page load.
     console.log('Page [hello] onLoad')
   },
-  onReady: function() {
+  onReady: function () {
     // Do something when page ready.
     console.log('Page [hello] onReady')
   },
-  onShow: function() {
+  onShow: function () {
     // Do something when page show.
     console.log('Page [hello] onShow')
   },
-  onHide: function() {
+  onHide: function () {
     // Do something when page hide.
     console.log('Page [hello] onHide')
   },
-  onUnload: function() {
+  onUnload: function () {
     // Do something when page close.
     console.log('Page [hello] onUnload')
   },
   /**
    * for other event handlers, please check https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html
    */
-  methods:{
-    changeStat: function(){
+  methods: {
+    changeStat: function () {
       this.t++
-      this.color = '#'+Math.floor(Math.random()*0xffffff).toString(16)
+      this.color = '#' + Math.floor(Math.random() * 0xffffff).toString(16)
     }
   }
 }
 </script>
-<% if (cssPreset === 'less') { %>
+
 <style lang="less" scoped>
-<% } else if (cssPreset === 'stylus') {%>
-<style lang="stylus" scoped>
-<% } else {%>
-<style lang="scss" scoped> 
-<% } %>.app{
+.app{
   padding-top: 100px;
   .img {
     display: block;

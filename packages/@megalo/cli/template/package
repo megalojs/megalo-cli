@@ -1,47 +1,42 @@
 {
   "name": "<%- projectName %>",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "<%- description %>",
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev:alipay": "webpack --config ./build/webpack.config.alipay.js -w",
-    "dev:swan": "webpack --config ./build/webpack.config.swan.js -w",
-    "dev:wechat": "webpack --config ./build/webpack.config.wechat.js -w"
+    "build:wechat": "megalo-cli-service build",
+    "build:alipay": "megalo-cli-service build --platform alipay",
+    "build:swan": "megalo-cli-service build --platform swan",
+    "dev:alipay": "megalo-cli-service serve --platform alipay",
+    "dev:swan": "megalo-cli-service serve --platform swan",
+    "dev:wechat": "megalo-cli-service serve"
   },
-  "keywords": [],
   "author": "<%- author %> <<%- email %>>",
   "license": "ISC",
+  "babel": {
+    "presets": [
+      "@megalo/app"
+    ]
+  },
   "devDependencies": {
-    "@megalo/entry": "^0.1.1",
+    "@megalo/babel-preset-app": "^1.0.0-alpha.1",
+    "@megalo/cli-service": "^1.0.0-alpha.8",
+    "@megalo/entry": "^0.1.2",
+    "@megalo/eslint-config-standard": "^1.0.0-alpha.1",
     "@megalo/target": "^0.6.2",
-    "@megalo/template-compiler": "^0.7.3",<% if (needPx2Rpx === 'Yes') { %>
-    "@megalo/px2rpx-loader": "^0.1.1",<% } %>
-    "babel-core": "6",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1",
-    "copy-webpack-plugin": "^4.5.2",
-    "css-loader": "^1.0.0",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.4.1",<% if (cssPreset === 'less') { %>
+    "@megalo/template-compiler": "^0.8.0",<% if (cssPreset === 'less') { %>
     "less": "^3.8.1",
-    "less-loader": "^4.1.0",<% } else if (cssPreset === 'stylus') {%>
+    "less-loader": "^4.1.0"<% } else if (cssPreset === 'stylus') {%>
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2",<% } else {%>
+    "stylus-loader": "^3.0.2"<% } else {%>
     "node-sass": "^4.10.0",
-    "sass-loader": "^7.1.0",<% } %>
-    "vue-loader": "15.4.0",
-    "vue-style-loader": "^4.1.1",
-    "webpack": "^4.16.5",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
+    "sass-loader": "^7.1.0"<% } %>
   },
   "dependencies": {<% if (needMegaloAPI === 'Yes') { %>
     "@megalo/api": "^0.2.2",<% } %>
     "@megalo/vhtml-plugin": "^0.1.2",
-    "megalo": "^0.7.3",
+    "megalo": "^0.8.0",
     "octoparse": "^0.3.2"
   }
 }

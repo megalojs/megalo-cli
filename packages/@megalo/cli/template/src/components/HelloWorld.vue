@@ -6,23 +6,23 @@
 
 <script>
 export default {
-    name: 'HelloWorld',
-    props: {
-        'color': String,
-        'msg': {
-            default: 'Welcome to Megalo'
-        }
-    },
-    data() {
-        return { }
+  name: 'HelloWorld',
+  props: {
+    'color': String,
+    'msg': {
+      default: 'Welcome to Megalo'
     }
+  },
+  data () {
+    return { }
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .hello{
-        font-size: 16px;
-        text-align: center;
-    }
+  .hello{
+    font-size: 16px;
+    text-align: center;
+  }
 </style>
