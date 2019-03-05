@@ -28,7 +28,6 @@ exports.checkFileExistsSync = fileOrDirPath => {
   return fs.existsSync(fileOrDirPath) ? fileOrDirPath : false
 }
 
-const Config = require('webpack-chain')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const neededLoader = new Map([
@@ -42,10 +41,9 @@ const neededLoader = new Map([
  * 生成css相关的 Loader
  * @param {Object} projectOptions 项目配置
  */
-exports.generateCssLoaders = (projectOptions) => {
-  const config = new Config()
+exports.generateCssLoaders = (chainaConfig, projectOptions) => {
   for (const [loaderName, loaderReg] of neededLoader) {
-    config.module
+    chainaConfig.module
       .rule(loaderName)
         .test(loaderReg)
         .use('MiniCssExtractPlugin')
@@ -78,5 +76,5 @@ exports.generateCssLoaders = (projectOptions) => {
   }
   // return config.toString()
   // return config.toConfig()
-  return config.module.toConfig().rules
+  return chainaConfig.module.toConfig().rules
 }

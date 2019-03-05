@@ -1,7 +1,7 @@
 {
   "name": "@megalo/cli-service",
   "description": ":hammer_and_wrench: megalo的开箱即用webpack小程序脚手架配置，内置megalo生态的部分插件，并提供用户自定义配置的入口(对标vue-cli-serve)",
-  "version": "1.0.0-alpha.7",
+  "version": "1.0.0-alpha.8",
   "main": "./bin/index.js",
   "bin": {
     "megalo-cli-service": "./bin/index.js"

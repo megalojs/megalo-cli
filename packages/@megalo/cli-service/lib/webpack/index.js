@@ -7,8 +7,8 @@ module.exports = (...args) => {
   const commandName = args[0]
   const projectOptions = args[2]
 
-  let finalWebpackConfig = (process.env.PLATFORM === 'h5' ? require(`./h5/${commandName}`) : require(`./mp/${commandName}`))(...args) || {}
-  finalWebpackConfig = mergeUserConfig(finalWebpackConfig, projectOptions)
+  const chainConfig = (process.env.PLATFORM === 'h5' ? require(`./h5/${commandName}`) : require(`./mp/${commandName}`))(...args) || {}
+  const finalWebpackConfig = mergeUserConfig(chainConfig, projectOptions)
 
   romoveFile(path.resolve(`dist-${process.env.PLATFORM}/*`), error => {
     if (error) throw error

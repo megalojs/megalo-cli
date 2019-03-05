@@ -1,16 +1,13 @@
-const merge = require('webpack-merge')
 const createBaseConfig = require('./webpack.base.config')
 
 module.exports = (...args) => {
-  const webpackBaseConfig = createBaseConfig(...args)
+  const chainConfig = createBaseConfig(...args)
 
-  return merge(webpackBaseConfig, {
-    mode: 'development',
-    watch: true,
-    devServer: {
-      progress: true,
-      quiet: true
-    },
-    devtool: 'cheap-source-map'
-  })
+  chainConfig
+  .watch(true)
+  .devServer
+    .progress(true)
+    .quiet(true)
+
+  return chainConfig
 }

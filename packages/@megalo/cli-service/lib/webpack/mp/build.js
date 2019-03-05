@@ -1,31 +1,10 @@
-const merge = require('webpack-merge')
-const TerserPlugin = require('terser-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const createBaseConfig = require('./webpack.base.config')
-const { getCssExt } = require('../../utils/util')
 
 module.exports = (commandName, commandOptions, projectOptions) => {
-  const webpackBaseConfig = createBaseConfig(commandName, commandOptions, projectOptions)
-  const webpackConfig = merge(webpackBaseConfig, {
-    mode: 'production',
-    devtool: projectOptions.productionSourceMap ? 'cheap-source-map' : 'none',
-    optimization: {
-      minimizer: [
-        new TerserPlugin({
-          cache: true,
-          parallel: true,
-          sourceMap: projectOptions.productionSourceMap ? 'cheap-source-map' : false
-        }),
-        new OptimizeCSSAssetsPlugin({
-          assetNameRegExp: new RegExp(`\\.${getCssExt(process.env.PLATFORM)}$`, 'g')
-        })
-      ]
-    }
+  const chainConfig = createBaseConfig(commandName, commandOptions, projectOptions)
+  chainConfig.when(projectOptions.report, config => {
+    config.plugin('bundle-analyzer')
+      .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
   })
-
-  if (commandOptions.report === true) {
-    const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-    webpackConfig.plugins.push(new BundleAnalyzerPlugin())
-  }
-  return webpackConfig
+  return chainConfig
 }
