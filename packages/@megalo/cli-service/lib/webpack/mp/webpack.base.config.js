@@ -8,7 +8,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { resolveModule, loadModule } = require('@vue/cli-shared-utils')
 const { pagesEntry } = require('@megalo/entry')
-const { getCssExt, checkFileExistsSync, resolve } = require('../../utils/util')
+const { getCssExt, generateCssLoaders, checkFileExistsSync, resolve } = require('../../utils/util')
 const resolveClientEnv = require('../../utils/resolveClientEnv')
 const appMainFile = resolve('src/index.js')
 const cwd = process.env.MEGALO_CLI_CONTEXT || process.cwd()
@@ -17,18 +17,8 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
   const platform = commandOptions.platform
   const isDEV = process.env.NODE_ENV === 'development'
   const cssExt = getCssExt(platform)
+  const cssLoaders = generateCssLoaders(projectOptions)
 
-  const cssLoaders = [
-    MiniCssExtractPlugin.loader,
-    'css-loader',
-    {
-      loader: 'px2rpx-loader',
-      options: {
-        rpxUnit: 0.5,
-        rpxPrecision: 6
-      }
-    }
-  ]
   const config = {
     mode: 'none',
 
@@ -101,31 +91,7 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
           test: /\.js$/,
           use: 'babel-loader'
         },
-        {
-          test: /\.css$/,
-          use: cssLoaders
-        },
-        {
-          test: /\.less$/,
-          use: [
-            ...cssLoaders,
-            'less-loader'
-          ]
-        },
-        {
-          test: /\.styl(us)?$/,
-          use: [
-            ...cssLoaders,
-            'stylus-loader'
-          ]
-        },
-        {
-          test: /\.scss$/,
-          use: [
-            ...cssLoaders,
-            'sass-loader'
-          ]
-        },
+        ...cssLoaders,
         {
           test: /\.(png|jpe?g|gif)$/i,
           use: [
