@@ -64,7 +64,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="<%= cssPreset %>" scoped>
 .app{
   padding-top: 100px;
   .img {

@@ -22,14 +22,14 @@ module.exports = {
       validate: val => (isEmail(val) ? true : 'Invalid email')
     },
     cssPreset: {
-      message: 'CSS extension language',
+      message: 'Choose CSS Pre-processors',
       type: 'list',
       choices: ['sass', 'less', 'stylus']
     },
     needPx2Rpx: {
-      message: 'need px2rpx loader',
+      message: 'need px2rpx loader?',
       type: 'list',
-      choices: ['No', 'Yes']
+      choices: ['Yes', 'No']
     },
     needMegaloAPI: {
       message: 'need megalo api',
