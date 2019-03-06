@@ -3,7 +3,7 @@ module.exports = {
   productionSourceMap: false,
 
   // 开启eslint格式化代码
-  lintOnSave: true,
+  lintOnSave: <%= needEslint === 'Yes' ? true : false %>,
 
   configureWebpack: config => {
     // 你可以在这里粗放的修改webpack的配置并返回
@@ -34,10 +34,10 @@ module.exports = {
       stylus: {
         // https://github.com/shama/stylus-loader
       },
-      px2rpx: {
         // https://github.com/megalojs/megalo-px2rpx-loader
+      px2rpx: <% if (needPx2Rpx === 'Yes') { %>{
         rpxUnit: 0.5
-      }
+      }<% } else {%>false<% } %>
     }
   }
 }

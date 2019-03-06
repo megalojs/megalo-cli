@@ -27,14 +27,19 @@ module.exports = {
       choices: ['sass', 'less', 'stylus']
     },
     needPx2Rpx: {
-      message: 'need px2rpx loader?',
+      message: 'Need px2rpx loader?',
       type: 'list',
       choices: ['Yes', 'No']
     },
     needMegaloAPI: {
-      message: 'need megalo api',
+      message: 'Need megalo api',
       type: 'list',
       choices: ['No', 'Yes']
+    },
+    needEslint: {
+      message: 'Need eslint to check and format code',
+      type: 'list',
+      choices: ['Yes', 'No']
     }
   },
   move: {
