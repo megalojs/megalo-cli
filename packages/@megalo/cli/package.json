@@ -22,7 +22,7 @@
   "author": "zwwill <zwwill7@163.com> (github.com/zwwill)",
   "license": "MIT",
   "files": [
-    "sao.js",
+    "saofile.js",
     "cli.js",
     "template",
     "util"
@@ -35,7 +35,7 @@
     "compare-versions": "^3.4.0",
     "is-email": "^1.0.0",
     "latest-version": "^4.0.0",
-    "sao": "^0.22.1"
+    "sao": "^1.6.1"
   },
   "devDependencies": {}
 }

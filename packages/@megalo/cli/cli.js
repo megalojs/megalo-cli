@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const sao = require('sao')
+const path = require('path')
 const minimist = require('minimist')
 const lv = require('latest-version')
 const { version: localVersion } = require('./package.json')
@@ -8,7 +9,6 @@ const { version: consoleVersion, help: consoleHelp } = require('./util')
 const argv = minimist(process.argv.slice(2))
 const { h, help: _h, v, version: _v, f, force: _f } = argv
 // In a custom directory or current directory
-const targetPath = argv._[0] || '.'
 let latestVersion = 0
 
 let hasNewVersion = false
@@ -25,10 +25,9 @@ let hasNewVersion = false
 
   sao({
     // The path to your template
-    template: __dirname,
-    targetPath
-  }).catch(err => {
-    console.error(err.name === 'SAOError' ? err.message : err.stack)
-    process.exit(1)
+    generator: path.join(__dirname, '.'),
+    outDir: path.resolve(argv._[0] || '.')
   })
+  .run()
+  .catch(sao.handleError)
 })()
