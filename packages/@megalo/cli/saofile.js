@@ -30,7 +30,7 @@ module.exports = {
         name: 'cssPreset',
         message: 'Choose CSS Pre-processors',
         type: 'list',
-        choices: ['sass', 'less', 'stylus']
+        choices: ['scss', 'less', 'stylus']
       },
       {
         name: 'needPx2Rpx',
