@@ -2,23 +2,23 @@
 <script>
   export default {
     mpType: 'app',
-    onLaunch: function(options) {
+    onLaunch: function (options) {
       // Do something initial when launch.
-      console.log('App onLaunch')
+      console.log('App onLaunch, env文件自定义的环境变量VUE_APP_TEST值:', process.env.VUE_APP_TEST)
     },
-    onShow: function(options) {
+    onShow: function (options) {
       // Do something when show.
       console.log('App onShow')
     },
-    onHide: function() {
+    onHide: function () {
       // Do something when hide.
       console.log('App onHide')
     },
-    onError: function(msg) {
+    onError: function (msg) {
       console.log('App onError')
       console.log(msg)
     },
-    globalData() {
+    globalData () {
       return {
         a: 'I am global data'
       }
