@@ -8,7 +8,7 @@
 
 ## 注意
 老项目注意 >>> `@megalo/cli-service` 1.0.0版本的api于 0.x的版本不兼容,使用方式有差异，0.x版本的点击[这里
-](./0.x version.README.md)
+](./0.x-version.md)
 ## 安装
 `@megalo/cli-service` 依赖 `@megalo/babel-preset-app` 、`@megalo/entry`、`@megalo/target` 、`@megalo/template-compiler`
 ```bash
@@ -74,6 +74,7 @@ module.exports = {
       stylus: {
         // https://github.com/shama/stylus-loader
       },
+      // 若不想使用 px2rpx 插件，则设置为 px2rpx: false 即可
       px2rpx: {
         // https://github.com/megalojs/megalo-px2rpx-loader
         rpxUnit: 0.5
