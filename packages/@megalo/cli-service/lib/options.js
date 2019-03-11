@@ -22,7 +22,10 @@ const schema = createSchema(joi => joi.object({
       less: joi.object(),
       stylus: joi.object(),
       postcss: joi.object(),
-      px2rpx: joi.object()
+      px2rpx: joi.alternatives().try(
+        joi.object(),
+        joi.any().valid([false])
+      )
     })
   }),
 
