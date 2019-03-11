@@ -89,9 +89,9 @@ module.exports = {
 - [megalo-api](https://github.com/megalojs/megalo-api)  （重新封装各个端中的API，由 megalo 统一对外抛出方法名）
 - [megalo-px2rpx-loader](https://github.com/megalojs/megalo-px2rpx-loader)  (将项目中的 `px` 单位统一转成 `rpx` 单位)
 - [megalo-vhtml-plugin](https://github.com/megalojs/megalo-vhtml-plugin)  （富文本插件）
-- [megalo-env-plugin](https://github.com/megalojs/megalo-env-plugin)   (环境变量设置、替换)
 
 内置的其他的 `webpack` 配置：
+- 环境变量设置、替换
 - css-loader、less-loader、sass-loader、stylus-loader等 css预编译相关配置
 - file-loader 处理图片资源文件
 - babel 转 es5
@@ -104,7 +104,6 @@ module.exports = {
 ## [demo](../../../example/project01/)
 
 ## TODO
-- 集成到 `megalo-cli`
 - typescript 支持
 
 ## 更新记录
