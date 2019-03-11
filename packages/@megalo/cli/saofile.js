@@ -1,11 +1,12 @@
 const isEmail = require('is-email')
+const path = require('path')
 
 module.exports = {
   prompts () {
     return [
       {
         name: 'projectName',
-        message: 'project name? (eg. my-megalo-project)',
+        message: 'project name (eg. my-megalo-project)',
         default: this.outFolder
       },
       {
@@ -30,11 +31,16 @@ module.exports = {
         name: 'cssPreset',
         message: 'Choose CSS Pre-processors',
         type: 'list',
-        choices: ['scss', 'less', 'stylus']
+        choices: [
+          {
+            name: 'sass/scss',
+            value: 'scss'
+          },
+          'less', 'stylus']
       },
       {
         name: 'needPx2Rpx',
-        message: 'Need px2rpx loader?',
+        message: 'Need px2rpx loader',
         type: 'list',
         choices: ['Yes', 'No']
       },
@@ -52,27 +58,51 @@ module.exports = {
       }
     ]
   },
-  actions: [
-    {
-      type: 'add',
-      // Copy and transform all files in `template` folder into output directory
-      files: '**'
-    },
-    {
-      type: 'move',
-      patterns: {
-        'gitignore': '.gitignore',
-        'README': 'README.md',
-        'package': 'package.json'
+  actions () {
+    const { needEslint } = this.answers
+    return [
+      {
+        type: 'add',
+        files: '**',
+        filters: {
+          'eslint*': needEslint === 'Yes'
+        }
+      },
+      {
+        type: 'move',
+        patterns: {
+          'gitignore': '.gitignore',
+          'README': 'README.md',
+          'package': 'package.json',
+          'eslintignore': '.eslintignore',
+          'eslintrc': '.eslintrc.js'
+        }
       }
-    }
-  ],
+    ]
+  },
   async completed () {
     await this.npmInstall()
     this.showProjectTips()
+    const logCd = () => {
+      if (this.outDir !== process.cwd()) {
+        console.log(
+          `${this.chalk.bold('cd')} ${this.chalk.cyan(
+            path.relative(process.cwd(), this.outDir)
+          )}`
+        )
+      }
+    }
+
+    this.logger.tip(`To start dev server, run following commands:`)
+    logCd()
+    console.log(
+      `${this.chalk.cyan('npm run dev:wechat')}`
+    )
+
+    this.logger.tip(`To build for production, run following commands:`)
+    logCd()
+    console.log(
+      `${this.chalk.cyan('npm run build:wechat')}`
+    )
   }
-  // skipInterpolation: [],
-  // showTip: true,
-  // gitInit: false,
-  // installDependencies: true
 }
