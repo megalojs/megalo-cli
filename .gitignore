@@ -1,11 +1,11 @@
 node_modules
-/test
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
 .DS_Store
+design
+*.log
+packages/test
+dist
+temp
+.vuerc
+.version
+.versions
 package-lock.json
