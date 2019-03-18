@@ -204,7 +204,8 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
               '.jsx',
               '.vue'
             ],
-            cache: true,
+            // TODO 缓存系统优化
+            cache: false,
             emitWarning: projectOptions.lintOnSave !== 'error',
             emitError: projectOptions.lintOnSave === 'error',
             eslintPath: resolveModule('eslint', cwd) || require.resolve('eslint'),
