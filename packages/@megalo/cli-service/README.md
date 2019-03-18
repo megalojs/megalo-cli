@@ -30,7 +30,7 @@ npm run dev:wechat
 ```
 
 ## 控制台参数
-TODO
+https://megalojs.org/#/cli/cli-service
 
 ## 修改配置
 
