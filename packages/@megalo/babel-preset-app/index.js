@@ -17,7 +17,12 @@ module.exports = function () {
         'helpers': false,
         'regenerator': true
       }
-    ]
+    ],
+    [
+      '@babel/plugin-proposal-decorators',
+      { 'legacy': true }
+    ],
+    '@babel/plugin-proposal-class-properties'
   ]
 
   return {
