@@ -1,6 +1,6 @@
 {
   "name": "@megalo/babel-preset-app",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "包装megalo工程中babel相关的配置",
   "main": "index.js",
   "dependencies": {
