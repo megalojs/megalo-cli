@@ -1,4 +1,4 @@
-import App from '.'
+import App from './App'
 import Vue from 'vue'
 import VHtmlPlugin from '@megalo/vhtml-plugin'
 
