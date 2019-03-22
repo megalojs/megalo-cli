@@ -65,7 +65,7 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
               [{
                 cache: true,
                 parallel: true,
-                sourceMap: projectOptions.productionSourceMap ? 'cheap-source-map' : false
+                sourceMap: projectOptions.productionSourceMap
               }]
             )
             .end()
@@ -112,7 +112,7 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
 
   chainaConfig.module
     .rule('js')
-      .test(/(\.js|\.tsx?)$/)
+      .test(/\.(ts|js)x?$/)
       .use('babel')
         .loader('babel-loader')
         .end()
