@@ -8,7 +8,8 @@ module.exports = function () {
           'iOS >= 10'
         ]
       }
-    }]
+    }],
+    ['@babel/preset-typescript', { allExtensions: true }]
   ]
   const plugins = [
     [
@@ -22,7 +23,9 @@ module.exports = function () {
       '@babel/plugin-proposal-decorators',
       { 'legacy': true }
     ],
-    '@babel/plugin-proposal-class-properties'
+    ['@babel/plugin-proposal-class-properties',
+      { 'loose': true }
+    ]
   ]
 
   return {

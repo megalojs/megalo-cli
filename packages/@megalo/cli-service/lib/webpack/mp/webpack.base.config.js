@@ -118,19 +118,6 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
         .end()
       .end()
 
-    .rule('ts')
-      .test(/\.tsx?$/)
-      .use('ts')
-        .loader('ts-loader')
-        .options({
-          appendTsSuffixTo: [/\.vue$/]
-        })
-        .end()
-      .exclude
-        .add(/node_modules/)
-        .end()
-      .end()
-
     .rule('picture')
       .test(/\.(png|jpe?g|gif)$/i)
       .use('url')
@@ -148,18 +135,6 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
   generateCssLoaders(chainaConfig, projectOptions)
 
   chainaConfig
-    .plugin('vue-loader-plugin')
-      .use(VueLoaderPlugin)
-      .end()
-    .plugin('env-replace-plugin')
-      .use(webpack.DefinePlugin, [resolveClientEnv()])
-      .end()
-    .plugin('mini-css-extract-plugin')
-      .use(MiniCssExtractPlugin, [{ filename: `static/css/[name].${cssExt}` }])
-      .end()
-    .plugin('process-plugin')
-      .use(webpack.ProgressPlugin)
-      .end()
     .plugin('friendly-error-plugin')
       .use(
         FriendlyErrorsPlugin,
@@ -180,6 +155,29 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
         }]
       )
       .end()
+    .plugin('process-plugin')
+      .use(webpack.ProgressPlugin)
+      .end()
+    .plugin('vue-loader-plugin')
+      .use(VueLoaderPlugin)
+      .end()
+    .plugin('env-replace-plugin')
+      .use(webpack.DefinePlugin, [resolveClientEnv()])
+      .end()
+    .plugin('mini-css-extract-plugin')
+      .use(MiniCssExtractPlugin, [{ filename: `static/css/[name].${cssExt}` }])
+      .end()
+    .plugin('fork-ts-checker-webpack-plugin')
+      .use(
+        require('fork-ts-checker-webpack-plugin'),
+        [{
+          vue: true,
+          tslint: projectOptions.lintOnSave !== false && checkFileExistsSync('tsconfig.json'), // options.lintOnSave !== false && fs.existsSync(api.resolve('tslint.json')),
+          formatter: 'codeframe'
+          // https://github.com/TypeStrong/ts-loader#happypackmode-boolean-defaultfalse
+          // checkSyntacticErrors: true
+        }]
+      )
 
   // 启用 @Megalo/API
   const megaloAPIPath = checkFileExistsSync(`node_modules/@megalo/api/platforms/${platform}`)
