@@ -89,6 +89,7 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
   chainaConfig.resolve.extensions
     .add('.vue')
     .add('.js')
+    .add('.ts')
     .add('.json')
 
   chainaConfig.resolve.alias
@@ -109,11 +110,9 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
         .end()
       .end()
 
-  generateCssLoaders(chainaConfig, projectOptions)
-
   chainaConfig.module
     .rule('js')
-      .test(/\.js$/)
+      .test(/(\.js|\.tsx?)$/)
       .use('babel')
         .loader('babel-loader')
         .end()
@@ -122,7 +121,6 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
     .rule('ts')
       .test(/\.tsx?$/)
       .use('ts')
-        .loader('babel-loader')
         .loader('ts-loader')
         .options({
           appendTsSuffixTo: [/\.vue$/]
@@ -145,6 +143,9 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
         .end()
       .end()
     .end()
+
+  // 这里有个坑，css相关的loader必须放处理 ts 的 loader的后面，不然target那边会报错
+  generateCssLoaders(chainaConfig, projectOptions)
 
   chainaConfig
     .plugin('vue-loader-plugin')

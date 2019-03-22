@@ -1,5 +1,5 @@
-const createBaseConfig = require('./webpack.base.config')
-
+const ChainableWebpackConfig = require('webpack-chain')
+const { error } = require('@vue/cli-shared-utils')
 module.exports = (...args) => {
   error('暂不支持编译h5,敬请期待')
 
