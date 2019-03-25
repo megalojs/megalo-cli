@@ -21,12 +21,12 @@
     ]
   },
   "devDependencies": {
-    "@megalo/babel-preset-app": "^1.0.0-alpha.2",
-    "@megalo/cli-service": "^1.0.0-alpha.8",
+    "@megalo/babel-preset-app": "latest",
+    "@megalo/cli-service": "latest",
+    "@megalo/eslint-config-standard": "latest",
+    "@megalo/eslint-config-typescript": "latest",
     "@megalo/target": "0.5.7",
     "@megalo/template-compiler": "^0.8.0",
-    "@megalo/eslint-config-standard": "^1.0.0",
-    "@megalo/eslint-config-typescript": "^1.0.0-alph1",
     "@types/node": "^11.11.4",
     "eslint": "^5.8.0",
     "stylus": "^0.54.5",

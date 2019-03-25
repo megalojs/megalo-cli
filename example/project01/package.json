@@ -17,12 +17,13 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@megalo/babel-preset-app": "^1.0.0-alpha.1",
-    "@megalo/cli-service": "^1.0.0-alpha.8",
-    "@megalo/entry": "^0.1.2",
-    "@megalo/eslint-config-standard": "^1.0.0-alpha.1",
+    "@megalo/babel-preset-app": "latest",
+    "@megalo/cli-service": "latest",
+    "@megalo/entry": "latest",
+    "@megalo/eslint-config-standard": "latest",
     "@megalo/target": "0.5.7",
     "@megalo/template-compiler": "^0.8.0",
+    "eslint": "^5.8.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0"
   },
