@@ -11,7 +11,7 @@
     "dev:alipay": "megalo-cli-service serve --platform alipay",
     "dev:swan": "megalo-cli-service serve --platform swan",
     "dev:wechat": "megalo-cli-service serve",
-    "lint": "eslint --fix --ext .js,.vue src"
+    "lint": "eslint --fix --ext .js,.vue,.ts src"
   },
   "author": "bigMeow <running@vip.163.com>",
   "license": "ISC",
@@ -23,14 +23,14 @@
   "devDependencies": {
     "@megalo/babel-preset-app": "^1.0.0-alpha.2",
     "@megalo/cli-service": "^1.0.0-alpha.8",
-    "@megalo/eslint-config-standard": "^1.0.0",
     "@megalo/target": "0.5.7",
     "@megalo/template-compiler": "^0.8.0",
+    "@megalo/eslint-config-standard": "^1.0.0",
+    "@megalo/eslint-config-typescript": "^1.0.0-alph1",
     "@types/node": "^11.11.4",
-    "miniprogram-api-typings": "^2.4.2-2",
+    "eslint": "^5.8.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "ts-loader": "^5.3.3",
     "typescript": "^3.3.4000",
     "vue-property-decorator": "^8.1.0"
   },

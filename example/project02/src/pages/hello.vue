@@ -19,9 +19,22 @@ import { Vue, Component } from 'vue-property-decorator'
 export default class Hello extends Vue {
   t = 1
   color = '#007d37'
-  
-  beforeCreate () {
+
+  async beforeCreate () {
+    const p = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log('promise')
+        resolve()
+      }, 1000)
+    })
+    await p
+    const map = new Map()
+    map.set('name', '李宗')
+    let x: number = 0
+    const b = { age: 18 }
     console.log('Page [hello] Vue beforeCreate')
+    // x = 'sb'
+    console.log(x, { ...b }, map)
   }
 
   created () {
@@ -70,7 +83,6 @@ export default class Hello extends Vue {
     this.t++
     this.color = '#' + Math.floor(Math.random() * 0xffffff).toString(16)
   }
-
 }
 </script>
 

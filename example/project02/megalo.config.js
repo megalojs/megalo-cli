@@ -1,9 +1,9 @@
 module.exports = {
   // 构件生产模式时是否生成source map（仅在process.env.NODE_ENV === 'production' 时该选项生效）
-  productionSourceMap: false,
+  productionSourceMap: true,
 
   // 开启eslint格式化代码
-  lintOnSave: false,
+  lintOnSave: true,
 
   configureWebpack: config => {
     // 你可以在这里粗放的修改webpack的配置并返回
@@ -12,19 +12,9 @@ module.exports = {
   },
   chainWebpack: chainConfig => {
     // 你可以在这里通过 https://github.com/neutrinojs/webpack-chain 来精细的修改webpack配置
-    // console.log('chainWebpack执行了', chainConfig.toString())
-    chainConfig.module
-      .rule('ts')
-      .test(/\.tsx?$/)
-      .use('ts')
-      .loader('babel-loader')
-      .loader('ts-loader')
-      .options({
-        appendTsSuffixTo: [/\.vue$/]
-      })
-      .end()
-      .exclude
-      .add(/node_modules/)
+
+
+      console.log('chainWebpack执行了')
   },
   // 原生小程序组件存放目录，默认为src/native
   // 如果你有多个平台的原生组件，你应当在此目录下再新建几个子文件夹，我们约定，子文件夹名和平台的名字一致:

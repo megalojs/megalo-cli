@@ -1,6 +1,10 @@
 module.exports = {
   root: true,
-  extends: [
-    '@megalo/standard'
+  env: {
+    node: true
+  },
+  'extends': [
+    '@megalo/standard',
+    '@megalo/typescript'
   ]
 }
