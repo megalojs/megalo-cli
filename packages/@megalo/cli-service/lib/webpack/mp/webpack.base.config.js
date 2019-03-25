@@ -21,11 +21,11 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
   const isProd = process.env.NODE_ENV === 'production'
   const cssExt = getCssExt(platform)
   const chainaConfig = new ChainableWebpackConfig()
-  const isUseTypescript = !!checkFileExistsSync('.tsconfig.json')
+  const isUseTypescript = !!checkFileExistsSync('tsconfig.json')
 
   chainaConfig
     .mode(isProd ? 'production' : 'development')
-    .devtool(isProd && !projectOptions.productionSourceMap ? 'none' : 'cheap-source-map')
+    .devtool(isProd && !projectOptions.productionSourceMap ? 'none' : 'source-map')
     .target(
       createMegaloTarget({
         compiler: Object.assign(compiler, {}),
@@ -169,16 +169,15 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
       .use(MiniCssExtractPlugin, [{ filename: `static/css/[name].${cssExt}` }])
       .end()
     .when(isUseTypescript, config => {
+      const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
       config
         .plugin('fork-ts-checker-webpack-plugin')
         .use(
-          require('fork-ts-checker-webpack-plugin'),
+          ForkTsCheckerWebpackPlugin,
           [{
             vue: true,
-            tslint: projectOptions.lintOnSave !== false, // options.lintOnSave !== false && fs.existsSync(api.resolve('tslint.json')),
-            formatter: 'codeframe'
-            // https://github.com/TypeStrong/ts-loader#happypackmode-boolean-defaultfalse
-            // checkSyntacticErrors: true
+            formatter: 'codeframe',
+            workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE
           }]
         )
     })
