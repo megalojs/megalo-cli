@@ -44,6 +44,7 @@ program
   .option('--platform <platform>', 'set target platform ', /^(wechat|alipay|swan|tt|h5)$/i, 'wechat')
   .option('--config <path>', 'set customer webpack config path ', '')
   .option('--report', 'generate report.html to help analyze bundle content ', false)
+  .option('--report-json', 'generate report.json to help analyze bundle content ', false)
   .option('--fix', 'eslint auto fix on save ', false)
   .option('--debug', 'open the debug logger ', false)
 
