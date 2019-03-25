@@ -21,6 +21,7 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
   const isProd = process.env.NODE_ENV === 'production'
   const cssExt = getCssExt(platform)
   const chainaConfig = new ChainableWebpackConfig()
+  const isUseTypescript = !!checkFileExistsSync('.tsconfig.json')
 
   chainaConfig
     .mode(isProd ? 'production' : 'development')
@@ -167,17 +168,20 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
     .plugin('mini-css-extract-plugin')
       .use(MiniCssExtractPlugin, [{ filename: `static/css/[name].${cssExt}` }])
       .end()
-    .plugin('fork-ts-checker-webpack-plugin')
-      .use(
-        require('fork-ts-checker-webpack-plugin'),
-        [{
-          vue: true,
-          tslint: projectOptions.lintOnSave !== false && checkFileExistsSync('tsconfig.json'), // options.lintOnSave !== false && fs.existsSync(api.resolve('tslint.json')),
-          formatter: 'codeframe'
-          // https://github.com/TypeStrong/ts-loader#happypackmode-boolean-defaultfalse
-          // checkSyntacticErrors: true
-        }]
-      )
+    .when(isUseTypescript, config => {
+      config
+        .plugin('fork-ts-checker-webpack-plugin')
+        .use(
+          require('fork-ts-checker-webpack-plugin'),
+          [{
+            vue: true,
+            tslint: projectOptions.lintOnSave !== false, // options.lintOnSave !== false && fs.existsSync(api.resolve('tslint.json')),
+            formatter: 'codeframe'
+            // https://github.com/TypeStrong/ts-loader#happypackmode-boolean-defaultfalse
+            // checkSyntacticErrors: true
+          }]
+        )
+    })
 
   // 启用 @Megalo/API
   const megaloAPIPath = checkFileExistsSync(`node_modules/@megalo/api/platforms/${platform}`)
@@ -212,9 +216,9 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
         .use('eslint')
           .loader('eslint-loader')
           .options({
-            // TODO 支持typescript
             extensions: [
               '.js',
+              '.ts',
               '.jsx',
               '.vue'
             ],
