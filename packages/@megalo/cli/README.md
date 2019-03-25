@@ -13,7 +13,7 @@ $ npm i -g sao
 build and create project
 
 ``` bash
-$ sao @megalo/cli your-project-name
+$ sao npm:@megalo/cli your-project-name
 ```
 
 enter the project root directory
