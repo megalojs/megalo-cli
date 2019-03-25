@@ -21,6 +21,7 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
   const isProd = process.env.NODE_ENV === 'production'
   const cssExt = getCssExt(platform)
   const chainaConfig = new ChainableWebpackConfig()
+  const isUseTypescript = !!checkFileExistsSync('.tsconfig.json')
 
   chainaConfig
     .mode(isProd ? 'production' : 'development')
@@ -65,7 +66,7 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
               [{
                 cache: true,
                 parallel: true,
-                sourceMap: projectOptions.productionSourceMap ? 'cheap-source-map' : false
+                sourceMap: projectOptions.productionSourceMap
               }]
             )
             .end()
@@ -89,6 +90,7 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
   chainaConfig.resolve.extensions
     .add('.vue')
     .add('.js')
+    .add('.ts')
     .add('.json')
 
   chainaConfig.resolve.alias
@@ -109,15 +111,14 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
         .end()
       .end()
 
-  generateCssLoaders(chainaConfig, projectOptions)
-
   chainaConfig.module
     .rule('js')
-      .test(/\.js$/)
+      .test(/\.(ts|js)x?$/)
       .use('babel')
         .loader('babel-loader')
         .end()
       .end()
+
     .rule('picture')
       .test(/\.(png|jpe?g|gif)$/i)
       .use('url')
@@ -131,19 +132,10 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
       .end()
     .end()
 
+  // 这里有个坑，css相关的loader必须放处理 ts 的 loader的后面，不然target那边会报错
+  generateCssLoaders(chainaConfig, projectOptions)
+
   chainaConfig
-    .plugin('vue-loader-plugin')
-      .use(VueLoaderPlugin)
-      .end()
-    .plugin('env-replace-plugin')
-      .use(webpack.DefinePlugin, [resolveClientEnv()])
-      .end()
-    .plugin('mini-css-extract-plugin')
-      .use(MiniCssExtractPlugin, [{ filename: `static/css/[name].${cssExt}` }])
-      .end()
-    .plugin('process-plugin')
-      .use(webpack.ProgressPlugin)
-      .end()
     .plugin('friendly-error-plugin')
       .use(
         FriendlyErrorsPlugin,
@@ -164,6 +156,32 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
         }]
       )
       .end()
+    .plugin('process-plugin')
+      .use(webpack.ProgressPlugin)
+      .end()
+    .plugin('vue-loader-plugin')
+      .use(VueLoaderPlugin)
+      .end()
+    .plugin('env-replace-plugin')
+      .use(webpack.DefinePlugin, [resolveClientEnv()])
+      .end()
+    .plugin('mini-css-extract-plugin')
+      .use(MiniCssExtractPlugin, [{ filename: `static/css/[name].${cssExt}` }])
+      .end()
+    .when(isUseTypescript, config => {
+      config
+        .plugin('fork-ts-checker-webpack-plugin')
+        .use(
+          require('fork-ts-checker-webpack-plugin'),
+          [{
+            vue: true,
+            tslint: projectOptions.lintOnSave !== false, // options.lintOnSave !== false && fs.existsSync(api.resolve('tslint.json')),
+            formatter: 'codeframe'
+            // https://github.com/TypeStrong/ts-loader#happypackmode-boolean-defaultfalse
+            // checkSyntacticErrors: true
+          }]
+        )
+    })
 
   // 启用 @Megalo/API
   const megaloAPIPath = checkFileExistsSync(`node_modules/@megalo/api/platforms/${platform}`)
@@ -198,9 +216,9 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
         .use('eslint')
           .loader('eslint-loader')
           .options({
-            // TODO 支持typescript
             extensions: [
               '.js',
+              '.ts',
               '.jsx',
               '.vue'
             ],
