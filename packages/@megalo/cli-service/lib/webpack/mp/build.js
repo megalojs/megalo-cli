@@ -8,8 +8,8 @@ module.exports = (commandName, commandOptions, projectOptions) => {
         require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
         [{
           analyzerMode: commandOptions.report ? 'static' : 'disabled',
-          reportFilename: `mp-report.html`,
-          statsFilename: `mp-report.json`,
+          reportFilename: `../${commandOptions.platform}-report.html`,
+          statsFilename: `../${commandOptions.platform}-report.json`,
           generateStatsFile: !!commandOptions.reportJson
         }]
       )
