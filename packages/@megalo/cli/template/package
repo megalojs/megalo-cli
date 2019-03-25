@@ -10,7 +10,8 @@
     "build:swan": "megalo-cli-service build --platform swan",
     "dev:alipay": "megalo-cli-service serve --platform alipay",
     "dev:swan": "megalo-cli-service serve --platform swan",
-    "dev:wechat": "megalo-cli-service serve"
+    "dev:wechat": "megalo-cli-service serve",<% if (needEslint === 'Yes') { %>
+    "lint": "eslint --fix --ext .js,.vue src"<% } %>
   },
   "author": "<%- author %> <<%- email %>>",
   "license": "ISC",
@@ -21,9 +22,8 @@
   },
   "devDependencies": {
     "@megalo/babel-preset-app": "^1.0.0-alpha.1",
-    "@megalo/cli-service": "^1.0.0-alpha.8",
-    "@megalo/entry": "^0.1.2",
-    "@megalo/eslint-config-standard": "^1.0.0-alpha.1",
+    "@megalo/cli-service": "^1.0.0-alpha.8",<% if (needEslint === 'Yes') { %>
+    "@megalo/eslint-config-standard": "^1.0.0",<% } %>
     "@megalo/target": "^0.5.7",
     "@megalo/template-compiler": "^0.8.0",<% if (cssPreset === 'less') { %>
     "less": "^3.8.1",
