@@ -1,31 +1,31 @@
-const isEmail = require('is-email')
 const path = require('path')
 
 module.exports = {
   prompts () {
     return [
       {
-        name: 'projectName',
-        message: 'project name (eg. my-megalo-project)',
-        default: this.outFolder
-      },
-      {
-        name: 'description',
-        message: 'description',
-        default: 'a megalo project'
-      },
-      {
-        name: 'author',
-        message: 'author',
-        default: this.gitUser.username || this.gitUser.name,
-        store: true
-      },
-      {
-        name: 'email',
-        message: 'email',
-        default: this.gitUser.email,
-        store: true,
-        validate: val => (isEmail(val) ? true : 'Invalid email')
+        name: 'features',
+        message: 'Check the features needed for your project:',
+        type: 'checkbox',
+        default: ['css-pre-processors', 'eslint'],
+        choices: [
+          {
+            name: 'Typescript',
+            value: 'typescript'
+          },
+          {
+            name: 'CSS Pre-processors',
+            value: 'css-pre-processors'
+          },
+          {
+            name: 'Eslint',
+            value: 'eslint'
+          },
+          {
+            name: 'Vuex',
+            value: 'vuex'
+          }
+        ]
       },
       {
         name: 'cssPreset',
@@ -33,10 +33,18 @@ module.exports = {
         type: 'list',
         choices: [
           {
-            name: 'sass/scss',
+            name: 'Sass/SCSS',
             value: 'scss'
           },
-          'less', 'stylus']
+          {
+            name: 'Less',
+            value: 'less'
+          },
+          {
+            name: 'Stylus',
+            value: 'stylus'
+          }
+        ]
       },
       {
         name: 'needPx2Rpx',
@@ -58,11 +66,17 @@ module.exports = {
       }
     ]
   },
+  templateData() {
+    return {
+      projectName: this.outFolder
+    }
+  },
   actions () {
-    const { needEslint } = this.answers
+    const { needEslint, features } = this.answers
     return [
       {
         type: 'add',
+        templateDir: 'templates/main',
         files: '**',
         filters: {
           'eslint*': needEslint === 'Yes'

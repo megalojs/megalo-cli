@@ -1,13 +1,5 @@
 # <%- projectName %>
 
-## 描述
-
-<%- description %>
-
-## 作者
-
-<%- author %> <<%- email %>>
-
 ## 运行
 
 微信小程序：

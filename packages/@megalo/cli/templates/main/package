@@ -1,8 +1,6 @@
 {
   "name": "<%- projectName %>",
   "version": "1.0.0",
-  "description": "<%- description %>",
-  "main": "index.js",
   "private": true,
   "scripts": {
     "build:wechat": "megalo-cli-service build",
@@ -13,7 +11,6 @@
     "dev:wechat": "megalo-cli-service serve",<% if (needEslint === 'Yes') { %>
     "lint": "eslint --fix --ext .js,.vue src"<% } %>
   },
-  "author": "<%- author %> <<%- email %>>",
   "license": "ISC",
   "babel": {
     "presets": [
@@ -25,7 +22,8 @@
     "@megalo/cli-service": "^1.0.0-alpha.8",<% if (needEslint === 'Yes') { %>
     "@megalo/eslint-config-standard": "^1.0.0",<% } %>
     "@megalo/target": "^0.5.7",
-    "@megalo/template-compiler": "^0.8.0",<% if (cssPreset === 'less') { %>
+    "@megalo/template-compiler": "^0.8.0",<% if (needEslint === 'Yes') { %>
+    "eslint": "^5.15.3",<% } %><% if (cssPreset === 'less') { %>
     "less": "^3.8.1",
     "less-loader": "^4.1.0"<% } else if (cssPreset === 'stylus') {%>
     "stylus": "^0.54.5",
