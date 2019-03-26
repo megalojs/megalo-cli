@@ -25,18 +25,19 @@
     "@megalo/cli-service": "latest",
     "@megalo/eslint-config-standard": "latest",
     "@megalo/eslint-config-typescript": "latest",
-    "@megalo/target": "0.5.7",
-    "@megalo/template-compiler": "^0.8.0",
+    "@megalo/target": "0.7.0",
+    "@megalo/template-compiler": "^0.9.1-0",
     "@types/node": "^11.11.4",
     "eslint": "^5.8.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "ts-loader": "^5.3.3",
     "typescript": "^3.3.4000",
-    "vue-property-decorator": "^8.1.0"
+    "vue-property-decorator": "^7.3.0"
   },
   "dependencies": {
     "@megalo/vhtml-plugin": "^0.1.2",
-    "megalo": "^0.8.0",
+    "megalo": "^0.9.1-0",
     "octoparse": "^0.3.2"
   }
 }

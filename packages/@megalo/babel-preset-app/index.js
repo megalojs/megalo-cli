@@ -24,7 +24,8 @@ module.exports = function () {
   ]
 
   if (isUseTypescript) {
-    presets.push(['@babel/preset-typescript', { allExtensions: true }])
+    // 暂时用ts-loader 来替换
+    // presets.push(['@babel/preset-typescript', { allExtensions: true }])
     plugins.push(
       [
         '@babel/plugin-proposal-decorators',

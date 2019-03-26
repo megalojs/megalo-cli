@@ -117,6 +117,23 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
       .use('babel')
         .loader('babel-loader')
         .end()
+        .exclude
+          .add(/node_modules/)
+          .end()
+      .end()
+
+    .rule('ts')
+      .test(/\.tsx?$/)
+      .use('ts-loader')
+        .loader('ts-loader')
+        .options({
+          appendTsSuffixTo: [/\.vue$/],
+          transpileOnly: true
+        })
+        .end()
+      .exclude
+        .add(/node_modules/)
+        .end()
       .end()
 
     .rule('picture')
