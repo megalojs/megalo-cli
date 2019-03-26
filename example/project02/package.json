@@ -31,7 +31,6 @@
     "eslint": "^5.8.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "ts-loader": "^5.3.3",
     "typescript": "^3.3.4000",
     "vue-property-decorator": "^7.3.0"
   },
