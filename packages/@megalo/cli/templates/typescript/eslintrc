@@ -4,6 +4,7 @@ module.exports = {
     node: true
   },
   'extends': [
-    '@megalo/standard'
+    '@megalo/standard',
+    '@megalo/typescript'
   ]
 }
