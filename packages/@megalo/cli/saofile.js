@@ -62,7 +62,7 @@ module.exports = {
       }
     ]
   },
-  templateData() {
+  templateData () {
     return {
       projectName: this.outFolder
     }
