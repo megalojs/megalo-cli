@@ -75,7 +75,9 @@ module.exports = {
         templateDir: `templates/${features.includes('typescript') ? 'typescript' : 'main'}`,
         files: '**',
         filters: {
-          'eslint*': features.includes('eslint')
+          'eslint*': features.includes('eslint'),
+          'src/store/**/*': features.includes('vuex'),
+          'src/pages/vuex/**/*': features.includes('vuex')
         }
       },
       {
@@ -116,10 +118,10 @@ module.exports = {
               '@megalo/babel-preset-app': 'latest',
               '@megalo/cli-service': 'latest',
               '@megalo/eslint-config-standard': when(features.includes('eslint'), 'latest'),
-              "@megalo/eslint-config-typescript": when(features.includes('typescript') && features.includes('eslint'), 'latest'),
+              '@megalo/eslint-config-typescript': when(features.includes('typescript') && features.includes('eslint'), 'latest'),
               '@megalo/target': 'latest',
               '@megalo/template-compiler': 'latest',
-              "@types/node": when(features.includes('typescript'), '^11.11.4'),
+              '@types/node': when(features.includes('typescript'), '^11.11.4'),
               'eslint': when(features.includes('eslint'), '^5.15.3'),
               'less': when(cssPreset === 'less', '^3.8.1'),
               'less-loader': when(cssPreset === 'less', '^4.1.0'),
@@ -127,14 +129,15 @@ module.exports = {
               'stylus-loader': when(cssPreset === 'stylus', '^3.0.2'),
               'node-sass': when(cssPreset === 'sass', '^4.10.0'),
               'sass-loader': when(cssPreset === 'sass', '^7.1.0'),
-              "typescript": when(features.includes('typescript'), '^3.3.4000'),
-              "vue-property-decorator": when(features.includes('typescript'), '^7.3.0')
+              'typescript': when(features.includes('typescript'), '^3.3.4000'),
+              'vue-property-decorator': when(features.includes('typescript'), '^7.3.0')
             },
             'dependencies': {
               '@megalo/api': when(needMegaloAPI === 'Yes', '^0.2.2'),
               '@megalo/vhtml-plugin': '^0.1.2',
               'megalo': 'latest',
-              'octoparse': '^0.3.2'
+              'octoparse': '^0.3.2',
+              'vuex': when(features.includes('vuex'), '^3.1.0')
             }
           }
         }
