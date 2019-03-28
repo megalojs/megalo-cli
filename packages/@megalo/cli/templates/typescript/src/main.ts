@@ -1,4 +1,4 @@
-import App from './App'
+import App from './App.vue'
 import Vue from 'vue'
 import { Component } from 'vue-property-decorator'
 import VHtmlPlugin from '@megalo/vhtml-plugin'<% if (features.includes('vuex')) { %>

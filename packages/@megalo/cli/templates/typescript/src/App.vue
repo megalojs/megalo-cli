@@ -1,5 +1,12 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+
+declare module 'megalo/types/vue' {
+  interface Vue {
+    $mp: any
+  }
+}
+
 // https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/app.html
 Component.registerHooks([
   'onLaunch', // 初始化
@@ -10,7 +17,9 @@ Component.registerHooks([
   'globalData'
 ])
 
-@Component
+@Component({
+  mpType: 'app'
+} as any)
 class App extends Vue {
   onLaunch (options) {
     // Do something initial when launch.
