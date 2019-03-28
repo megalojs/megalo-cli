@@ -7,13 +7,12 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const { resolveModule, loadModule } = require('@vue/cli-shared-utils')
+const { resolveModule, loadModule, error } = require('@vue/cli-shared-utils')
 const createMegaloTarget = require('@megalo/target')
 const compiler = require('@megalo/template-compiler')
 const { pagesEntry } = require('@megalo/entry')
 const { getCssExt, generateCssLoaders, checkFileExistsSync, resolve } = require('../../utils/util')
 const resolveClientEnv = require('../../utils/resolveClientEnv')
-const appMainFile = resolve('src/index.js')
 
 module.exports = function createBaseConfig (commandName, commandOptions, projectOptions) {
   const cwd = process.env.MEGALO_CLI_CONTEXT || process.cwd()
@@ -22,6 +21,13 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
   const cssExt = getCssExt(platform)
   const chainaConfig = new ChainableWebpackConfig()
   const isUseTypescript = !!checkFileExistsSync('tsconfig.json')
+  const jsExt = ['js', 'ts'][+isUseTypescript]
+  const appMainFile = checkFileExistsSync(`src/main.${jsExt}`) || checkFileExistsSync(`src/index.${jsExt}`)
+  if (!appMainFile) {
+    error(`Failed to locate entry file in ${cwd}`)
+    error(`Valid entry file should be one of: main.${jsExt}, index.${jsExt}`)
+    process.exit(1)
+  }
 
   chainaConfig
     .mode(isProd ? 'production' : 'development')
