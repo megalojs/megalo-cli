@@ -102,11 +102,10 @@ module.exports = {
 - 编译、压缩、混淆等
 
 ## 注意
-`@megalo/cli-service` 对项目目录结构有一定要求, 例如：
-- `src` 目录下一定要有 `index.js` 文件,作为入口
+`@megalo/cli-service` 默认会读取 `src` 目录下的  `main.js` 、 `index.js` 、`main.ts` 、`index.ts`  其中之一并将其作为入口文件
 
 ## [demo](../../../example/project01/)
 
 
 ## 更新记录
-- ［1.0.0 ］ 正式版发布
+- ［1.0.0 ］ alpha迭代中

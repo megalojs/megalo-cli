@@ -5,8 +5,8 @@ Standard Tooling for Megalo Project Development
 
 | 包名 | 最新版本号 | 最后更新日期 | 包描述
 | ------ | ------ | ------ | ------ |
-| [@megalo/cli](./packages/@megalo/cli) | 1.0.0-alpha.2 | 2019/03/20 | 生成标准的megalo项目 |
-| [@megalo/cli-service](./packages/@megalo/cli-service) | 1.0.0-alpha.13 | 2019/03/25 | megalo项目的webpack零配置插件
+| [@megalo/cli](./packages/@megalo/cli) | 1.0.0-alpha.3 | 2019/03/29 | 生成标准的megalo项目 |
+| [@megalo/cli-service](./packages/@megalo/cli-service) | 1.0.0-alpha.15 | 2019/03/29 | megalo项目的webpack零配置插件
 | [@megalo/entry](./packages/@megalo/entry) | 0.1.2 | 2019/03/01 | 读取入口文件的webpack插件（未来可能废弃，交由megalo-aot处理） |
 | [@megalo/babel-preset-app](./packages/@megalo/babel-preset-app) | 1.0.0-alpha.3 | 2019/03/25 | 包装脚手架babel相关的配置 |
 
