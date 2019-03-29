@@ -1,4 +1,5 @@
 const path = require('path')
+const execa = require('execa')
 const when = (condition, value, fallback) => (condition ? value : fallback)
 
 module.exports = {
@@ -133,8 +134,8 @@ module.exports = {
               'vue-property-decorator': when(features.includes('typescript'), '^7.3.0')
             },
             'dependencies': {
-              '@megalo/api': when(needMegaloAPI === 'Yes', '^0.2.2'),
-              '@megalo/vhtml-plugin': '^0.1.2',
+              '@megalo/api': when(needMegaloAPI === 'Yes', 'latest'),
+              '@megalo/vhtml-plugin': 'latest',
               'megalo': 'latest',
               'octoparse': '^0.3.2',
               'vuex': when(features.includes('vuex'), '^3.1.0'),
@@ -146,7 +147,11 @@ module.exports = {
     ]
   },
   async completed () {
+    const { features } = this.answers
     await this.npmInstall()
+    if (features.includes('eslint')) {
+      execa.shell('npm run lint')
+    }
     this.showProjectTips()
     const logCd = () => {
       if (this.outDir !== process.cwd()) {
