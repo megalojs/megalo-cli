@@ -80,7 +80,13 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
             .use(
               OptimizeCSSAssetsPlugin,
               [{
-                assetNameRegExp: new RegExp(`\\.${getCssExt(platform)}$`, 'g')
+                assetNameRegExp: new RegExp(`\\.${getCssExt(platform)}$`, 'g'),
+                cssProcessorPluginOptions: {
+                  preset: ['default', {
+                    discardComments: { removeAll: true },
+                    calc: false
+                  }]
+                }
               }]
             )
       })
