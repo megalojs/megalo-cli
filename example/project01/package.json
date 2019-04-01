@@ -1,0 +1,35 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build:wechat": "megalo-cli-service build",
+    "build:alipay": "megalo-cli-service build --platform alipay",
+    "build:swan": "megalo-cli-service build --platform swan",
+    "dev:wechat": "megalo-cli-service serve",
+    "dev:alipay": "megalo-cli-service serve --platform alipay",
+    "dev:swan": "megalo-cli-service serve --platform swan"
+  },
+  "babel": {
+    "presets": [
+      "@megalo/app"
+    ]
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@megalo/babel-preset-app": "latest",
+    "@megalo/cli-service": "latest",
+    "@megalo/eslint-config-standard": "latest",
+    "@megalo/target": "latest",
+    "@megalo/template-compiler": "latest",
+    "eslint": "^5.8.0",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0"
+  },
+  "dependencies": {
+    "@megalo/vhtml-plugin": "^0.1.2",
+    "megalo": "latest",
+    "octoparse": "^0.3.2",
+    "vuex": "^3.0.1"
+  }
+}
