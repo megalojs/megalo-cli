@@ -25,8 +25,8 @@
     "@megalo/cli-service": "latest",
     "@megalo/eslint-config-standard": "latest",
     "@megalo/eslint-config-typescript": "latest",
-    "@megalo/target": "0.7.0",
-    "@megalo/template-compiler": "^0.9.1-0",
+    "@megalo/target": "latest",
+    "@megalo/template-compiler": "latest",
     "@types/node": "^11.11.4",
     "eslint": "^5.8.0",
     "stylus": "^0.54.5",
@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@megalo/vhtml-plugin": "^0.1.2",
-    "megalo": "^0.9.1-0",
+    "megalo": "latest",
     "octoparse": "^0.3.2"
   }
 }

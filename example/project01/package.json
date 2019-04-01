@@ -20,15 +20,15 @@
     "@megalo/babel-preset-app": "latest",
     "@megalo/cli-service": "latest",
     "@megalo/eslint-config-standard": "latest",
-    "@megalo/target": "0.5.7",
-    "@megalo/template-compiler": "^0.8.0",
+    "@megalo/target": "latest",
+    "@megalo/template-compiler": "latest",
     "eslint": "^5.8.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0"
   },
   "dependencies": {
     "@megalo/vhtml-plugin": "^0.1.2",
-    "megalo": "^0.8.0",
+    "megalo": "latest",
     "octoparse": "^0.3.2",
     "vuex": "^3.0.1"
   }
