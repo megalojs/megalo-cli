@@ -6,18 +6,24 @@
 
 install
 
-```
-$ npm install -g @megalo/cli
-```
-
-build
-
-```
-$ megalo pro-name
+``` bash
+$ npm i -g sao
 ```
 
-help
+build and create project
 
+``` bash
+$ sao npm:@megalo/cli your-project-name
 ```
-$ megalo -h
+
+enter the project root directory
+
+``` bash
+$ cd your-project-name
+```
+
+running
+
+``` bash
+$ npm run dev:wechat
 ```

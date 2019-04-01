@@ -55,16 +55,14 @@ exports.generateCssLoaders = (chainaConfig, projectOptions) => {
             config.tap(options => merge(options, projectOptions.css.loaderOptions['css']))
           })
         .end()
-        .use('px2rpx')
-          .loader('px2rpx-loader')
-          .options({
-            rpxUnit: 0.5,
-            rpxPrecision: 6
-          })
-          .when(projectOptions.css.loaderOptions['px2rpx'], config => {
-            config.tap(options => merge(options, projectOptions.css.loaderOptions['px2rpx']))
-          })
-        .end()
+        .when(projectOptions.css.loaderOptions['px2rpx'], rule => {
+          rule.use('px2rpx')
+            .loader('px2rpx-loader')
+            .when(projectOptions.css.loaderOptions['px2rpx'], config => {
+              config.tap(options => merge(options, projectOptions.css.loaderOptions['px2rpx']))
+            })
+          .end()
+        })
         .when(loaderName !== 'css', config => {
           config.use(loaderName)
             .loader(`${loaderName}-loader`)

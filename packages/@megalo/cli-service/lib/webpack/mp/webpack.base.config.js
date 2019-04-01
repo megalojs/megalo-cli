@@ -7,13 +7,12 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const { resolveModule, loadModule } = require('@vue/cli-shared-utils')
+const { resolveModule, loadModule, error } = require('@vue/cli-shared-utils')
 const createMegaloTarget = require('@megalo/target')
 const compiler = require('@megalo/template-compiler')
 const { pagesEntry } = require('@megalo/entry')
 const { getCssExt, generateCssLoaders, checkFileExistsSync, resolve } = require('../../utils/util')
 const resolveClientEnv = require('../../utils/resolveClientEnv')
-const appMainFile = resolve('src/index.js')
 
 module.exports = function createBaseConfig (commandName, commandOptions, projectOptions) {
   const cwd = process.env.MEGALO_CLI_CONTEXT || process.cwd()
@@ -21,10 +20,18 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
   const isProd = process.env.NODE_ENV === 'production'
   const cssExt = getCssExt(platform)
   const chainaConfig = new ChainableWebpackConfig()
+  const isUseTypescript = !!checkFileExistsSync('tsconfig.json')
+  const jsExt = ['js', 'ts'][+isUseTypescript]
+  const appMainFile = checkFileExistsSync(`src/main.${jsExt}`) || checkFileExistsSync(`src/index.${jsExt}`)
+  if (!appMainFile) {
+    error(`Failed to locate entry file in ${cwd}`)
+    error(`Valid entry file should be one of: main.${jsExt}, index.${jsExt}`)
+    process.exit(1)
+  }
 
   chainaConfig
     .mode(isProd ? 'production' : 'development')
-    .devtool(isProd && !projectOptions.productionSourceMap ? 'none' : 'cheap-source-map')
+    .devtool(isProd && !projectOptions.productionSourceMap ? 'none' : 'source-map')
     .target(
       createMegaloTarget({
         compiler: Object.assign(compiler, {}),
@@ -65,7 +72,7 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
               [{
                 cache: true,
                 parallel: true,
-                sourceMap: projectOptions.productionSourceMap ? 'cheap-source-map' : false
+                sourceMap: projectOptions.productionSourceMap
               }]
             )
             .end()
@@ -73,7 +80,13 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
             .use(
               OptimizeCSSAssetsPlugin,
               [{
-                assetNameRegExp: new RegExp(`\\.${getCssExt(platform)}$`, 'g')
+                assetNameRegExp: new RegExp(`\\.${getCssExt(platform)}$`, 'g'),
+                cssProcessorPluginOptions: {
+                  preset: ['default', {
+                    discardComments: { removeAll: true },
+                    calc: false
+                  }]
+                }
               }]
             )
       })
@@ -89,6 +102,7 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
   chainaConfig.resolve.extensions
     .add('.vue')
     .add('.js')
+    .add('.ts')
     .add('.json')
 
   chainaConfig.resolve.alias
@@ -109,15 +123,31 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
         .end()
       .end()
 
-  generateCssLoaders(chainaConfig, projectOptions)
-
   chainaConfig.module
     .rule('js')
-      .test(/\.js$/)
+      .test(/\.(ts|js)x?$/)
       .use('babel')
         .loader('babel-loader')
         .end()
+        .exclude
+          .add(/node_modules/)
+          .end()
       .end()
+
+    .rule('ts')
+      .test(/\.tsx?$/)
+      .use('ts-loader')
+        .loader('ts-loader')
+        .options({
+          appendTsSuffixTo: [/\.vue$/],
+          transpileOnly: true
+        })
+        .end()
+      .exclude
+        .add(/node_modules/)
+        .end()
+      .end()
+
     .rule('picture')
       .test(/\.(png|jpe?g|gif)$/i)
       .use('url')
@@ -131,19 +161,10 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
       .end()
     .end()
 
+  // 这里有个坑，css相关的loader必须放处理 ts 的 loader的后面，不然target那边会报错
+  generateCssLoaders(chainaConfig, projectOptions)
+
   chainaConfig
-    .plugin('vue-loader-plugin')
-      .use(VueLoaderPlugin)
-      .end()
-    .plugin('env-replace-plugin')
-      .use(webpack.DefinePlugin, [resolveClientEnv()])
-      .end()
-    .plugin('mini-css-extract-plugin')
-      .use(MiniCssExtractPlugin, [{ filename: `static/css/[name].${cssExt}` }])
-      .end()
-    .plugin('process-plugin')
-      .use(webpack.ProgressPlugin)
-      .end()
     .plugin('friendly-error-plugin')
       .use(
         FriendlyErrorsPlugin,
@@ -164,6 +185,31 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
         }]
       )
       .end()
+    .plugin('process-plugin')
+      .use(webpack.ProgressPlugin)
+      .end()
+    .plugin('vue-loader-plugin')
+      .use(VueLoaderPlugin)
+      .end()
+    .plugin('env-replace-plugin')
+      .use(webpack.DefinePlugin, [resolveClientEnv()])
+      .end()
+    .plugin('mini-css-extract-plugin')
+      .use(MiniCssExtractPlugin, [{ filename: `static/css/[name].${cssExt}` }])
+      .end()
+    .when(isUseTypescript, config => {
+      const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+      config
+        .plugin('fork-ts-checker-webpack-plugin')
+        .use(
+          ForkTsCheckerWebpackPlugin,
+          [{
+            vue: true,
+            formatter: 'codeframe',
+            workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE
+          }]
+        )
+    })
 
   // 启用 @Megalo/API
   const megaloAPIPath = checkFileExistsSync(`node_modules/@megalo/api/platforms/${platform}`)
@@ -198,9 +244,9 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
         .use('eslint')
           .loader('eslint-loader')
           .options({
-            // TODO 支持typescript
             extensions: [
               '.js',
+              '.ts',
               '.jsx',
               '.vue'
             ],

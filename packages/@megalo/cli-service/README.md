@@ -1,18 +1,22 @@
 # @megalo/cli-service 1.x版本
 :hammer_and_wrench: megalo的开箱即用webpack小程序脚手架配置，内置megalo生态的部分插件，并提供用户自定义配置的入口
+
+完整文档地址: https://megalojs.org/#/cli/cli-service
+
 ## 特性
 - 零配置可用
 - 可根据自己的需求修改webpack原始配置
 - 内置了小程序项目常用的基础设施配置，满足基本需求
 - 项目配置分离，零耦和，配置插件化
+- typescript 支持
 
 ## 注意
 老项目注意 >>> `@megalo/cli-service` 1.0.0版本的api于 0.x的版本不兼容,使用方式有差异，0.x版本的点击[这里
 ](./0.x-version.md)
 ## 安装
-`@megalo/cli-service` 依赖 `@megalo/babel-preset-app` 、`@megalo/entry`、`@megalo/target` 、`@megalo/template-compiler`
+`@megalo/cli-service` 依赖 `@megalo/babel-preset-app` 、`@megalo/target` 、`@megalo/template-compiler`
 ```bash
-npm i @megalo/babel-preset-app @megalo/entry  @megalo/target @megalo/template-compiler @megalo/cli-service -D
+npm i @megalo/babel-preset-app  @megalo/target @megalo/template-compiler @megalo/cli-service -D
 ```
 
 ## 使用
@@ -98,13 +102,10 @@ module.exports = {
 - 编译、压缩、混淆等
 
 ## 注意
-`@megalo/cli-service` 对项目目录结构有一定要求, 例如：
-- `src` 目录下一定要有 `index.js` 文件,作为入口
+`@megalo/cli-service` 默认会读取 `src` 目录下的  `main.js` 、 `index.js` 、`main.ts` 、`index.ts`  其中之一并将其作为入口文件
 
 ## [demo](../../../example/project01/)
 
-## TODO
-- typescript 支持
 
 ## 更新记录
-- ［1.0.0 ］ 正式版发布
+- ［1.0.0 ］ alpha迭代中
