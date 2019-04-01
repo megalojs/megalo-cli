@@ -1,1 +1,0 @@
-# megalo-entry
