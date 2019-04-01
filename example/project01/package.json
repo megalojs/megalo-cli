@@ -19,7 +19,6 @@
   "devDependencies": {
     "@megalo/babel-preset-app": "latest",
     "@megalo/cli-service": "latest",
-    "@megalo/entry": "latest",
     "@megalo/eslint-config-standard": "latest",
     "@megalo/target": "0.5.7",
     "@megalo/template-compiler": "^0.8.0",
