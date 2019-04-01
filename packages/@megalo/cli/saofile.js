@@ -128,8 +128,8 @@ module.exports = {
               'less-loader': when(cssPreset === 'less', '^4.1.0'),
               'stylus': when(cssPreset === 'stylus', '^0.54.5'),
               'stylus-loader': when(cssPreset === 'stylus', '^3.0.2'),
-              'node-sass': when(cssPreset === 'sass', '^4.10.0'),
-              'sass-loader': when(cssPreset === 'sass', '^7.1.0'),
+              'node-sass': when(cssPreset === 'cscc', '^4.10.0'),
+              'sass-loader': when(cssPreset === 'scss', '^7.1.0'),
               'typescript': when(features.includes('typescript'), '^3.3.4000'),
               'vue-property-decorator': when(features.includes('typescript'), '^7.3.0')
             },
