@@ -41,7 +41,7 @@ const run = async (commandName = 'serve', commandOptions = { mode: 'development'
 program
   .usage('[Commands] [Options] [pattern]')
   .option('--mode <mode>', 'specify env mode (default: serve => development, build => production)')
-  .option('--platform <platform>', 'set target platform ', /^(wechat|alipay|swan|tt|h5)$/i, 'wechat')
+  .option('--platform <platform>', 'set target platform ', /^(wechat|alipay|swan|toutiao|web)$/i, 'wechat')
   .option('--config <path>', 'set customer webpack config path ', '')
   .option('--report', 'generate report.html to help analyze bundle content ', false)
   .option('--report-json', 'generate report.json to help analyze bundle content ', false)

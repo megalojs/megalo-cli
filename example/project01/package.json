@@ -6,9 +6,11 @@
     "build:wechat": "megalo-cli-service build",
     "build:alipay": "megalo-cli-service build --platform alipay",
     "build:swan": "megalo-cli-service build --platform swan",
+    "build:toutiao": "megalo-cli-service build --platform toutiao",
     "dev:wechat": "megalo-cli-service serve",
     "dev:alipay": "megalo-cli-service serve --platform alipay",
-    "dev:swan": "megalo-cli-service serve --platform swan"
+    "dev:swan": "megalo-cli-service serve --platform swan",
+    "dev:toutiao": "megalo-cli-service serve --platform toutiao"
   },
   "babel": {
     "presets": [

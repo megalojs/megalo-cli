@@ -14,7 +14,7 @@ exports.getCssExt = (platform = 'wechat') => {
     wechat: 'wxss',
     alipay: 'acss',
     swan: 'css',
-    tt: 'ttss'
+    toutiao: 'ttss'
   }[platform]
 }
 
