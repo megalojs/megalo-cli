@@ -1,6 +1,13 @@
+import Vue from 'vue'
+import 'miniprogram-api-typings'
+import '@types/node'
+
 declare module '*.vue' {
-  import Vue from 'vue';
-  export default Vue;
+  export default Vue
 }
 
-declare function getApp()
+declare module 'megalo/types/vue' {
+  interface Vue {
+    $mp: any
+  }
+}

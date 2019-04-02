@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
-    // 与 Vue 的浏览器支持保持一致
     "target": "es5",
-    // 这可以对 `this` 上的数据属性进行更严格的推断
     "strict": true,
     "sourceMap": true,
     "isolatedModules": true,
@@ -27,8 +25,10 @@
     "experimentalDecorators": true,
     "esModuleInterop": true
   },
+  "types": ["miniprogram-api-typings", "@types/node"],
   "include": [
-    "./src/**/*"
+    "./src/**/*",
+    "types/**/*"
   ],
   "exclude": [
     "node_modules"

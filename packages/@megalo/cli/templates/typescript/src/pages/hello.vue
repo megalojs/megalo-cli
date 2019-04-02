@@ -38,7 +38,7 @@ export default class Hello extends Vue {
 
   created () {
     console.log('Page [hello] Vue created')
-    var appInstance = getApp()
+    const appInstance: any = getApp()
     console.log(appInstance.globalData) // I am global data
   }
 

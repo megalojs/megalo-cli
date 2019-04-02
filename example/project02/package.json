@@ -28,6 +28,7 @@
     "@megalo/target": "latest",
     "@megalo/template-compiler": "latest",
     "@types/node": "^11.11.4",
+    "miniprogram-api-typings": "^2.4.2-2",
     "eslint": "^5.8.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",

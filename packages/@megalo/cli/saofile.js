@@ -123,6 +123,7 @@ module.exports = {
               '@megalo/target': 'latest',
               '@megalo/template-compiler': 'latest',
               '@types/node': when(features.includes('typescript'), '^11.11.4'),
+              'miniprogram-api-typings': when(features.includes('typescript'), 'latest'),
               'eslint': when(features.includes('eslint'), '^5.15.3'),
               'less': when(cssPreset === 'less', '^3.8.1'),
               'less-loader': when(cssPreset === 'less', '^4.1.0'),
