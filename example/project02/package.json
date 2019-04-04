@@ -8,9 +8,11 @@
     "build:wechat": "megalo-cli-service build",
     "build:alipay": "megalo-cli-service build --platform alipay",
     "build:swan": "megalo-cli-service build --platform swan",
+    "build:toutiao": "megalo-cli-service build --platform toutiao",
     "dev:alipay": "megalo-cli-service serve --platform alipay",
     "dev:swan": "megalo-cli-service serve --platform swan",
     "dev:wechat": "megalo-cli-service serve",
+    "dev:toutiao": "megalo-cli-service serve --platform toutiao",
     "lint": "eslint --fix --ext .js,.vue,.ts src"
   },
   "author": "bigMeow <running@vip.163.com>",

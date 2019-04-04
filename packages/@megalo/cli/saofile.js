@@ -104,9 +104,11 @@ module.exports = {
               'build:wechat': 'megalo-cli-service build',
               'build:alipay': 'megalo-cli-service build --platform alipay',
               'build:swan': 'megalo-cli-service build --platform swan',
+              'build:toutiao': 'megalo-cli-service build --platform toutiao',
               'dev:alipay': 'megalo-cli-service serve --platform alipay',
               'dev:swan': 'megalo-cli-service serve --platform swan',
               'dev:wechat': 'megalo-cli-service serve',
+              'dev:toutiao': 'megalo-cli-service serve --platform toutiao',
               'lint': when(features.includes('eslint'), 'eslint --fix --ext .js,.ts,.vue src')
             },
             'license': 'ISC',
@@ -129,7 +131,7 @@ module.exports = {
               'less-loader': when(cssPreset === 'less', '^4.1.0'),
               'stylus': when(cssPreset === 'stylus', '^0.54.5'),
               'stylus-loader': when(cssPreset === 'stylus', '^3.0.2'),
-              'node-sass': when(cssPreset === 'cscc', '^4.10.0'),
+              'node-sass': when(cssPreset === 'scss', '^4.10.0'),
               'sass-loader': when(cssPreset === 'scss', '^7.1.0'),
               'typescript': when(features.includes('typescript'), '^3.3.4000'),
               'vue-property-decorator': when(features.includes('typescript'), '^7.3.0')
