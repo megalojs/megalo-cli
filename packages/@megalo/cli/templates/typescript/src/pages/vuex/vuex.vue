@@ -37,7 +37,7 @@ export default class Vuex extends Vue {
   }
 
   created () {
-    var appInstance = getApp()
+    const appInstance: any = getApp()
     this.globalData = appInstance.globalData
   }
 }

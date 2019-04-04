@@ -7,7 +7,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const { resolveModule, loadModule, error } = require('@vue/cli-shared-utils')
+const { resolveModule, loadModule, error, warn } = require('@vue/cli-shared-utils')
 const createMegaloTarget = require('@megalo/target')
 const compiler = require('@megalo/template-compiler')
 const { pagesEntry } = require('@megalo/entry')
@@ -29,19 +29,27 @@ module.exports = function createBaseConfig (commandName, commandOptions, project
     process.exit(1)
   }
 
+  const targetConfig = {
+    compiler: Object.assign(compiler, {}),
+    platform
+  }
+  const octoParsePath = checkFileExistsSync(`node_modules/octoparse/lib/platform/${platform}`)
+  if (octoParsePath) {
+    targetConfig.htmlParse = {
+      templateName: 'octoParse',
+      src: octoParsePath
+    }
+  } else {
+    warn(
+      `current platform '${platform}' does not support 'v-html' directive , ` +
+      `please pay attention to the official website: https://github.com/kaola-fed/octoparse`
+    )
+  }
+
   chainaConfig
     .mode(isProd ? 'production' : 'development')
     .devtool(isProd && !projectOptions.productionSourceMap ? 'none' : 'source-map')
-    .target(
-      createMegaloTarget({
-        compiler: Object.assign(compiler, {}),
-        platform,
-        htmlParse: {
-          templateName: 'octoParse',
-          src: resolve(`node_modules/octoparse/lib/platform/${platform}`)
-        }
-      })
-    )
+    .target(createMegaloTarget(targetConfig))
     .output
       .path(resolve(`dist-${platform}/`))
       .filename('static/js/[name].js')

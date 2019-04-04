@@ -1,7 +1,7 @@
 {
   "name": "@megalo/cli-service",
   "description": ":hammer_and_wrench: megalo的开箱即用webpack小程序脚手架配置，内置megalo生态的部分插件，并提供用户自定义配置的入口(对标vue-cli 3)",
-  "version": "1.0.0-alpha.15",
+  "version": "1.0.0-alpha.18",
   "main": "./bin/index.js",
   "bin": {
     "megalo-cli-service": "./bin/index.js"
@@ -28,7 +28,6 @@
     "fs-extra": "^7.0.1",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
-    "lodash": "^4.17.11",
     "lodash.defaultsdeep": "^4.6.0",
     "mini-css-extract-plugin": "^0.4.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
