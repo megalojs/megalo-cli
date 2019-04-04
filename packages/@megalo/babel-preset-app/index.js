@@ -1,6 +1,6 @@
-const path = require('path')
-const fs = require('fs')
-const isUseTypescript = fs.existsSync(path.join(process.env.MEGALO_CLI_CONTEXT, 'tsconfig.json'))
+// const path = require('path')
+// const fs = require('fs')
+// const isUseTypescript = fs.existsSync(path.join(process.env.MEGALO_CLI_CONTEXT, 'tsconfig.json'))
 module.exports = function () {
   // TODO 根据platform，分别输出真对小程序和h5的配置
   const presets = [
@@ -20,22 +20,23 @@ module.exports = function () {
         'helpers': false,
         'regenerator': true
       }
+    ],
+    [
+      '@babel/plugin-proposal-decorators',
+      { 'legacy': true }
+    ],
+    ['@babel/plugin-proposal-class-properties',
+      { 'loose': true }
     ]
   ]
 
-  if (isUseTypescript) {
-    // 暂时用ts-loader 来替换
-    // presets.push(['@babel/preset-typescript', { allExtensions: true }])
-    plugins.push(
-      [
-        '@babel/plugin-proposal-decorators',
-        { 'legacy': true }
-      ],
-      ['@babel/plugin-proposal-class-properties',
-        { 'loose': true }
-      ]
-    )
-  }
+  // if (isUseTypescript) {
+  //   // 暂时用ts-loader 来替换
+  //   presets.push(['@babel/preset-typescript', { allExtensions: true }])
+  //   plugins.push(
+
+  //   )
+  // }
 
   return {
     presets,
