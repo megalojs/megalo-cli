@@ -1,0 +1,26 @@
+{
+  "name": "@megalo/cli-plugin-web",
+  "version": "1.0.0-alpha.1",
+  "description": "为megalo工程生成web网页相关的webpack配置插件",
+  "main": "index.js",
+  "dependencies": {
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megalojs/megalo-cli.git",
+    "directory": "packages/@megalo/cli-plugin-web"
+  },
+  "bugs": {
+    "url": "https://github.com/megalojs/megalo-cli/issues"
+  },
+  "homepage": "https://github.com/megalojs/megalo-cli/tree/master/packages/@megalo/cli-plugin-web#readme",
+  "keywords": [
+    "megalo",
+    "babel"
+  ],
+  "author": "bigMeow <running@vip.163.com> (github.com/bigmeow)",
+  "license": "MIT"
+}
