@@ -1,6 +1,6 @@
 {
   "name": "@testxcx/cli-service",
-  "version": "1.0.0-alpha.21",
+  "version": "1.0.0-alpha.22",
   "description": ":hammer_and_wrench: megalo的开箱即用webpack小程序脚手架配置，内置megalo生态的部分插件，并提供用户自定义配置的入口(对标vue-cli 3)",
   "main": "./bin/megalo-service.js",
   "bin": {
@@ -42,9 +42,9 @@
     "webpack-dev-server": "^3.3.1"
   },
   "peerDependencies": {
-    "@megalo/target": "^0.5.7",
+    "@megalo/target": "*",
     "@megalo/template-compiler": "*",
-    "octoparse": "^0.3.2"
+    "octoparse": "*"
   },
   "publishConfig": {
     "access": "public"
