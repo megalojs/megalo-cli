@@ -6,6 +6,11 @@ const modifyConfig = (config, fn) => {
   }
 }
 
+const defaults = {
+  clean: true,
+  watch: false
+}
+
 module.exports = (api, options) => {
   api.registerCommand('build', {
     description: 'build for production',
@@ -18,6 +23,12 @@ module.exports = (api, options) => {
       '--watch': `watch for changes`
     }
   }, async (args, rawArgs) => {
+    for (const key in defaults) {
+      if (args[key] == null) {
+        args[key] = defaults[key]
+      }
+    }
+
     const fs = require('fs-extra')
     const path = require('path')
     const chalk = require('chalk')
@@ -30,7 +41,7 @@ module.exports = (api, options) => {
     log()
     logWithSpinner(`Building ${platform} for ${mode}...`)
     const webpackConfig = api.resolveWebpackConfig()
-    console.log('build 入口', webpackConfig.entry)
+  
     // 监听文件改动
     if (args.watch) {
       modifyConfig(webpackConfig, config => {
