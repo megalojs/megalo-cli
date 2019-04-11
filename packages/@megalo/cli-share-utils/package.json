@@ -1,6 +1,6 @@
 {
   "name": "@megalo/cli-share-utils",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "shared utilities for megalo-cli packages",
   "keywords": [
     "megalo",
