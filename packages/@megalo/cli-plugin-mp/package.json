@@ -1,9 +1,27 @@
 {
-  "name": "@megalo/cli-plugin-mp",
-  "version": "1.0.0-alpha.1",
+  "name": "@testxcx/cli-plugin-mp",
+  "version": "1.0.0-alpha.2",
   "description": "为megalo工程生成小程序相关的webpack配置插件",
   "main": "index.js",
   "dependencies": {
+    "@megalo/cli-share-utils": "^1.0.0-alpha.1",
+    "@megalo/entry": "^0.1.2",
+    "babel-loader": "^8.0.5",
+    "copy-webpack-plugin": "^5.0.2",
+    "css-loader": "^2.1.1",
+    "deepmerge": "^3.2.0",
+    "file-loader": "^3.0.1",
+    "mini-css-extract-plugin": "^0.6.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "px2rpx-loader": "^0.1.10",
+    "terser-webpack-plugin": "^1.2.3",
+    "url-loader": "^1.1.2",
+    "vue-loader": "15.4.2"
+  },
+  "peerDependencies": {
+    "@megalo/target": "^0.5.7",
+    "@megalo/template-compiler": "*",
+    "octoparse": "^0.3.2"
   },
   "publishConfig": {
     "access": "public"
