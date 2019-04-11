@@ -9,3 +9,5 @@ temp
 .version
 .versions
 package-lock.json
+example/project03
+dist-*

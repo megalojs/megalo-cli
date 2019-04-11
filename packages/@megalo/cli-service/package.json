@@ -1,0 +1,52 @@
+{
+  "name": "@testxcx/cli-service",
+  "version": "1.0.0-alpha.21",
+  "description": ":hammer_and_wrench: megalo的开箱即用webpack小程序脚手架配置，内置megalo生态的部分插件，并提供用户自定义配置的入口(对标vue-cli 3)",
+  "main": "./bin/megalo-service.js",
+  "bin": {
+    "megalo-cli-service": "./bin/megalo-service.js"
+  },
+  "scripts": {
+    "dev:mp": "node bin/megalo-service.js serve --platform wechat",
+    "dev:web": "node bin/megalo-service.js serve --platform web --https --copy",
+    "build": "node bin/megalo-service.js build --platform web",
+    "help": "node bin/megalo-service.js help",
+    "debug": "node bin/megalo-service.js inspect"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=9"
+  },
+  "dependencies": {
+    "@testxcx/cli-plugin-mp": "^1.0.0-alpha.1",
+    "@megalo/cli-share-utils": "^1.0.0-alpha.1",
+    "@soda/friendly-errors-webpack-plugin": "^1.7.1",
+    "case-sensitive-paths-webpack-plugin": "^2.2.0",
+    "cliui": "^4.1.0",
+    "dotenv": "^7.0.0",
+    "dotenv-expand": "^5.1.0",
+    "fs-extra": "^7.0.1",
+    "hash-sum": "^1.0.2",
+    "lodash.defaultsdeep": "^4.6.0",
+    "read-pkg": "^5.0.0",
+    "string.prototype.padend": "^3.0.0",
+    "webpack": ">=4 < 4.29",
+    "webpack-bundle-analyzer": "^3.3.0",
+    "webpack-chain": "^5.2.4",
+    "webpack-merge": "^4.2.1",
+    "address": "^1.0.3",
+    "clipboardy": "^2.0.0",
+    "launch-editor-middleware": "^2.2.1",
+    "portfinder": "^1.0.20",
+    "webpack-dev-server": "^3.3.1"
+  },
+  "peerDependencies": {
+    "@megalo/target": "^0.5.7",
+    "@megalo/template-compiler": "*",
+    "octoparse": "^0.3.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
