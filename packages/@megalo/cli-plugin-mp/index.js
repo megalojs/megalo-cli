@@ -123,6 +123,9 @@ module.exports = (api, options) => {
 
       // 插件
       chainaConfig
+        .plugin('process-plugin')
+          .use(webpack.ProgressPlugin)
+          .end()
         .plugin('vue-loader-plugin')
           .use(VueLoaderPlugin)
           .end()

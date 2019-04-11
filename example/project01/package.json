@@ -20,10 +20,10 @@
   "license": "MIT",
   "devDependencies": {
     "@megalo/babel-preset-app": "latest",
-    "@megalo/cli-service": "latest",
     "@megalo/eslint-config-standard": "latest",
     "@megalo/target": "latest",
     "@megalo/template-compiler": "latest",
+    "@testxcx/cli-service": "latest",
     "eslint": "^5.8.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0"
