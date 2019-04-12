@@ -6,10 +6,11 @@ Standard Tooling for Megalo Project Development
 | 包名 | 最新版本号 | 最后更新日期 | 包描述
 | ------ | ------ | ------ | ------ |
 | [@megalo/cli](./packages/@megalo/cli) | 1.0.0-alpha.5 | 2019/04/04 | 生成标准的megalo项目，生成后与用户无关 |
-| [@megalo/cli-service](./packages/@megalo/cli-service) | 1.0.0-alpha.19 | 2019/04/12 | megalo项目的webpack零配置插件，直接对用户提供服务
+| [@megalo/cli-service](./packages/@megalo/cli-service) | 1.0.0-alpha.19 | 2019/04/12 | megalo项目的webpack零配置插件，支持修改配置，支持插件化加载用户配置，直接对用户提供服务（核心）
 | [@megalo/cli-plugin-mp](./packages/@megalo/cli-plugin-mp) | 1.0.0-alpha.1 | 2019/04/12 | megalo项目默认编译小程序的webpack零配置插件，@megalo/cli-service内部默认加载该插件
-| [@megalo/cli-plugin-web](./packages/@megalo/cli-plugin-web) | 1.0.0-alpha.1 | 2019/04/12 | megalo项目默认编译h5的webpack零配置插件,@megalo/cli-service内部默认加载该插件
-| [@megalo/entry](./packages/@megalo/entry) | 0.1.2 | 2019/03/01 | 读取入口文件的webpack插件（未来可能废弃，交由megalo-aot处理） |
+| [@megalo/cli-plugin-web](./packages/@megalo/cli-plugin-web) | 1.0.0-alpha.1 | 2019/04/12 | megalo项目默认编译h5的webpack零配置插件,@megalo/cli-service内部默认加载该插件@megalo/cli-share-utils
+| [@megalo/cli-share-utils](./packages/@megalo/cli-share-utils) | 1.0.0-alpha.2 | 2019/04/12 | cli中用到的可剥离出来的公共函数
+| [@megalo/entry](./packages/@megalo/entry) | 0.1.2 | 2019/03/01 | 读取入口文件的webpack插件（ 未来可能废弃，交由megalo-aot处理，或者集成到`@megalo/cli-share-utils` 中） |
 | [@megalo/babel-preset-app](./packages/@megalo/babel-preset-app) | 1.0.0-alpha.5 | 2019/04/04 | 包装脚手架babel相关的配置，直接对用户提供服务 |
 
 ## 其他相关包
