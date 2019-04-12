@@ -9,10 +9,15 @@ module.exports = async (api, options, args) => {
 
   const webpackConfig = api.resolveWebpackConfig()
   const compiler = webpack(webpackConfig)
+  // 编译小程序可能不需要这个？
   const server = new WebpackDevServer(compiler, {
     quiet: true,
     contentBase: targetDir,
-    writeToDisk: true
+    clientLogLevel: 'none',
+    writeToDisk: true,
+    hot: false,
+    inline: false,
+    watchOptions: { ignored: /node_modules/ }
   })
 
   ;['SIGINT', 'SIGTERM'].forEach(signal => {
