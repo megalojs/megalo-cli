@@ -4,10 +4,15 @@ module.exports = async (api, options, args) => {
   const webpack = require('webpack')
   const WebpackDevServer = require('webpack-dev-server')
 
+  const platform = args.platform
+  const targetDir = api.resolve(`dist-${platform}`)
+
   const webpackConfig = api.resolveWebpackConfig()
   const compiler = webpack(webpackConfig)
   const server = new WebpackDevServer(compiler, {
-    quiet: true
+    quiet: true,
+    contentBase: targetDir,
+    writeToDisk: true
   })
 
   ;['SIGINT', 'SIGTERM'].forEach(signal => {

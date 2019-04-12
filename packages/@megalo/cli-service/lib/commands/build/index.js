@@ -35,13 +35,15 @@ module.exports = (api, options) => {
     const webpack = require('webpack')
     const formatStats = require('./formatStats')
     const { log, done, logWithSpinner, stopSpinner } = require('@megalo/cli-share-utils')
+
     const mode = api.service.mode
     const platform = args.platform
     const targetDir = api.resolve(`dist-${platform}`)
+
     log()
     logWithSpinner(`Building ${platform} for ${mode}...`)
     const webpackConfig = api.resolveWebpackConfig()
-  
+
     // 监听文件改动
     if (args.watch) {
       modifyConfig(webpackConfig, config => {
@@ -86,7 +88,7 @@ module.exports = (api, options) => {
         )
         log(formatStats(stats, targetDirShort, api))
         if (!args.watch) {
-          done(`Build complete. The ${chalk.cyan(targetDirShort)} directory is ready to be deployed.`)
+          done(`Build complete. The compiled files are in directory ${chalk.cyan(targetDirShort)}. (*^▽^*) Enjoy it~`)
         } else {
           done(`Build complete. Watching for changes...`)
         }
