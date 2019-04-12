@@ -4,7 +4,7 @@
   "description": "为megalo工程生成小程序相关的webpack配置插件",
   "main": "index.js",
   "dependencies": {
-    "@megalo/cli-share-utils": "^1.0.0-alpha.1",
+    "@megalo/cli-share-utils": "latest",
     "@megalo/entry": "^0.1.2",
     "copy-webpack-plugin": "^5.0.2",
     "css-loader": "^2.1.1",
@@ -36,7 +36,7 @@
   "homepage": "https://github.com/megalojs/megalo-cli/tree/master/packages/@megalo/cli-plugin-mp#readme",
   "keywords": [
     "megalo",
-    "babel"
+    "cli-plugin"
   ],
   "author": "bigMeow <running@vip.163.com> (github.com/bigmeow)",
   "license": "MIT"
