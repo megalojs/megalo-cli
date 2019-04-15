@@ -9,7 +9,7 @@ module.exports = (api, options) => {
   const cssExt = getCssExt(platform)
   const isProd = process.env.NODE_ENV === 'production'
 
-  api.chainWebpack(chainaConfig => {
+  api.chainWebpack(chainConfig => {
     if (!['web', 'h5'].includes(platform)) {
       const webpack = require('webpack')
       const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -22,13 +22,13 @@ module.exports = (api, options) => {
       const target = createTarget()
 
       // app和页面入口
-      chainaConfig.entry('app').clear().add(appEntry)
+      chainConfig.entry('app').clear().add(appEntry)
       const pages = Object.entries(pagesEntry)
       for (const [key, value] of pages) {
-        chainaConfig.entry(key).add(value)
+        chainConfig.entry(key).add(value)
       }
 
-      chainaConfig
+      chainConfig
         .devtool(isProd && !options.productionSourceMap ? 'none' : 'source-map')
         .target(target)
         .output
@@ -38,7 +38,7 @@ module.exports = (api, options) => {
           .pathinfo(false)
 
       // 提取公共文件、压缩混淆
-      chainaConfig.optimization
+      chainConfig.optimization
         .noEmitOnErrors(true)
         .runtimeChunk({ name: 'runtime' })
         .splitChunks({
@@ -82,10 +82,10 @@ module.exports = (api, options) => {
       })
 
       // alias
-      chainaConfig.resolve.alias.set('vue', 'megalo')
+      chainConfig.resolve.alias.set('vue', 'megalo')
 
       // 处理.vue
-      chainaConfig.module
+      chainConfig.module
         .rule('vue')
           .test(/\.vue$/)
           .use('vue')
@@ -97,7 +97,7 @@ module.exports = (api, options) => {
             })
 
       // 处理js、ts
-      chainaConfig.module
+      chainConfig.module
       .rule('js')
         .test(/\.(ts|js)x?$/)
         .use('babel')
@@ -105,9 +105,12 @@ module.exports = (api, options) => {
           .end()
           .exclude
             .add(/node_modules/)
+            .end()
+          .include
+            .add(/@megalo\/ui/)
 
       // 图片
-      chainaConfig.module
+      chainConfig.module
         .rule('picture')
         .test(/\.(png|jpe?g|gif)$/i)
         .use('url')
@@ -119,10 +122,10 @@ module.exports = (api, options) => {
           })
 
       // css相关loader
-      generateCssLoaders(chainaConfig)
+      generateCssLoaders(chainConfig)
 
       // 插件
-      chainaConfig
+      chainConfig
         .plugin('process-plugin')
           .use(webpack.ProgressPlugin)
           .end()
@@ -136,14 +139,14 @@ module.exports = (api, options) => {
       // 启用 @Megalo/API
       const megaloAPIPath = checkFileExistsSync(`node_modules/@megalo/api/platforms/${platform}`)
       if (megaloAPIPath) {
-        chainaConfig.plugin('provide-plugin')
+        chainConfig.plugin('provide-plugin')
           .use(webpack.ProvidePlugin, [{ 'Megalo': [megaloAPIPath, 'default'] }])
       }
 
       // 拷贝原生小程序组件 TODO： 拷贝前可对其进行预处理（babel转译\混淆\压缩等）
       const nativeDir = checkFileExistsSync(path.join(options.nativeDir, platform)) || checkFileExistsSync(options.nativeDir)
       if (nativeDir) {
-        chainaConfig.plugin('copy-webpack-plugin')
+        chainConfig.plugin('copy-webpack-plugin')
             .use(
               CopyWebpackPlugin,
               [
@@ -164,6 +167,7 @@ module.exports = (api, options) => {
     // app entry
     const entryContext = api.resolve('src')
     const appEntry = findExisting(entryContext, [
+      'app.js',
       'main.js',
       'index.js',
       'App.vue',
@@ -172,7 +176,7 @@ module.exports = (api, options) => {
 
     if (!appEntry) {
       console.log(chalk.red(`Failed to locate entry file in ${chalk.yellow(entryContext)}.`))
-      console.log(chalk.red(`Valid entry file should be one of: main.js, index.js, App.vue or app.vue.`))
+      console.log(chalk.red(`Valid entry file should be one of: app.js, main.js, index.js, App.vue or app.vue.`))
       process.exit(1)
     }
 
@@ -211,7 +215,7 @@ module.exports = (api, options) => {
    * 生成css相关的 Loader
    *
    */
-  function generateCssLoaders (chainaConfig, projectOptions = options) {
+  function generateCssLoaders (chainConfig, projectOptions = options) {
     const MiniCssExtractPlugin = require('mini-css-extract-plugin')
     const merge = require('deepmerge')
     const neededLoader = new Map([
@@ -222,7 +226,7 @@ module.exports = (api, options) => {
     ])
 
     for (const [loaderName, loaderReg] of neededLoader) {
-      chainaConfig.module
+      chainConfig.module
         .rule(loaderName)
           .test(loaderReg)
           .use('MiniCssExtractPlugin')
@@ -251,6 +255,6 @@ module.exports = (api, options) => {
             .end()
           })
     }
-    return chainaConfig.module.toConfig().rules
+    return chainConfig.module.toConfig().rules
   }
 }
