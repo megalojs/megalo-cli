@@ -1,0 +1,27 @@
+{
+  "name": "@testxcx/cli-plugin-eslint",
+  "version": "1.0.0-alpha.1",
+  "description": "eslint plugin for megalo-cli",
+  "main": "index.js",
+  "dependencies": {
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megalojs/megalo-cli.git",
+    "directory": "packages/@megalo/cli-plugin-eslint"
+  },
+  "bugs": {
+    "url": "https://github.com/megalojs/megalo-cli/issues"
+  },
+  "homepage": "https://github.com/megalojs/megalo-cli/tree/master/packages/@megalo/cli-plugin-eslint#readme",
+  "keywords": [
+    "megalo",
+    "cli-plugin",
+    "eslint"
+  ],
+  "author": "bigMeow <running@vip.163.com> (github.com/bigmeow)",
+  "license": "MIT"
+}
