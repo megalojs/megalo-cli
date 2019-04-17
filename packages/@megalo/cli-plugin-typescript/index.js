@@ -9,7 +9,7 @@ module.exports = (api, options) => {
 
     config.resolve
       .extensions
-        .merge(['.ts', '.tsx'])
+        .merge(['.ts'])
 
     const tsRule = config.module.rule('ts').test(/\.ts$/)
 
@@ -18,25 +18,12 @@ module.exports = (api, options) => {
       tsRule.use(loader).loader(loader).options(options)
     }
 
-    addLoader({
-      loader: 'cache-loader',
-      options: api.genCacheConfig('ts-loader', {
-        'ts-loader': require('ts-loader/package.json').version,
-        'typescript': require('typescript/package.json').version
-      }, 'tsconfig.json')
-    })
-
     if (useThreads) {
       addLoader({
         loader: 'thread-loader'
       })
     }
 
-    // if (api.hasPlugin('babel')) {
-    //   addLoader({
-    //     loader: 'babel-loader'
-    //   })
-    // }
     addLoader({
       loader: 'ts-loader',
       options: {
