@@ -2,7 +2,6 @@ const path = require('path')
 
 module.exports = (api, options) => {
   const fs = require('fs')
-  const useThreads = process.env.NODE_ENV === 'production' && options.parallel
 
   api.chainWebpack(config => {
     config.resolveLoader.modules.prepend(path.join(__dirname, 'node_modules'))
@@ -18,32 +17,22 @@ module.exports = (api, options) => {
       tsRule.use(loader).loader(loader).options(options)
     }
 
-    if (useThreads) {
-      addLoader({
-        loader: 'thread-loader'
-      })
-    }
-
     addLoader({
       loader: 'ts-loader',
       options: {
         transpileOnly: true,
-        appendTsSuffixTo: ['\\.vue$'],
-        // https://github.com/TypeStrong/ts-loader#happypackmode-boolean-defaultfalse
-        happyPackMode: useThreads
+        appendTsSuffixTo: ['\\.vue$']
       }
     })
 
-    // this plugin does not play well with jest + cypress setup (tsPluginE2e.spec.js) somehow
-    // so temporarily disabled for vue-cli tests
+    const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
     config
       .plugin('fork-ts-checker')
-        .use(require('fork-ts-checker-webpack-plugin'), [{
+        .use(ForkTsCheckerWebpackPlugin, [{
           vue: true,
           tslint: options.lintOnSave !== false && fs.existsSync(api.resolve('tslint.json')),
           formatter: 'codeframe',
-          // https://github.com/TypeStrong/ts-loader#happypackmode-boolean-defaultfalse
-          checkSyntacticErrors: useThreads
+          workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE
         }])
   })
 

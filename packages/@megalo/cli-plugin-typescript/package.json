@@ -1,6 +1,6 @@
 {
   "name": "@megalo/cli-plugin-typescript",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "typescript plugin for megalo-cli",
   "main": "index.js",
   "dependencies": {
