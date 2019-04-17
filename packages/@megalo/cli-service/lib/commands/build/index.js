@@ -60,8 +60,8 @@ module.exports = (api, options) => {
           logLevel: 'warn',
           openAnalyzer: false,
           analyzerMode: args.report ? 'static' : 'disabled',
-          reportFilename: `${platform}-report.html`,
-          statsFilename: `${platform}-report.json`,
+          reportFilename: `../${platform}-report.html`,
+          statsFilename: `../${platform}-report.json`,
           generateStatsFile: !!args['report-json']
         }))
       })
