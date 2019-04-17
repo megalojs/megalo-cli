@@ -42,6 +42,7 @@ module.exports = (api, options) => {
 
     log()
     logWithSpinner(`Building ${platform} for ${mode}...`)
+    log()
     const webpackConfig = api.resolveWebpackConfig()
 
     // 监听文件改动
