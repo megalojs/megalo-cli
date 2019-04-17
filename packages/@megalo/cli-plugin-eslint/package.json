@@ -1,9 +1,18 @@
 {
-  "name": "@testxcx/cli-plugin-eslint",
+  "name": "@megalo/cli-plugin-eslint",
   "version": "1.0.0-alpha.1",
   "description": "eslint plugin for megalo-cli",
   "main": "index.js",
   "dependencies": {
+    "@vue/cli-shared-utils": "^3.6.0",
+    "babel-eslint": "^10.0.1",
+    "eslint-loader": "^2.1.2",
+    "globby": "^9.2.0",
+    "webpack": ">=4 < 4.29"
+  },
+  "optionalDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-vue": "^4.7.1"
   },
   "publishConfig": {
     "access": "public"

@@ -111,7 +111,7 @@ module.exports = class PluginAPI {
   }
 
   /**
-   * Generate a cache identifier from a number of variables
+   * 根据相关变量生成缓存标志
    */
   genCacheConfig (id, partialIdentifier, configFiles) {
     const fs = require('fs')
