@@ -1,0 +1,56 @@
+{
+  "name": "@megalo/target",
+  "version": "0.7.1",
+  "description": "",
+  "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "ava": "ava __tests__/**/*.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaola-fed/megalo-aot/tree/master/packages/target"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@megalo/regular-template-compiler": "^0.3.0",
+    "@megalo/template-compiler": "latest",
+    "@vue/component-compiler-utils": "^2.5.0",
+    "babel-generator": "^6.26.1",
+    "babelon": "^1.0.5",
+    "chalk": "^2.4.2",
+    "copy-webpack-plugin": "^4.5.2",
+    "hash-sum": "^1.0.2",
+    "js-yaml": "^3.12.0",
+    "json5": "^2.1.0",
+    "loader-utils": "^1.1.0",
+    "lodash.isequal": "^4.5.0",
+    "lodash.merge": "^4.6.1",
+    "postcss": "^7.0.2",
+    "postcss-selector-parser": "^5.0.0-rc.3",
+    "querystring": "^0.2.0",
+    "semver": "^5.6.0"
+  },
+  "peerDependencies": {
+    "vue-loader": "15.4.0",
+    "webpack": "^4.16.5"
+  },
+  "devDependencies": {
+    "ava": "^1.2.1",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "vue-loader": "^15.7.0",
+    "webpack-chain": "^5.2.0",
+    "yargs": "^13.2.2"
+  }
+}
