@@ -15,9 +15,6 @@ const schema = createSchema(joi => joi.object({
   // 生产构建时生成source map
   productionSourceMap: joi.boolean(),
 
-  // 是否为 Babel 或 TypeScript 使用 thread-loader。该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建。
-  parallel: joi.boolean(),
-
   // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码
   lintOnSave: joi.any().valid([true, false, 'error']),
 
@@ -52,15 +49,6 @@ exports.validate = (options, cb) => {
   validate(options, schema, cb)
 }
 
-// 在某些情况下, .cpu() 可能返回 undefined
-function hasMultipleCores () {
-  try {
-    return require('os').cpus().length > 1
-  } catch (e) {
-    return false
-  }
-}
-
 exports.defaults = () => ({
   appEntry: {
     jsEntry: '',
@@ -70,8 +58,6 @@ exports.defaults = () => ({
   nativeDir: '/src/native',
 
   productionSourceMap: false,
-
-  parallel: hasMultipleCores(),
 
   lintOnSave: true,
 
