@@ -1,6 +1,12 @@
 const { createSchema, validate } = require('@megalo/cli-share-utils')
 
 const schema = createSchema(joi => joi.object({
+  // 入口文件
+  appEntry: joi.object({
+    jsEntry: joi.string().allow(''),
+    vueEntry: joi.string().allow('')
+  }),
+
   // 小程序原生组件存放目录（如果你有多个平台的原生组件，你应当在此目录下再新建几个子文件夹，我们约定，子文件夹名和平台的名字一致）
   // 微信小程序组件则命名为 'wechat'，支付宝为'alipay', 百度为 'swan'
   // 如果只有一个平台，则无需再新建子文件夹
@@ -44,6 +50,11 @@ exports.validate = (options, cb) => {
 }
 
 exports.defaults = () => ({
+  appEntry: {
+    jsEntry: '',
+    vueEntry: ''
+  },
+
   nativeDir: '/src/native',
 
   productionSourceMap: false,
