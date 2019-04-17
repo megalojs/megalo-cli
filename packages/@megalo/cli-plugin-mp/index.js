@@ -8,6 +8,8 @@ module.exports = (api, options) => {
   const platform = process.env.PLATFORM
   const cssExt = getCssExt(platform)
   const isProd = process.env.NODE_ENV === 'production'
+  const isTypescript = api.hasPlugin('typescript')
+  const jsExt = ['js', 'ts'][+isTypescript]
 
   api.chainWebpack(chainConfig => {
     if (!['web', 'h5'].includes(platform)) {
@@ -102,12 +104,10 @@ module.exports = (api, options) => {
         .test(/\.(ts|js)x?$/)
         .use('babel')
           .loader('babel-loader')
-          .end()
-          .exclude
-            .add(/node_modules/)
-            .end()
-          .include
-            .add(/@megalo\/ui/)
+
+      // 占位
+      chainConfig.module
+        .rule('ts')
 
       // 图片
       chainConfig.module
@@ -167,9 +167,9 @@ module.exports = (api, options) => {
     // app entry
     const entryContext = api.resolve('src')
     const appEntry = findExisting(entryContext, [
-      'app.js',
-      'main.js',
-      'index.js',
+      `app.${jsExt}`,
+      `main.${jsExt}`,
+      `index.${jsExt}`,
       'App.vue',
       'app.vue'
     ])
