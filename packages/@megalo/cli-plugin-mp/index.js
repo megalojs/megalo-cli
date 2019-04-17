@@ -187,14 +187,15 @@ module.exports = (api, options) => {
     }
     // 页面entry
     const { pagesEntry } = require('@megalo/entry')
-    return { appEntry: appEntryPath, pagesEntry: pagesEntry(appEntryPath) }
+    return { appEntry: appEntryPath, pagesEntry: pagesEntry(appEntryPath, options) }
   }
 
   function createTarget () {
     const createMegaloTarget = require('@megalo/target')
     const targetConfig = {
       compiler: Object.assign(require('@megalo/template-compiler'), {}),
-      platform
+      platform,
+      projectOptions: options
     }
     const octoParsePath = checkFileExistsSync(`node_modules/octoparse/lib/platform/${platform}`)
     if (octoParsePath) {
