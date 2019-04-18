@@ -15,11 +15,18 @@ Standard Tooling for Megalo Project Development
 | [@megalo/entry](./packages/@megalo/entry) | 0.1.2 | 2019/03/01 | 读取入口文件的webpack插件（ 未来可能废弃，交由megalo-aot处理，或者集成到`@megalo/cli-share-utils` 中） |
 | [@megalo/babel-preset-app](./packages/@megalo/babel-preset-app) | 1.0.0-alpha.5 | 2019/04/04 | 包装脚手架babel相关的配置，直接对用户提供服务 |
 
+
 ## 其他相关包
 | 包名 | 最新版本号 | 最后更新日期 | 包描述
 | ------ | ------ | ------ | ------ |
 | [@megalo/eslint-config-standard](https://github.com/megalojs/eslint-config-standard) | 1.0.0 | 2019/03/21 | eslint-config-standard for megalo project |
 | [@megalo/eslint-config-typescript](https://github.com/megalojs/eslint-config-typescript) | 1.0.0-alpha.1 | 2019/03/25 | eslint-config-typescript for magolo-cli |
+
+
+## 社区贡献的cli插件
+| 包名 | 包描述
+| ------ | ------ |
+| 待定 | 待定 |
 
 
 > 注： alpha 为内部开发测试版本，部分API可能随有变动，请谨慎在生产环境中使用
