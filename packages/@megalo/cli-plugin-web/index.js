@@ -26,7 +26,7 @@ module.exports = (api, options) => {
 
       // web使用生成的入口文件
       chainConfig.entry('index')
-        .add(path.join(process.cwd(), './dist-web/webEntry.js'))
+				.add(path.join(process.cwd(), './dist-web/webEntry.js'))
 
       chainConfig
         .devtool(isProd && !options.productionSourceMap ? 'none' : 'source-map')
@@ -38,8 +38,8 @@ module.exports = (api, options) => {
 
       // web dev环境添加dev-server
       !isProd && chainConfig
-        .devServer
-          .open(true)
+				.devServer
+						.open(true)
 
       // 提取公共文件、压缩混淆
       chainConfig.optimization
@@ -105,7 +105,7 @@ module.exports = (api, options) => {
               .loader('babel-loader')
 
       // css相关loader
-      generateCssLoaders(chainConfig)
+      generateCssLoaders(chanConfig)
 
       // 图片
       chainConfig.module
@@ -128,15 +128,15 @@ module.exports = (api, options) => {
           .use(VueLoaderPlugin)
           .end()
         .plugin('mini-css-extract-plugin')
-          .use(MiniCssExtractPlugin, [{ filename: `static/css/[name].${cssExt}` }])
-          .end()
-        .plugin('html-webpack-plugin')
+					.use(MiniCssExtractPlugin, [{ filename: `static/css/[name].${cssExt}` }])
+					.end()
+				.plugin('html-webpack-plugin')
           .use(HtmlWebpackPlugin, [{
             filename: 'index.html',
             template: 'src/web/index.html'
           }])
-          .end()
-        .plugin('copy-webpack-plugin')
+					.end()
+				.plugin('copy-webpack-plugin')
           .use(CopyWebpackPlugin, [{
             from: 'src/static', to: 'static'
           }])
@@ -210,6 +210,7 @@ module.exports = (api, options) => {
     const createMegaloTarget = require('megalo-target-debug')
     const targetConfig = {
       platform,
+      compiler: require('vue-template-compiler'),
       projectOptions: options
     }
 
@@ -233,21 +234,21 @@ module.exports = (api, options) => {
     for (const [loaderName, loaderReg] of neededLoader) {
       chainConfig.module
         .rule(loaderName)
-          .test(loaderReg)
+					.test(loaderReg)
 
-            .use('MiniCssExtractPlugin')
-              .loader(MiniCssExtractPlugin.loader)
-            .end()
+						.use('MiniCssExtractPlugin')
+							.loader(MiniCssExtractPlugin.loader)
+						.end()
 
-            .use('css')
-              .loader('css-loader')
+						.use('css')
+							.loader('css-loader')
               .when(projectOptions.css.loaderOptions['css'], config => {
                 config.tap(options => merge(options, projectOptions.css.loaderOptions['css']))
               })
-            .end()
+						.end()
 
-            .use('postcss')
-              .loader('postcss-loader')
+						.use('postcss')
+							.loader('postcss-loader')
               .options({
                 plugins: () => [
                   require('autoprefixer')(),
@@ -257,15 +258,15 @@ module.exports = (api, options) => {
                   })
                 ]
               })
-            .end()
+						.end()
 
             .when(loaderName !== 'css', config => {
               config.use(loaderName)
-                .loader(`${loaderName}-loader`)
+								.loader(`${loaderName}-loader`)
                 .when(projectOptions.css.loaderOptions[loaderName], config => {
                   config.tap(options => merge(options, projectOptions.css.loaderOptions[loaderName]))
                 })
-              .end()
+							.end()
             })
     }
     return chainConfig.module.toConfig().rules

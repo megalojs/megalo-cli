@@ -18,13 +18,13 @@
     "postcss-plugin-px2rem": "^0.8.1",
     "terser-webpack-plugin": "^1.2.3",
     "url-loader": "^1.1.2",
-    "vue-loader": "15.4.0"
+    "vue-loader": "15.4.0",
+    "webpack-dev-server": "^3.3.1",
+    "vue-template-compiler": "^2.5.17"
   },
   "peerDependencies": {
-    "@megalo/target": "*",
     "megalo-target-debug": "*",
-    "vue": "*",
-    "vue-template-compiler": "*"
+    "vue": "^2.5.17"
   },
   "publishConfig": {
     "access": "public"
