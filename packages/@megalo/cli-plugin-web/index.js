@@ -207,7 +207,7 @@ module.exports = (api, options) => {
   }
 
   function createTarget () {
-    const createMegaloTarget = require('@megalo/target')
+    const createMegaloTarget = require('megalo-target-debug')
     const targetConfig = {
       platform,
       projectOptions: options

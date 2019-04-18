@@ -1,6 +1,6 @@
 {
   "name": "@testxcx/cli-plugin-web",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "megalo工程将小程序编译为web的webpack配置插件",
   "main": "index.js",
   "dependencies": {
@@ -22,6 +22,7 @@
   },
   "peerDependencies": {
     "@megalo/target": "*",
+    "megalo-target-debug": "*",
     "vue": "*",
     "vue-template-compiler": "*"
   },
