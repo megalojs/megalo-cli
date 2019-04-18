@@ -27,6 +27,7 @@
     "@megalo/babel-preset-app": "latest",
     "@megalo/eslint-config-standard": "latest",
     "@megalo/target": "latest",
+    "megalo-target-debug": "^0.0.1",
     "@testxcx/cli-service": "latest",
     "eslint": "^5.8.0",
     "less": "^3.8.1",
