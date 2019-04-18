@@ -27,7 +27,6 @@
     "@megalo/babel-preset-app": "latest",
     "@megalo/eslint-config-standard": "latest",
     "@megalo/target": "latest",
-    "@megalo/template-compiler": "latest",
     "@testxcx/cli-service": "latest",
     "eslint": "^5.8.0",
     "less": "^3.8.1",
@@ -36,9 +35,10 @@
   },
   "dependencies": {
     "@megalo/vhtml-plugin": "^0.1.2",
-    "megalo": "latest",
     "octoparse": "^0.3.2",
+    "vue": "^2.5.17",
     "vue-router": "^3.0.5",
+    "vue-template-compiler": "^2.5.17",
     "vuex": "^3.0.1"
   }
 }
