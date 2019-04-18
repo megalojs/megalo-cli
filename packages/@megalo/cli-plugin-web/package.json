@@ -25,12 +25,22 @@
   },
   "peerDependencies": {
     "@megalo/target": "*",
-    "@megalo/template-compiler": "*",
-    "octoparse": "*"
+    "vue": "*",
+    "vue-template-compiler": "*"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megalojs/megalo-cli.git",
+    "directory": "packages/@megalo/cli-plugin-web"
   },
-  "author": "",
-  "license": "ISC"
+  "bugs": {
+    "url": "https://github.com/megalojs/megalo-cli/issues"
+  },
+  "homepage": "https://github.com/megalojs/megalo-cli/tree/master/packages/@megalo/cli-plugin-web#readme",
+  "keywords": [
+    "megalo",
+    "cli-plugin"
+  ],
+  "author": "mosquito1803 <https://github.com/mosquito1803>",
+  "license": "MIT"
 }
