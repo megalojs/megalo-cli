@@ -26,7 +26,7 @@ module.exports = (api, options) => {
 
       // web使用生成的入口文件
       chainConfig.entry('index')
-				.add(path.join(process.cwd(), './dist-web/webEntry.js'))
+				.add(api.resolve('.megalo-tmp/webEntry.js'))
 
       chainConfig
         .devtool(isProd && !options.productionSourceMap ? 'none' : 'source-map')

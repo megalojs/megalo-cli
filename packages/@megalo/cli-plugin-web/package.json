@@ -1,6 +1,6 @@
 {
   "name": "@testxcx/cli-plugin-web",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "megalo工程将小程序编译为web的webpack配置插件",
   "main": "index.js",
   "dependencies": {
