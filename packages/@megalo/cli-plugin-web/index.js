@@ -105,7 +105,7 @@ module.exports = (api, options) => {
               .loader('babel-loader')
 
       // css相关loader
-      generateCssLoaders(chanConfig)
+      generateCssLoaders(chainConfig)
 
       // 图片
       chainConfig.module
