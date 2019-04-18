@@ -10,6 +10,7 @@ Standard Tooling for Megalo Project Development
 | [@megalo/cli-plugin-mp](./packages/@megalo/cli-plugin-mp) | 1.0.0-alpha.1 | 2019/04/12 | megalo项目默认编译小程序的webpack零配置插件，@megalo/cli-service内部默认加载该插件
 | [@megalo/cli-plugin-web](./packages/@megalo/cli-plugin-web) | 1.0.0-alpha.1 | 2019/04/12 | megalo项目默认编译h5的webpack零配置插件,@megalo/cli-service内部默认加载该插件
 | [@megalo/cli-plugin-eslint](./packages/@megalo/cli-plugin-eslint) | 1.0.0-alpha.1 | 2019/04/17 | megalo项目 eslint 插件，提供代码格式检查、自动修复等功能，安装到 package.json 中即可自动被启用，直接对用户提供服务
+| [@megalo/cli-plugin-typescript](./packages/@megalo/cli-plugin-typescript) | 1.0.0-alpha.1 | 2019/04/18 | megalo项目 typescript 插件，提供编译typescript、typescript类型检查功能，配合 @megalo/cli-plugin-eslint 提供代码格式检查、自动修复等功能，安装到 package.json 中即可自动被启用，直接对用户提供服务
 | [@megalo/cli-share-utils](./packages/@megalo/cli-share-utils) | 1.0.0-alpha.2 | 2019/04/12 | cli中用到的可剥离出来的公共函数
 | [@megalo/entry](./packages/@megalo/entry) | 0.1.2 | 2019/03/01 | 读取入口文件的webpack插件（ 未来可能废弃，交由megalo-aot处理，或者集成到`@megalo/cli-share-utils` 中） |
 | [@megalo/babel-preset-app](./packages/@megalo/babel-preset-app) | 1.0.0-alpha.5 | 2019/04/04 | 包装脚手架babel相关的配置，直接对用户提供服务 |
