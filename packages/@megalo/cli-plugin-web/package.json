@@ -1,7 +1,7 @@
 {
-  "name": "megalo-cli-plugin-web-alpha",
-  "version": "0.0.7",
-  "description": "",
+  "name": "@testxcx/cli-plugin-web",
+  "version": "1.0.0-alpha.1",
+  "description": "megalo工程将小程序编译为web的webpack配置插件",
   "main": "index.js",
   "dependencies": {
     "@megalo/cli-share-utils": "^1.0.0-alpha.1",
@@ -16,17 +16,17 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-plugin-px2rem": "^0.8.1",
-    "px2rpx-loader": "^0.1.10",
     "terser-webpack-plugin": "^1.2.3",
-    "ts-loader": "^5.3.3",
     "url-loader": "^1.1.2",
-    "vue-loader": "15.4.0",
-    "webpack-dev-server": "^3.3.1"
+    "vue-loader": "15.4.0"
   },
   "peerDependencies": {
     "@megalo/target": "*",
     "vue": "*",
     "vue-template-compiler": "*"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
