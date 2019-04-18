@@ -1,7 +1,7 @@
 const fs = require('fs')
 const chalk = require('chalk')
 const path = require('path')
-const { warn, getCssExt } = require('@megalo/cli-share-utils')
+const { getCssExt } = require('@megalo/cli-share-utils')
 const { findExisting, checkFileExistsSync } = require('./utils')
 
 module.exports = (api, options) => {
@@ -10,22 +10,22 @@ module.exports = (api, options) => {
   const isProd = process.env.NODE_ENV === 'production'
 
   api.chainWebpack(chainConfig => {
-    if (platform == 'web') {
+    if (platform === 'web') {
       const webpack = require('webpack')
       const MiniCssExtractPlugin = require('mini-css-extract-plugin')
       const VueLoaderPlugin = require('vue-loader/lib/plugin')
       const TerserPlugin = require('terser-webpack-plugin')
       const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-			const CopyWebpackPlugin = require('copy-webpack-plugin')
-			const HtmlWebpackPlugin = require('html-webpack-plugin')
+      const CopyWebpackPlugin = require('copy-webpack-plugin')
+      const HtmlWebpackPlugin = require('html-webpack-plugin')
 
       const target = createTarget()
 
-			// 检查入口文件
-			resolveEntry();
+      // 检查入口文件
+      resolveEntry()
 
-			// web使用生成的入口文件
-			chainConfig.entry('index')
+      // web使用生成的入口文件
+      chainConfig.entry('index')
 				.add(path.join(process.cwd(), './dist-web/webEntry.js'))
 
       chainConfig
@@ -35,12 +35,11 @@ module.exports = (api, options) => {
           .path(api.resolve(`dist-${platform}/`))
           .filename(isProd ? '[name].[contenthash].js' : '[name].js')
           .chunkFilename(isProd ? '[name].[id].[contenthash].js' : '[name].[id].js')
-    
+
       // web dev环境添加dev-server
-			!isProd && chainConfig
+      !isProd && chainConfig
 				.devServer
 						.open(true)
-
 
       // 提取公共文件、压缩混淆
       chainConfig.optimization
@@ -105,19 +104,18 @@ module.exports = (api, options) => {
             .use('babel')
 							.loader('babel-loader')
 
-
       // typescript
-			chainConfig.module
+      chainConfig.module
 				.rule('ts')
 						.test(/\.tsx?$/)
 						.use('ts-loader')
 							.loader('ts-loader')
-							.options({
-								appendTsSuffixTo: [/\.vue$/],
-							})
+              .options({
+                appendTsSuffixTo: [/\.vue$/]
+              })
 
-			// css相关loader
-			generateCssLoaders(chainConfig)
+      // css相关loader
+      generateCssLoaders(chainConfig)
 
       // 图片
       chainConfig.module
@@ -131,7 +129,6 @@ module.exports = (api, options) => {
             name: '[path][name].[ext]'
           })
 
-
       // 插件
       chainConfig
         .plugin('process-plugin')
@@ -144,17 +141,17 @@ module.exports = (api, options) => {
 					.use(MiniCssExtractPlugin, [{ filename: `static/css/[name].${cssExt}` }])
 					.end()
 				.plugin('html-webpack-plugin')
-					.use(HtmlWebpackPlugin, [{
+          .use(HtmlWebpackPlugin, [{
             filename: 'index.html',
             template: 'src/web/index.html'
-					}])
+          }])
 					.end()
 				.plugin('copy-webpack-plugin')
-					.use(CopyWebpackPlugin, [{
+          .use(CopyWebpackPlugin, [{
             from: 'src/static', to: 'static'
-        	}])
+          }])
 
-			chainConfig.stats({
+      chainConfig.stats({
         all: false,
         modules: false,
         maxModules: 0,
@@ -162,7 +159,7 @@ module.exports = (api, options) => {
         warnings: true,
         moduleTrace: false,
         errorDetails: true
-    	})
+      })
 
       // megalo 周边
       // 启用 @Megalo/API
@@ -222,8 +219,9 @@ module.exports = (api, options) => {
   function createTarget () {
     const createMegaloTarget = require('@megalo/target')
     const targetConfig = {
-			platform,
-			projectOptions: options
+      platform,
+      compiler: require('vue-template-compiler'),
+      projectOptions: options
     }
 
     return createMegaloTarget(targetConfig)
@@ -247,39 +245,39 @@ module.exports = (api, options) => {
       chainConfig.module
         .rule(loaderName)
 					.test(loaderReg)
-					
+
 						.use('MiniCssExtractPlugin')
 							.loader(MiniCssExtractPlugin.loader)
 						.end()
 
 						.use('css')
 							.loader('css-loader')
-							.when(projectOptions.css.loaderOptions['css'], config => {
-								config.tap(options => merge(options, projectOptions.css.loaderOptions['css']))
-							})
+              .when(projectOptions.css.loaderOptions['css'], config => {
+                config.tap(options => merge(options, projectOptions.css.loaderOptions['css']))
+              })
 						.end()
 
 						.use('postcss')
 							.loader('postcss-loader')
-							.options({ 
-								plugins: () => [
-										require('autoprefixer')(),
-										require('postcss-plugin-px2rem')({ 
-												rootValue: 75,
-												propBlackList: ['border']
-										})
-								]
-							})
+              .options({
+                plugins: () => [
+                  require('autoprefixer')(),
+                  require('postcss-plugin-px2rem')({
+                    rootValue: 75,
+                    propBlackList: ['border']
+                  })
+                ]
+              })
 						.end()
 
-						.when(loaderName !== 'css', config => {
-							config.use(loaderName)
+            .when(loaderName !== 'css', config => {
+              config.use(loaderName)
 								.loader(`${loaderName}-loader`)
-								.when(projectOptions.css.loaderOptions[loaderName], config => {
-									config.tap(options => merge(options, projectOptions.css.loaderOptions[loaderName]))
-								})
+                .when(projectOptions.css.loaderOptions[loaderName], config => {
+                  config.tap(options => merge(options, projectOptions.css.loaderOptions[loaderName]))
+                })
 							.end()
-						})
+            })
     }
     return chainConfig.module.toConfig().rules
   }
