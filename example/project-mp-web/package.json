@@ -30,8 +30,7 @@
     "@testxcx/cli-service": "latest",
     "eslint": "^5.8.0",
     "less": "^3.8.1",
-    "less-loader": "^4.1.0",
-    "megalo-cli-plugin-web-alpha": "0.0.7"
+    "less-loader": "^4.1.0"
   },
   "dependencies": {
     "@megalo/vhtml-plugin": "^0.1.2",
