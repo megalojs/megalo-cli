@@ -100,22 +100,12 @@ module.exports = (api, options) => {
       // babel
       chainConfig.module
         .rule('js')
-            .test(/\.(ts|js)x?$/)
+          .test(/\.(ts|js)x?$/)
             .use('babel')
-							.loader('babel-loader')
-
-      // typescript
-      chainConfig.module
-				.rule('ts')
-						.test(/\.tsx?$/)
-						.use('ts-loader')
-							.loader('ts-loader')
-              .options({
-                appendTsSuffixTo: [/\.vue$/]
-              })
+              .loader('babel-loader')
 
       // css相关loader
-      generateCssLoaders(chainConfig)
+      generateCssLoaders(chanConfig)
 
       // 图片
       chainConfig.module
@@ -173,18 +163,18 @@ module.exports = (api, options) => {
       const nativeDir = checkFileExistsSync(path.join(options.nativeDir, platform)) || checkFileExistsSync(options.nativeDir)
       if (nativeDir) {
         chainConfig.plugin('copy-webpack-plugin')
-            .use(
-              CopyWebpackPlugin,
+          .use(
+            CopyWebpackPlugin,
+            [
               [
-                [
-                  {
-                    context: nativeDir,
-                    from: `**/*`,
-                    to: api.resolve(`dist-${platform}/native`)
-                  }
-                ]
+                {
+                  context: nativeDir,
+                  from: `**/*`,
+                  to: api.resolve(`dist-${platform}/native`)
+                }
               ]
-            )
+            ]
+          )
       }
     }
   })
@@ -217,7 +207,7 @@ module.exports = (api, options) => {
   }
 
   function createTarget () {
-    const createMegaloTarget = require('@megalo/target')
+    const createMegaloTarget = require('megalo-target-debug')
     const targetConfig = {
       platform,
       compiler: require('vue-template-compiler'),

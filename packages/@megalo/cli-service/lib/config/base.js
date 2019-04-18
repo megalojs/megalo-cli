@@ -58,6 +58,15 @@ module.exports = (api, options) => {
       })
 
     // plugins ------------------------------------------------------------------------
+    // 友好错误显示
+    const { transformer, formatter } = require('../util/resolveLoaderError')
+    webpackConfig
+      .plugin('friendly-errors')
+        .use(require('@soda/friendly-errors-webpack-plugin'), [{
+          additionalTransformers: [transformer],
+          additionalFormatters: [formatter]
+        }])
+
     // 替换环境变量
     const resolveClientEnv = require('../util/resolveClientEnv')
     webpackConfig
@@ -69,14 +78,5 @@ module.exports = (api, options) => {
     webpackConfig
     .plugin('case-sensitive-paths')
       .use(require('case-sensitive-paths-webpack-plugin'))
-
-    // 友好错误显示
-    const { transformer, formatter } = require('../util/resolveLoaderError')
-    webpackConfig
-      .plugin('friendly-errors')
-        .use(require('@soda/friendly-errors-webpack-plugin'), [{
-          additionalTransformers: [transformer],
-          additionalFormatters: [formatter]
-        }])
   })
 }

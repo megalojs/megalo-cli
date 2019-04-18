@@ -61,7 +61,7 @@ module.exports = {
 }
 ```
 
-## 修改 webpack-chain 规则
+## 注入的 webpack-chain 规则
 
 - `config.module.rule('eslint')`
 - `config.module.rule('eslint').use('eslint-loader')`

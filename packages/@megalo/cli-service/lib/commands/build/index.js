@@ -42,6 +42,7 @@ module.exports = (api, options) => {
 
     log()
     logWithSpinner(`Building ${platform} for ${mode}...`)
+    log()
     const webpackConfig = api.resolveWebpackConfig()
 
     // 监听文件改动
@@ -59,8 +60,8 @@ module.exports = (api, options) => {
           logLevel: 'warn',
           openAnalyzer: false,
           analyzerMode: args.report ? 'static' : 'disabled',
-          reportFilename: `${platform}-report.html`,
-          statsFilename: `${platform}-report.json`,
+          reportFilename: `../${platform}-report.html`,
+          statsFilename: `../${platform}-report.json`,
           generateStatsFile: !!args['report-json']
         }))
       })

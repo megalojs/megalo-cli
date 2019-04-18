@@ -27,16 +27,14 @@
     "@megalo/babel-preset-app": "latest",
     "@megalo/eslint-config-standard": "latest",
     "@megalo/target": "latest",
-    "@megalo/template-compiler": "latest",
-    "copy-webpack-plugin": "^5.0.2",
+    "megalo-target-debug": "^0.0.1",
+    "@testxcx/cli-service": "latest",
     "eslint": "^5.8.0",
     "less": "^3.8.1",
-    "less-loader": "^4.1.0",
-    "megalo-cli-plugin-web-alpha": "0.0.7"
+    "less-loader": "^4.1.0"
   },
   "dependencies": {
     "@megalo/vhtml-plugin": "^0.1.2",
-    "megalo": "latest",
     "octoparse": "^0.3.2",
     "vue": "^2.5.17",
     "vue-router": "^3.0.5",
