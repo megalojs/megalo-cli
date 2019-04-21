@@ -42,7 +42,10 @@ const schema = createSchema(joi => joi.object({
     joi.func()
   ),
 
-  devServer: joi.object()
+  devServer: joi.object(),
+
+  // 第三方插件自定义选项
+  pluginOptions: joi.object()
 }))
 
 exports.validate = (options, cb) => {
