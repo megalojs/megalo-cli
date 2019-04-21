@@ -20,6 +20,7 @@
   "license": "MIT",
   "devDependencies": {
     "@megalo/babel-preset-app": "latest",
+    "@megalo/cli-plugin-eslint": "latest",
     "@megalo/eslint-config-standard": "latest",
     "@megalo/target": "latest",
     "@megalo/template-compiler": "latest",
