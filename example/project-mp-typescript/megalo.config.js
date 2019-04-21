@@ -13,8 +13,7 @@ module.exports = {
   chainWebpack: chainConfig => {
     // 你可以在这里通过 https://github.com/neutrinojs/webpack-chain 来精细的修改webpack配置
 
-
-      console.log('chainWebpack执行了')
+    console.log('chainWebpack执行了')
   },
   // 原生小程序组件存放目录，默认为src/native
   // 如果你有多个平台的原生组件，你应当在此目录下再新建几个子文件夹，我们约定，子文件夹名和平台的名字一致:
@@ -36,7 +35,7 @@ module.exports = {
       stylus: {
         // https://github.com/shama/stylus-loader
       },
-        // https://github.com/megalojs/megalo-px2rpx-loader
+      // https://github.com/megalojs/megalo-px2rpx-loader
       px2rpx: false
     }
   }
