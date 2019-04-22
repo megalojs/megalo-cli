@@ -45,10 +45,7 @@ module.exports = class Service {
       return Object.assign(modes, defaultModes)
     }, {})
 
-    // console.log('service 构造函数')
-    // console.log('this.pkg:', this.pkg)
-    console.log('this.plugins:', this.plugins)
-    // console.log('this.modes:', this.modes)
+    // console.log('loading plugins:', this.plugins.map(pluginItem => pluginItem.id))
   }
 
   resolvePkg (context = this.context) {
@@ -74,8 +71,7 @@ module.exports = class Service {
       './commands/help',
       './commands/inspect',
       './config/base',
-      '@testxcx/cli-plugin-mp',
-      '@testxcx/cli-plugin-web'
+      '@testxcx/cli-plugin-mp'
     ].map(idToPlugin)
     // 读取用户package.json中devDependencies和dependencies依赖中的插件名单
     const projectPlugins = Object.keys(this.pkg.devDependencies || {})
@@ -199,8 +195,6 @@ module.exports = class Service {
     const userOptions = this.loadUserOptions()
     this.projectOptions = defaultsDeep(userOptions, defaults())
 
-    console.log('this.projectOptions:', this.projectOptions)
-    // console.log('环境变量:', process.env)
     debug('megalo:project-config')(this.projectOptions)
 
     // 挂载插件
@@ -221,7 +215,6 @@ module.exports = class Service {
     const mode = args.mode || (name === 'build' && args.watch ? 'development' : this.modes[name])
     process.env.PLATFORM = args.platform || 'wechat'
     args.platform = process.env.PLATFORM
-    // console.log('run函数', process.env.PLATFORM)
 
     // 载入环境变量、用户配置(megalo.config.js)、挂载插件
     this.init(mode)
