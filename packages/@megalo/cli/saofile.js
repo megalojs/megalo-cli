@@ -144,7 +144,7 @@ module.exports = {
               'megalo': 'latest',
               'octoparse': '^0.4.2',
               'vuex': when(features.includes('vuex'), '^3.1.0'),
-              'vuex-class': when(features.includes('vuex'), '^0.3.2')
+              'vuex-class': when(features.includes('vuex') && features.includes('typescript'), '^0.3.2')
             }
           }
         }
