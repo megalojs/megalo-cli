@@ -3,13 +3,18 @@ const { info, done } = require('@megalo/cli-share-utils')
 module.exports = async (api, options, args) => {
   const webpack = require('webpack')
   const WebpackDevServer = require('webpack-dev-server')
+  const fs = require('fs-extra')
 
   const platform = args.platform
   const targetDir = api.resolve(`dist-${platform}`)
 
+  // 小程序构建前先清空目录（若不清空，错误代码也会被小程序开发工具编译）
+  await fs.remove(targetDir)
+
   const webpackConfig = api.resolveWebpackConfig()
   const compiler = webpack(webpackConfig)
-  // 编译小程序可能不需要这个？
+  // 一般情况下，编译小程序可能不需要这个，因为没有热更新；不过部分插件可能需要开启一个服务器
+  // TODO 可注入中间件
   const server = new WebpackDevServer(compiler, {
     quiet: true,
     contentBase: targetDir,
