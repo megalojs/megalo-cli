@@ -44,15 +44,26 @@ module.exports = (api, options) => {
         .noEmitOnErrors(true)
         .runtimeChunk({ name: 'runtime' })
         .splitChunks({
+          chunks: 'async',
+          minSize: 30000,
+          minChunks: 1,
+          maxAsyncRequests: 5,
+          maxInitialRequests: 3,
+          name: false,
           cacheGroups: {
             vendor: {
               test: /[\\/]node_modules[\\/]|megalo[\\/]/,
               name: 'vendor',
-              chunks: 'initial'
+              chunks: 'initial',
+              priority: 10,
+              reuseExistingChunk: false
             },
             common: {
               name: 'common',
-              minChunks: 2
+              minChunks: 2,
+              chunks: 'all',
+              minSize: 1,
+              priority: 0
             }
           }
         })
