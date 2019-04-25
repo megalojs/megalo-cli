@@ -1,10 +1,10 @@
 {
   "name": "@megalo/cli-plugin-eslint",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "eslint plugin for megalo-cli",
   "main": "index.js",
   "dependencies": {
-    "@vue/cli-shared-utils": "^3.6.0",
+    "@megalo/cli-share-utils": "latest",
     "babel-eslint": "^10.0.1",
     "eslint-loader": "^2.1.2",
     "globby": "^9.2.0",

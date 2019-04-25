@@ -1,11 +1,11 @@
 {
   "name": "@megalo/cli-plugin-typescript",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "typescript plugin for megalo-cli",
   "main": "index.js",
   "dependencies": {
     "@types/webpack-env": "^1.13.9",
-    "@vue/cli-shared-utils": "^3.6.0",
+    "@megalo/cli-share-utils": "latest",
     "fork-ts-checker-webpack-plugin": "^1.0.2",
     "globby": "^9.2.0",
     "ts-loader": "^5.3.3",
