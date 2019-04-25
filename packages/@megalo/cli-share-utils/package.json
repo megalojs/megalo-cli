@@ -1,6 +1,6 @@
 {
   "name": "@megalo/cli-share-utils",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "shared utilities for megalo-cli packages",
   "keywords": [
     "megalo",
@@ -10,7 +10,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/megalojs/megalo-cli.git",
-    "directory": "packages/@megalo/cli-shared-utils"
+    "directory": "packages/@megalo/cli-share-utils"
   },
   "bugs": {
     "url": "https://github.com/megalojs/megalo-cli/issues"
@@ -19,9 +19,9 @@
   "author": "bigMeow (github.com/bigmeow)",
   "license": "MIT",
   "dependencies": {
+    "@hapi/joi": "^15.0.0",
     "chalk": "^2.4.1",
     "execa": "^1.0.0",
-    "joi": "^14.3.0",
     "launch-editor": "^2.2.1",
     "lru-cache": "^5.1.1",
     "node-ipc": "^9.1.1",
