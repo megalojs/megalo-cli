@@ -44,7 +44,6 @@ module.exports = (api, options) => {
         .noEmitOnErrors(true)
         .runtimeChunk({ name: 'runtime' })
         .splitChunks({
-          chunks: 'async',
           minSize: 30000,
           minChunks: 1,
           maxAsyncRequests: 5,
@@ -61,9 +60,10 @@ module.exports = (api, options) => {
             common: {
               name: 'common',
               minChunks: 2,
-              chunks: 'all',
+              chunks: 'initial',
               minSize: 1,
-              priority: 0
+              priority: 0,
+              reuseExistingChunk: true
             }
           }
         })
