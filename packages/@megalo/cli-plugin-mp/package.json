@@ -1,6 +1,6 @@
 {
   "name": "@testxcx/cli-plugin-mp",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.8",
   "description": "为megalo工程生成小程序相关的webpack配置插件",
   "main": "index.js",
   "dependencies": {

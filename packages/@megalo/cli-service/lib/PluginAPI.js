@@ -45,6 +45,16 @@ module.exports = class PluginAPI {
   }
 
   /**
+   * 检查项目是否有给定的包名
+   * @param {String} packageName
+   * @return {boolean}
+   */
+  hasPackage (packageName) {
+    const pkg = this.service.pkg
+    return ((pkg.dependencies && pkg.dependencies[packageName]) || (pkg.devDependencies && pkg.devDependencies[packageName]))
+  }
+
+  /**
    * 注册一个命令，形式类似于  `megalo-cli-service [name]`.
    *
    * @param {string} name

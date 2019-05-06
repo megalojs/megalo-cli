@@ -11,6 +11,15 @@ module.exports = (api, options) => {
   const isTypescript = api.hasPlugin('typescript')
   const jsExt = ['js', 'ts'][+isTypescript]
 
+  // alpha 版本升级到 beta 版启用eslint时需要安装 @megalo/cli-plugin-eslint
+  if (options.lintOnSave !== false && !api.hasPlugin('eslint')) {
+    warn('升级提示："lintOnSave" 选项未生效，请先执行 "npm i @megalo/cli-plugin-eslint -D" 命令安装 @megalo/cli-plugin-eslint 插件')
+  }
+
+  if (api.hasPackage('typescript') && !isTypescript) {
+    warn('升级提示：请执行 "npm i @megalo/cli-plugin-typescript -D" 命令安装 @megalo/cli-plugin-typescript 插件')
+  }
+
   api.chainWebpack(chainConfig => {
     if (!['web', 'h5'].includes(platform)) {
       const webpack = require('webpack')
