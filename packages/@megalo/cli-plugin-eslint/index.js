@@ -42,7 +42,7 @@ module.exports = (api, options) => {
           .pre()
           .exclude
             .add(/node_modules/)
-            .add(require('path').dirname(require.resolve('@testxcx/cli-service')))
+            .add(require('path').dirname(require.resolve('@megalo/cli-service')))
             .end()
           .test(/\.(vue|(j|t)sx?)$/)
           .use('eslint-loader')
