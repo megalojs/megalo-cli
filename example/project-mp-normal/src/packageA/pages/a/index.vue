@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     A
+    <img src="../avatar.png"/>
   </div>
 </template>
 
