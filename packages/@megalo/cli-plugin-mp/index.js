@@ -10,6 +10,8 @@ module.exports = (api, options) => {
   const isProd = process.env.NODE_ENV === 'production'
   const isTypescript = api.hasPlugin('typescript')
   const jsExt = ['js', 'ts'][+isTypescript]
+  const entryContext = api.resolve('src')
+  const entryContextRelativePath = path.relative(api.getCwd(), entryContext)
 
   // alpha 版本升级到 beta 版启用eslint时需要安装 @megalo/cli-plugin-eslint
   if (options.lintOnSave !== false && !api.hasPlugin('eslint')) {
@@ -29,8 +31,9 @@ module.exports = (api, options) => {
       const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
       const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-      const { appEntry, pagesEntry } = resolveEntry()
+      const { appEntry, pagesEntry, subPackagesRoot } = resolveEntry()
       const target = createTarget()
+      const output = api.resolve(`dist-${platform}/`)
 
       // app和页面入口
       chainConfig.entry('app').clear().add(appEntry)
@@ -43,7 +46,7 @@ module.exports = (api, options) => {
         .devtool(isProd && !options.productionSourceMap ? 'none' : 'source-map')
         .target(target)
         .output
-          .path(api.resolve(`dist-${platform}/`))
+          .path(output)
           .filename('static/js/[name].js')
           .chunkFilename('static/js/[name].js')
           .pathinfo(false)
@@ -129,17 +132,54 @@ module.exports = (api, options) => {
       chainConfig.module
         .rule('ts')
 
+      // 静态资源输出配置
+      const genUrlLoaderOptions = dir => {
+        return {
+          limit: 4096,
+          // use explicit fallback to avoid regression in url-loader>=1.1.0
+          fallback: {
+            loader: 'file-loader',
+            options: {
+              outputPath: function (url, resourcePath, context) {
+                // 找出资源属于哪一个子包
+                const subPackage = subPackagesRoot.find(subPackage => {
+                  return path.relative(context, resourcePath).includes(subPackage + '/')
+                })
+                if (subPackage) {
+                  // 输出到子包目录
+                  return `${subPackage.replace(entryContextRelativePath + '/', '')}/static/${dir}/${url}`
+                }
+
+                // 输出到主包目录
+                return `static/${dir}/${url}`
+              }
+            }
+          }
+        }
+      }
       // 图片
       chainConfig.module
         .rule('picture')
-        .test(/\.(png|jpe?g|gif)$/i)
-        .use('url')
-          .loader('url-loader')
-          .options({
-            limit: 8192,
-            // TODO 这里有个小bug, static的图片会生成在dist下面的src目录，子包的图片会生成在子包下的src目录，不影响分包策略，仅仅是路径看着有些别扭
-            name: '[path][name].[ext]'
-          })
+          .test(/\.(png|jpe?g|gif|webp|svg)(\?.*)?$/)
+          .use('url-loader')
+            .loader('url-loader')
+            .options(genUrlLoaderOptions('images'))
+
+      // 媒体文件
+      chainConfig.module
+        .rule('media')
+          .test(/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/)
+          .use('url-loader')
+            .loader('url-loader')
+            .options(genUrlLoaderOptions('media'))
+
+      // 字体
+      chainConfig.module
+        .rule('fonts')
+          .test(/\.(woff2?|eot|ttf|otf)(\?.*)?$/i)
+          .use('url-loader')
+            .loader('url-loader')
+            .options(genUrlLoaderOptions('fonts'))
 
       // css相关loader
       generateCssLoaders(chainConfig)
@@ -185,7 +225,6 @@ module.exports = (api, options) => {
 
   function resolveEntry () {
     // app entry
-    const entryContext = api.resolve('src')
     const appEntry = findExisting(entryContext, [
       `app.${jsExt}`,
       `main.${jsExt}`,
@@ -206,8 +245,13 @@ module.exports = (api, options) => {
       process.exit(1)
     }
     // 页面entry
-    const { pagesEntry } = require('@megalo/entry')
-    return { appEntry: appEntryPath, pagesEntry: pagesEntry(appEntryPath, options) }
+    const { pagesEntry, getSubPackagesRoot } = require('@megalo/entry')
+    // 获取用户定义的子包目录数组；目前假定用户都是把分包放src目录下的，目前分包放src外面生成路径会有问题（TODO 用户可自定义源码目录）
+    const subPackagesRoot = Array.from(new Set(Object.values(getSubPackagesRoot(appEntryPath)))).map(subpackage => {
+      return path.join(entryContextRelativePath, subpackage)
+    })
+
+    return { appEntry: appEntryPath, pagesEntry: pagesEntry(appEntryPath, options), subPackagesRoot }
   }
 
   function createTarget () {
