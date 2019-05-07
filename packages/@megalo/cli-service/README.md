@@ -116,4 +116,9 @@ module.exports = {
 
 ## 更新记录
 - ［ 1.0.0-alpha.18 ］ 支持头条小程序
-- ［ 1.0.0-beta.1 ］ 剥离webpack配置，支持插件系统
+- ［ 1.0.0-beta.1 ］
+  - 剥离webpack配置，支持[插件系统](./plugin.md)
+  - 新增 `cli-plugin-mp`、 `cli-plugin-web`、 `cli-plugin-eslint`、 `cli-plugin-typescript` 插件
+  - 编译小程序为H5(目前周边设施还不完善)
+  - 默认新增webpack对fonts、媒体文件等静态资源的webpack配置
+  - 优化分包静态资源输出路径，主包的图片(images)、字体(fonts)、媒体文件(media)输出到 `dist-${platform}/static/${fileType}/` 目录下；分包的输出到`dist-${platform}/${packageName}/static/${fileType}`目录下

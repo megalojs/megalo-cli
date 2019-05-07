@@ -71,7 +71,7 @@ module.exports = class Service {
       './commands/help',
       './commands/inspect',
       './config/base',
-      '@testxcx/cli-plugin-mp'
+      '@megalo/cli-plugin-mp'
     ].map(idToPlugin)
     // 读取用户package.json中devDependencies和dependencies依赖中的插件名单
     const projectPlugins = Object.keys(this.pkg.devDependencies || {})
