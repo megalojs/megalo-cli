@@ -1,7 +1,7 @@
 {
   "name": "@megalo/cli-plugin-typescript",
   "version": "1.0.0-beta.1",
-  "description": "typescript plugin for megalo-cli",
+  "description": "typescript plugin for megalo-cli ",
   "main": "index.js",
   "dependencies": {
     "@types/webpack-env": "^1.13.9",

@@ -1,7 +1,7 @@
 {
   "name": "@megalo/cli-share-utils",
-  "version": "1.0.0-bata.1",
-  "description": "shared utilities for megalo-cli packages",
+  "version": "1.0.0-beta.1",
+  "description": "shared utilities for megalo-cli packages ",
   "keywords": [
     "megalo",
     "megalo-cli"

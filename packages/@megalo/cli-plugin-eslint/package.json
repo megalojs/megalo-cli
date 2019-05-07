@@ -1,6 +1,6 @@
 {
   "name": "@megalo/cli-plugin-eslint",
-  "version": "1.0.0-bata.1",
+  "version": "1.0.0-beta.1",
   "description": "eslint plugin for megalo-cli",
   "main": "index.js",
   "dependencies": {
