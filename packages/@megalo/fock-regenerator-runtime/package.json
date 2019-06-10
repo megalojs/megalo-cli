@@ -1,0 +1,20 @@
+{
+  "name": "@megalo/fock-regenerator-runtime",
+  "author": "Ben Newman <bn@cs.stanford.edu> update by bigMeow",
+  "description": "Runtime for Regenerator-compiled generator and async functions.",
+  "version": "0.13.2",
+  "main": "runtime.js",
+  "keywords": [
+    "regenerator",
+    "runtime",
+    "generator",
+    "async"
+  ],
+  "sideEffects": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megalojs/megalo-cli.git",
+    "directory": "packages/@megalo/fock-regenerator-runtime"
+  },
+  "license": "MIT"
+}
