@@ -1,0 +1,25 @@
+{
+  "name": "@megalo/cli-plugin-flx-es6-to-es5",
+  "version": "1.0.0-beta.1",
+  "description": "解决小程序开发工具勾选es6转es5报错的问题 ",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megalojs/megalo-cli.git",
+    "directory": "packages/@megalo/cli-plugin-flx-es6-to-es5"
+  },
+  "bugs": {
+    "url": "https://github.com/megalojs/megalo-cli/issues"
+  },
+  "homepage": "https://github.com/megalojs/megalo-cli/tree/master/packages/@megalo/cli-plugin-flx-es6-to-es5#readme",
+  "keywords": [
+    "megalo",
+    "cli-plugin",
+    "es6-to-es5"
+  ],
+  "author": "bigMeow <running@vip.163.com> (github.com/bigmeow)",
+  "license": "MIT"
+}
