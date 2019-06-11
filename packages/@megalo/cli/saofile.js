@@ -109,7 +109,7 @@ module.exports = {
               'dev:swan': 'megalo-cli-service serve --platform swan',
               'dev:wechat': 'megalo-cli-service serve',
               'dev:toutiao': 'megalo-cli-service serve --platform toutiao',
-              'lint': when(features.includes('eslint'), 'eslint --fix --ext .js,.ts,.vue src')
+              'lint': when(features.includes('eslint'), 'megalo-cli-service lint')
             },
             'license': 'ISC',
             'babel': {
@@ -119,6 +119,8 @@ module.exports = {
             },
             'devDependencies': {
               '@megalo/babel-preset-app': 'latest',
+              '@megalo/cli-plugin-eslint': when(features.includes('eslint'), 'latest'),
+              '@megalo/cli-plugin-typescript': when(features.includes('typescript'), 'latest'),
               '@megalo/cli-service': 'latest',
               '@megalo/eslint-config-standard': when(features.includes('eslint'), 'latest'),
               '@megalo/eslint-config-typescript': when(features.includes('typescript') && features.includes('eslint'), 'latest'),
@@ -133,16 +135,16 @@ module.exports = {
               'stylus-loader': when(cssPreset === 'stylus', '^3.0.2'),
               'node-sass': when(cssPreset === 'scss', '^4.10.0'),
               'sass-loader': when(cssPreset === 'scss', '^7.1.0'),
-              'typescript': when(features.includes('typescript'), '^3.3.4000'),
-              'vue-property-decorator': when(features.includes('typescript'), '^7.3.0')
+              'typescript': when(features.includes('typescript'), '^3.4.4'),
+              'vue-property-decorator': when(features.includes('typescript'), '^8.1.0')
             },
             'dependencies': {
               '@megalo/api': when(needMegaloAPI === 'Yes', 'latest'),
               '@megalo/vhtml-plugin': 'latest',
               'megalo': 'latest',
-              'octoparse': '^0.3.2',
+              'octoparse': '^0.4.2',
               'vuex': when(features.includes('vuex'), '^3.1.0'),
-              'vuex-class': when(features.includes('vuex'), '^0.3.2')
+              'vuex-class': when(features.includes('vuex') && features.includes('typescript'), '^0.3.2')
             }
           }
         }

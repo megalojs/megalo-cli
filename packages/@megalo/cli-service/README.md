@@ -9,6 +9,7 @@
 - 内置了小程序项目常用的基础设施配置，满足基本需求
 - 项目配置分离，零耦和，配置插件化
 - typescript 支持
+- 插件系统
 
 ## 注意
 老项目注意 >>> `@megalo/cli-service` 1.0.0版本的api于 0.x的版本不兼容,使用方式有差异，0.x版本的点击[这里
@@ -88,11 +89,17 @@ module.exports = {
 }
 
 ```
-## 已内置的插件配置
-以下使用以下 `megalo` 插件时，直接 `npm i 插件名` 即可，无需更改 `webpack` 配置，直接使用：
+
+
+## 插件系统
+`@megalo/cli-service` 从 1.0.0-beta.1 起， 支持插件系统
+[插件开发文档](./plugin.md)
+
+## 已内置的megalo周边webpack配置
+以下使用以下 `megalo` 周边库时，直接 `npm i 库名` 即可，无需更改 `webpack` 配置，直接使用：
 - [megalo-api](https://github.com/megalojs/megalo-api)  （重新封装各个端中的API，由 megalo 统一对外抛出方法名）
 - [megalo-px2rpx-loader](https://github.com/megalojs/megalo-px2rpx-loader)  (将项目中的 `px` 单位统一转成 `rpx` 单位)
-- [megalo-vhtml-plugin](https://github.com/megalojs/megalo-vhtml-plugin)  （富文本插件）
+- [megalo-vhtml-plugin](https://github.com/megalojs/megalo-vhtml-plugin)  （富文本库）
 
 内置的其他的 `webpack` 配置：
 - 环境变量设置、替换
@@ -102,10 +109,16 @@ module.exports = {
 - 编译、压缩、混淆等
 
 ## 注意
-`@megalo/cli-service` 默认会读取 `src` 目录下的  `main.js` 、 `index.js` 、`main.ts` 、`index.ts`  其中之一并将其作为入口文件
+`@megalo/cli-service` 默认会读取 `src` 目录下的  `app.js` 、 `main.js` 、 `index.js` 、 `app.ts`、 `main.ts` 、`index.ts`  其中之一并将其作为入口文件
 
-## [demo](../../../example/project01/)
+## [demo](../../../example/)
 
 
 ## 更新记录
 - ［ 1.0.0-alpha.18 ］ 支持头条小程序
+- ［ 1.0.0-beta.1 ］
+  - 剥离webpack配置，支持[插件系统](./plugin.md)
+  - 新增 `cli-plugin-mp`、 `cli-plugin-web`、 `cli-plugin-eslint`、 `cli-plugin-typescript` 插件
+  - 编译小程序为H5(目前周边设施还不完善)
+  - 默认新增webpack对fonts、媒体文件等静态资源的webpack配置
+  - 优化分包静态资源输出路径，主包的图片(images)、字体(fonts)、媒体文件(media)输出到 `dist-${platform}/static/${fileType}/` 目录下；分包的输出到`dist-${platform}/${packageName}/static/${fileType}`目录下

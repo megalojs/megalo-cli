@@ -4,6 +4,3 @@
 .gitignore
 node_modules/
 _test_
-.env*
-src
-dist-*

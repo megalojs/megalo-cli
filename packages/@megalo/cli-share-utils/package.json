@@ -1,0 +1,38 @@
+{
+  "name": "@megalo/cli-share-utils",
+  "version": "1.0.0-beta.1",
+  "description": "shared utilities for megalo-cli packages ",
+  "keywords": [
+    "megalo",
+    "megalo-cli"
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megalojs/megalo-cli.git",
+    "directory": "packages/@megalo/cli-share-utils"
+  },
+  "bugs": {
+    "url": "https://github.com/megalojs/megalo-cli/issues"
+  },
+  "homepage": "https://github.com/megalojs/megalo-cli/tree/master/packages/@megalo/cli-share-utils#readme",
+  "author": "bigMeow (github.com/bigmeow)",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/joi": "^15.0.0",
+    "chalk": "^2.4.1",
+    "execa": "^1.0.0",
+    "launch-editor": "^2.2.1",
+    "lru-cache": "^5.1.1",
+    "node-ipc": "^9.1.1",
+    "opn": "^5.3.0",
+    "ora": "^3.1.0",
+    "request": "^2.87.0",
+    "request-promise-native": "^1.0.7",
+    "semver": "^5.5.0",
+    "string.prototype.padstart": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
