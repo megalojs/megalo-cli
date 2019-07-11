@@ -116,6 +116,13 @@ module.exports = (api, options) => {
           .use('vue')
             .loader('vue-loader')
             .options({
+              transformAssetUrls: {
+                video: ['src', 'poster'],
+                source: 'src',
+                img: 'src',
+                image: 'xlink:href',
+                'cover-image': 'src'
+              },
               compilerOptions: {
                 preserveWhitespace: false
               }

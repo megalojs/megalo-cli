@@ -1,6 +1,6 @@
 {
   "name": "@megalo/cli-plugin-mp",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "为megalo工程生成小程序相关的webpack配置插件 ",
   "main": "index.js",
   "dependencies": {
