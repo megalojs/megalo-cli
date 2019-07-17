@@ -289,7 +289,6 @@ module.exports = (api, options) => {
    */
   function generateCssLoaders (chainConfig, projectOptions = options) {
     const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-    const merge = require('deepmerge')
     const neededLoader = new Map([
       ['css', /\.css$/],
       ['less', /\.less$/],
@@ -307,14 +306,18 @@ module.exports = (api, options) => {
           .use('css')
             .loader('css-loader')
             .when(projectOptions.css.loaderOptions['css'], config => {
-              config.tap(options => merge(options, projectOptions.css.loaderOptions['css']))
+              config.merge({
+                options: projectOptions.css.loaderOptions['css']
+              })
             })
           .end()
           .when(projectOptions.css.loaderOptions['px2rpx'], rule => {
             rule.use('px2rpx')
               .loader('px2rpx-loader')
               .when(projectOptions.css.loaderOptions['px2rpx'], config => {
-                config.tap(options => merge(options, projectOptions.css.loaderOptions['px2rpx']))
+                config.merge({
+                  options: projectOptions.css.loaderOptions['px2rpx']
+                })
               })
             .end()
           })
@@ -322,7 +325,9 @@ module.exports = (api, options) => {
             config.use(loaderName)
               .loader(`${loaderName}-loader`)
               .when(projectOptions.css.loaderOptions[loaderName], config => {
-                config.tap(options => merge(options, projectOptions.css.loaderOptions[loaderName]))
+                config.merge({
+                  options: projectOptions.css.loaderOptions[loaderName]
+                })
               })
             .end()
           })
