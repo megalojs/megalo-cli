@@ -13,7 +13,7 @@ Standard Tooling for Megalo Project Development
 | [@megalo/cli-plugin-typescript](./packages/@megalo/cli-plugin-typescript) | 1.0.0-beta.1 | megalo项目 typescript 插件，提供编译typescript、typescript类型检查功能，配合 @megalo/cli-plugin-eslint 提供代码格式检查、自动修复等功能，安装到 package.json 中即可自动被启用，直接对用户提供服务
 | [@megalo/cli-plugin-flx-es6-to-es5](./packages/@megalo/cli-plugin-flx-es6-to-es5) | 1.0.0-beta.1 | 解决小程序开发工具勾选es6转es5报错的问题（项目中使用了 `async/await` 的时候）
 | [@megalo/cli-share-utils](./packages/@megalo/cli-share-utils) | 1.0.0-beta.1 | cli中用到的可剥离出来的公共函数
-| [@megalo/entry](./packages/@megalo/entry) | 0.1.3 | 读取入口文件的webpack插件 |
+| [@megalo/entry](./packages/@megalo/entry) | 0.1.4 | 读取入口文件的webpack插件 |
 | [@megalo/babel-preset-app](./packages/@megalo/babel-preset-app) | 1.0.0-alpha.5 | 包装脚手架babel相关的配置，直接对用户提供服务 |
 
 
