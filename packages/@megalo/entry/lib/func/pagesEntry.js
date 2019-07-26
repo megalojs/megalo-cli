@@ -55,7 +55,7 @@ module.exports = function (file, whileList = []) {
     console.log(e)
   }
 
-  // 将主页排序到最前面
+  // 将主页排序到最前面(这里的排序对生成小程序app.json页面先后顺序是没有任何作用的，取决于@megalo/target那边的修改)
   entries = Object.fromEntries(Object.entries(entries).sort((a, b) => {
     return (b[0] === homeKey) - (a[0] === homeKey)
   }))
