@@ -10,7 +10,7 @@ const matchPath = function (p) {
 
 // 获取指定目录下符合glob的所有文件
 module.exports = function (file, whileList = []) {
-  const entries = {}
+  let entries = {}
 
   let mainObj = {}
 
@@ -18,20 +18,28 @@ module.exports = function (file, whileList = []) {
 
   let subpackages
 
+  let homeKey
+
   try {
     mainObj = getAppObj(file) || {}
     pages = mainObj.pages || []
     subpackages = mainObj.subpackages || mainObj.subPackages || []
 
     pages.forEach(p => {
-      // const _p = p.replace(/^pages(\/[^\/]*)(\/[^\/]*)?/,($0,$1,$2)=>{return `pages${$1}${$2||$1}`})
+      if (p.startsWith('^')) {
+        p = p.replace(/^\^+/, '')
+        homeKey = p
+      }
       matchPath(p) && (entries[p] = matchPath(p))
     })
     subpackages.forEach(sp => {
       const { root, pages } = sp
       if (root && pages.length > 0) {
         pages.forEach(p => {
-          // const _p = p.replace(/^pages(\/[^\/]*)(\/[^\/]*)?/,($0,$1,$2)=>{return `pages${$1}${$2||$1}`})
+          if (p.startsWith('^')) {
+            p = p.replace(/^\^+/, '')
+            homeKey = p
+          }
           matchPath(`${root}/${p}`) && (entries[`${root}/${p}`] = matchPath(`${root}/${p}`))
         })
       }
@@ -46,6 +54,11 @@ module.exports = function (file, whileList = []) {
   } catch (e) {
     console.log(e)
   }
+
+  // 将主页排序到最前面(这里的排序对生成小程序app.json页面先后顺序是没有任何作用的，取决于@megalo/target那边的修改)
+  entries = Object.fromEntries(Object.entries(entries).sort((a, b) => {
+    return (b[0] === homeKey) - (a[0] === homeKey)
+  }))
 
   return entries
 }

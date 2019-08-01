@@ -1,6 +1,6 @@
 {
   "name": "@megalo/entry",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -29,6 +29,7 @@
   "dependencies": {
     "babel-generator": "^6.26.1",
     "babelon": "^1.0.5",
+    "js-yaml": "^3.13.1",
     "json5": "^2.1.0"
   }
 }
