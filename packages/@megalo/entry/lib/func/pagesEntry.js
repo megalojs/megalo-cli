@@ -10,15 +10,13 @@ const matchPath = function (p) {
 
 // 获取指定目录下符合glob的所有文件
 module.exports = function (file, whileList = []) {
-  let entries = {}
+  const entries = {}
 
   let mainObj = {}
 
   let pages
 
   let subpackages
-
-  let homeKey
 
   try {
     mainObj = getAppObj(file) || {}
@@ -28,7 +26,6 @@ module.exports = function (file, whileList = []) {
     pages.forEach(p => {
       if (p.startsWith('^')) {
         p = p.replace(/^\^+/, '')
-        homeKey = p
       }
       matchPath(p) && (entries[p] = matchPath(p))
     })
@@ -38,7 +35,6 @@ module.exports = function (file, whileList = []) {
         pages.forEach(p => {
           if (p.startsWith('^')) {
             p = p.replace(/^\^+/, '')
-            homeKey = p
           }
           matchPath(`${root}/${p}`) && (entries[`${root}/${p}`] = matchPath(`${root}/${p}`))
         })
@@ -54,11 +50,6 @@ module.exports = function (file, whileList = []) {
   } catch (e) {
     console.log(e)
   }
-
-  // 将主页排序到最前面(这里的排序对生成小程序app.json页面先后顺序是没有任何作用的，取决于@megalo/target那边的修改)
-  entries = Object.fromEntries(Object.entries(entries).sort((a, b) => {
-    return (b[0] === homeKey) - (a[0] === homeKey)
-  }))
 
   return entries
 }
