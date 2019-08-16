@@ -135,8 +135,7 @@ module.exports = {
               'stylus-loader': when(cssPreset === 'stylus', '^3.0.2'),
               'node-sass': when(cssPreset === 'scss', '^4.10.0'),
               'sass-loader': when(cssPreset === 'scss', '^7.1.0'),
-              'typescript': when(features.includes('typescript'), '^3.4.4'),
-              'vue-property-decorator': when(features.includes('typescript'), '^8.1.0')
+              'typescript': when(features.includes('typescript'), '^3.4.4')
             },
             'dependencies': {
               '@megalo/api': when(needMegaloAPI === 'Yes', 'latest'),
@@ -144,7 +143,8 @@ module.exports = {
               'megalo': 'latest',
               'octoparse': '^0.4.2',
               'vuex': when(features.includes('vuex'), '^3.1.0'),
-              'vuex-class': when(features.includes('vuex') && features.includes('typescript'), '^0.3.2')
+              'vuex-class': when(features.includes('vuex') && features.includes('typescript'), '^0.3.2'),
+              'vue-property-decorator': when(features.includes('typescript'), '8.1.1')
             }
           }
         }
