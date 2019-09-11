@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta content="width=device-width,initial-scale=1,user-scalable=no" name="viewport">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="format-detection" content="telephone=no,address=no">
+  <meta name="apple-mobile-web-app-status-bar-style" content="white">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+  <title>megalo</title>
+  <style>
+  body, dl, dd, ul, ol, h1, h2, h3, h4, h5, h6, p, form, input, textarea, button, th, td { margin: 0; padding: 0; }
+  img, iframe { border: 0 none; }
+  table { border-collapse: collapse; border-spacing: 0; table-layout: fixed; }
+  ol, ul { list-style: none outside none; }
+  h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: bold; }
+  em, strong { font-style: normal; font-weight: bold; }
+  html { font-family: PingFangSC-Light,helvetica,"Helvetica Neue", STHeiTi, "Microsoft YaHei", sans-serif !important; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; font-size: 366.211%; }
+  body, textarea, select, input { color: #000; }
+  body {width: 10rem;font-size: 14px;overflow-x: hidden;overflow-y: auto;margin: 0 auto; }
+  a, button { cursor: pointer; text-decoration: none; }
+  img[src=""] { opacity: 0; filter: alpha(opacity=0); }
+  * { -webkit-tap-highlight-color: transparent; }
+  /*input 去掉ie10以上版本的X*/
+  ::-ms-clear, ::-ms-reveal { display: none; }
+  /*input 去掉chrome选中input时的外边框*/
+  input { outline: none; border: 0; }
+  </style>
+  <script type="text/javascript">
+    !function(){
+        function a(){
+            if(parseInt(document.documentElement.clientWidth) > 768) {
+                document.documentElement.style.fontSize=768/750*7.5/16*1000+"%";
+            } else {
+                document.documentElement.style.fontSize=document.documentElement.clientWidth/750*7.5/16*1000+"%";
+            }
+        }
+        var b=null;
+        window.addEventListener("resize",function(){
+            clearTimeout(b);
+            b=setTimeout(a,300);
+        },!1);
+        a();
+    }(window);
+</script>
+
+</head>
+<body>
+  <div id="app"></div>
+</body>
+
+</html>

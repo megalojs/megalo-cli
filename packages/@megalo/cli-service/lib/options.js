@@ -15,6 +15,9 @@ const schema = createSchema(joi => joi.object({
   // 生产构建时生成source map
   productionSourceMap: joi.boolean(),
 
+  // h5是否转单页形式
+  isSpa: joi.boolean(),
+
   // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码
   lintOnSave: joi.any().valid([true, false, 'error']),
 
@@ -61,6 +64,8 @@ exports.defaults = () => ({
   nativeDir: '/src/native',
 
   productionSourceMap: false,
+
+  isSpa: true,
 
   lintOnSave: true,
 
