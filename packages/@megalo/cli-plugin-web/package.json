@@ -1,10 +1,10 @@
 {
-  "name": "@testxcx/cli-plugin-web",
-  "version": "1.0.0-alpha.4",
+  "name": "@megalo/cli-plugin-web",
+  "version": "1.0.0-alpha.5",
   "description": "megalo工程将小程序编译为web的webpack配置插件",
   "main": "index.js",
   "dependencies": {
-    "@megalo/cli-share-utils": "^1.0.0-alpha.1",
+    "@megalo/cli-share-utils": "latest",
     "@megalo/entry": "^0.1.2",
     "autoprefixer": "^9.5.1",
     "copy-webpack-plugin": "^5.0.2",
@@ -18,12 +18,12 @@
     "postcss-plugin-px2rem": "^0.8.1",
     "terser-webpack-plugin": "^1.2.3",
     "url-loader": "^1.1.2",
-    "vue-loader": "15.4.0"
-  },
-  "peerDependencies": {
-    "megalo-target-debug": "*",
-    "vue": "^2.5.17",
-    "vue-template-compiler": "^2.5.17"
+    "vue-loader": "15.4.0",
+    "vue-template-compiler": "2.5.17",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.1.0",
+    "vue": "2.5.17",
+    "vue-router": "^3.0.7"
   },
   "publishConfig": {
     "access": "public"

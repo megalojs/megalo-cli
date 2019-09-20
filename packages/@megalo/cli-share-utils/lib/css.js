@@ -7,6 +7,7 @@ exports.getCssExt = function (platform) {
     alipay: 'acss',
     swan: 'css',
     toutiao: 'ttss',
+    h5: 'css',
     web: 'css'
   }[platform]
 }
