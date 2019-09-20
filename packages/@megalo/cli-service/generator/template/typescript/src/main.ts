@@ -4,6 +4,9 @@ import { Component } from 'vue-property-decorator'
 import VHtmlPlugin from '@megalo/vhtml-plugin'
 
 Vue.use(VHtmlPlugin)
+<%_ if (rootOptions.vuex) { _%>
+Vue.prototype.$store = store
+<%_ } _%>
 
 // https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html
 Component.registerHooks([
@@ -19,14 +22,7 @@ Component.registerHooks([
   'onTabItemTap' // 当前是 tab 页时， 点击 tab 时触发
 ])
 
-// const app = new Vue(App)
-const app = new Vue({
-  <%_ if (doesCompile) { _%>
-  render: h => h(App),
-  <%_ } else { _%>
-  render: function (h) { return h(App) },
-  <%_ } _%>
-})
+const app = new Vue(App)
 
 app.$mount()
 

@@ -1,5 +1,5 @@
 module.exports = (api, options) => {
-  const tplDir = api.hasPlugin('typescript') ? './tempalte/typescript' : './template/main'
+  const tplDir = api.hasPlugin('typescript') ? './template/typescript' : './template/main'
   api.render(tplDir, {
     doesCompile: api.hasPlugin('babel') || api.hasPlugin('typescript')
   })
@@ -63,9 +63,8 @@ module.exports = (api, options) => {
   }
 
   if (api.hasPlugin('typescript')) {
-    if (!options.vuex) {
-      dependencies['vue-property-decorator'] = '8.1.1'
-    }
+    dependencies['vue-property-decorator'] = '8.1.1'
+    dependencies['vue-class-component'] = '^7.0.2'
 
     pkgList = [
       '@megalo/cli-plugin-typescript'

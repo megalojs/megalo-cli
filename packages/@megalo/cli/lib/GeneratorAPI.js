@@ -357,7 +357,12 @@ class GeneratorAPI {
    */
   get entryFile () {
     if (this._entryFile) return this._entryFile
-    return (this._entryFile = fs.existsSync(this.resolve('src/main.ts')) ? 'src/main.ts' : 'src/main.js')
+    if (this.hasPlugin('typescript')) {
+      this._entryFile = 'src/main.ts'
+    } else {
+      this._entryFile = 'src/main.js'
+    }
+    return this._entryFile
   }
 
   /**
