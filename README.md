@@ -1,6 +1,9 @@
 # megalo-cli
 Standard Tooling for Megalo Project Development
 
+## 维护说明
+***由于 megalo 主库暂无人维护，本脚手架也不再增加新功能，仅做支持性bug修复;使用过程中，如果遇到脚手架相关的Bug,可在 issues 提 bug , 尽量提供一个可复现的最小化demo.***
+
 ## 本仓库维护下列包：
 
 | 包名 | 最新版本号 | 包描述
