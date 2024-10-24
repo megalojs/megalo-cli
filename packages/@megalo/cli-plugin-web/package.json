@@ -22,7 +22,7 @@
     "vue-template-compiler": "2.5.17",
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0",
-    "vue": "2.5.17",
+    "vue": "3.0.0",
     "vue-router": "^3.0.7"
   },
   "publishConfig": {
